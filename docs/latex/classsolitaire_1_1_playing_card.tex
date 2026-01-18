@@ -1,0 +1,205 @@
+\doxysection{solitaire.\+Playing\+Card Class Reference}
+\hypertarget{classsolitaire_1_1_playing_card}{}\label{classsolitaire_1_1_playing_card}\index{solitaire.PlayingCard@{solitaire.PlayingCard}}
+
+
+Contains methods and attributes for playing cards.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsolitaire_1_1_playing_card_a2f881ad3435596377ba7c522a3b6a8bb}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{suit}}, \mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{rank}}, width, height)
+\item 
+\mbox{\hyperlink{classsolitaire_1_1_playing_card_af885699677bc2bd9f36bd86a20e254ab}{draw\+\_\+card}} (self, screen)
+\begin{DoxyCompactList}\small\item\em Draws the card on the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{suit}}
+\begin{DoxyCompactList}\small\item\em Card suit (club, spade, diamond, heart). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{rank}}
+\begin{DoxyCompactList}\small\item\em Card rank (ace, 2-\/10, jack, queen, king). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}
+\begin{DoxyCompactList}\small\item\em Card rectangle object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsolitaire_1_1_playing_card_a84a9155a598adf86f49de4aae29185fa}{flipped}}
+\begin{DoxyCompactList}\small\item\em Card is flipped over if true. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsolitaire_1_1_playing_card_a60f093b6d2b5dd83febbe15f03a56763}{selected}}
+\begin{DoxyCompactList}\small\item\em Card is flipped over if true. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+tuple \mbox{\hyperlink{classsolitaire_1_1_playing_card_a13320e3d87c88aaccddfb9b48087c3bd}{\+\_\+\+\_\+select\+\_\+color}}
+\begin{DoxyCompactList}\small\item\em Selection border color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classsolitaire_1_1_playing_card_aeb4cee60dd4a66fedf014f229af80a30}{\+\_\+\+\_\+border}}
+\begin{DoxyCompactList}\small\item\em Border width the cards. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains methods and attributes for playing cards. 
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00686}{686}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classsolitaire_1_1_playing_card_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsolitaire_1_1_playing_card_a2f881ad3435596377ba7c522a3b6a8bb}\index{solitaire.PlayingCard@{solitaire.PlayingCard}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!solitaire.PlayingCard@{solitaire.PlayingCard}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classsolitaire_1_1_playing_card_a2f881ad3435596377ba7c522a3b6a8bb} 
+solitaire.\+Playing\+Card.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{suit}{, }\item[{}]{rank}{, }\item[{}]{width}{, }\item[{}]{height}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em suit} & Card suit \\
+\hline
+{\em rank} & Card rank \\
+\hline
+{\em width} & Card width \\
+\hline
+{\em height} & Card height \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classsolitaire_1_1_playing_card}{Playing\+Card} object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00692}{692}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classsolitaire_1_1_playing_card_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsolitaire_1_1_playing_card_af885699677bc2bd9f36bd86a20e254ab}\index{solitaire.PlayingCard@{solitaire.PlayingCard}!draw\_card@{draw\_card}}
+\index{draw\_card@{draw\_card}!solitaire.PlayingCard@{solitaire.PlayingCard}}
+\doxysubsubsection{\texorpdfstring{draw\_card()}{draw\_card()}}
+{\footnotesize\ttfamily \label{classsolitaire_1_1_playing_card_af885699677bc2bd9f36bd86a20e254ab} 
+solitaire.\+Playing\+Card.\+draw\+\_\+card (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{screen}{}\end{DoxyParamCaption})}
+
+
+
+Draws the card on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen} & Game screen object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00718}{718}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classsolitaire_1_1_playing_card_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsolitaire_1_1_playing_card_aeb4cee60dd4a66fedf014f229af80a30}\index{solitaire.PlayingCard@{solitaire.PlayingCard}!\_\_border@{\_\_border}}
+\index{\_\_border@{\_\_border}!solitaire.PlayingCard@{solitaire.PlayingCard}}
+\doxysubsubsection{\texorpdfstring{\_\_border}{\_\_border}}
+{\footnotesize\ttfamily \label{classsolitaire_1_1_playing_card_aeb4cee60dd4a66fedf014f229af80a30} 
+int solitaire.\+Playing\+Card.\+\_\+\+\_\+border\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Border width the cards. 
+
+
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00713}{713}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+\Hypertarget{classsolitaire_1_1_playing_card_a13320e3d87c88aaccddfb9b48087c3bd}\index{solitaire.PlayingCard@{solitaire.PlayingCard}!\_\_select\_color@{\_\_select\_color}}
+\index{\_\_select\_color@{\_\_select\_color}!solitaire.PlayingCard@{solitaire.PlayingCard}}
+\doxysubsubsection{\texorpdfstring{\_\_select\_color}{\_\_select\_color}}
+{\footnotesize\ttfamily \label{classsolitaire_1_1_playing_card_a13320e3d87c88aaccddfb9b48087c3bd} 
+tuple solitaire.\+Playing\+Card.\+\_\+\+\_\+select\+\_\+color\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Selection border color. 
+
+
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00710}{710}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+\Hypertarget{classsolitaire_1_1_playing_card_a84a9155a598adf86f49de4aae29185fa}\index{solitaire.PlayingCard@{solitaire.PlayingCard}!flipped@{flipped}}
+\index{flipped@{flipped}!solitaire.PlayingCard@{solitaire.PlayingCard}}
+\doxysubsubsection{\texorpdfstring{flipped}{flipped}}
+{\footnotesize\ttfamily \label{classsolitaire_1_1_playing_card_a84a9155a598adf86f49de4aae29185fa} 
+bool solitaire.\+Playing\+Card.\+flipped}
+
+
+
+Card is flipped over if true. 
+
+
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00704}{704}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+\Hypertarget{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}\index{solitaire.PlayingCard@{solitaire.PlayingCard}!rank@{rank}}
+\index{rank@{rank}!solitaire.PlayingCard@{solitaire.PlayingCard}}
+\doxysubsubsection{\texorpdfstring{rank}{rank}}
+{\footnotesize\ttfamily \label{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0} 
+solitaire.\+Playing\+Card.\+rank}
+
+
+
+Card rank (ace, 2-\/10, jack, queen, king). 
+
+
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00698}{698}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+\Hypertarget{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}\index{solitaire.PlayingCard@{solitaire.PlayingCard}!rect@{rect}}
+\index{rect@{rect}!solitaire.PlayingCard@{solitaire.PlayingCard}}
+\doxysubsubsection{\texorpdfstring{rect}{rect}}
+{\footnotesize\ttfamily \label{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad} 
+solitaire.\+Playing\+Card.\+rect}
+
+
+
+Card rectangle object. 
+
+
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00701}{701}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+\Hypertarget{classsolitaire_1_1_playing_card_a60f093b6d2b5dd83febbe15f03a56763}\index{solitaire.PlayingCard@{solitaire.PlayingCard}!selected@{selected}}
+\index{selected@{selected}!solitaire.PlayingCard@{solitaire.PlayingCard}}
+\doxysubsubsection{\texorpdfstring{selected}{selected}}
+{\footnotesize\ttfamily \label{classsolitaire_1_1_playing_card_a60f093b6d2b5dd83febbe15f03a56763} 
+bool solitaire.\+Playing\+Card.\+selected}
+
+
+
+Card is flipped over if true. 
+
+
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00707}{707}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+\Hypertarget{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}\index{solitaire.PlayingCard@{solitaire.PlayingCard}!suit@{suit}}
+\index{suit@{suit}!solitaire.PlayingCard@{solitaire.PlayingCard}}
+\doxysubsubsection{\texorpdfstring{suit}{suit}}
+{\footnotesize\ttfamily \label{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff} 
+solitaire.\+Playing\+Card.\+suit}
+
+
+
+Card suit (club, spade, diamond, heart). 
+
+
+
+Definition at line \mbox{\hyperlink{solitaire_8py_source_l00695}{695}} of file \mbox{\hyperlink{solitaire_8py_source}{solitaire.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{solitaire_8py}{solitaire.\+py}}\end{DoxyCompactItemize}
