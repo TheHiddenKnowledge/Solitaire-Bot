@@ -676,8 +676,7 @@ class Solitaire:
         self.__get_card_positions()
         self.__draw_game()
         self.__draw_gui()
-        if self.__clock.get_fps() != 0 and not self.__win:
-            self.__time += 1/self.__clock.get_fps()
+        self.__time += self.__clock.get_time() / 1000
         self.__clock.tick(60)
         pygame.display.flip()
 
