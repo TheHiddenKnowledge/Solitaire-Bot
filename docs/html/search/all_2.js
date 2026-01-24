@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['flipped_0',['flipped',['../classsolitaire_1_1_playing_card.html#a84a9155a598adf86f49de4aae29185fa',1,'solitaire::PlayingCard']]]
+  ['draw_5fcard_0',['draw_card',['../classsolitaire_1_1_playing_card.html#af885699677bc2bd9f36bd86a20e254ab',1,'solitaire::PlayingCard']]]
 ];

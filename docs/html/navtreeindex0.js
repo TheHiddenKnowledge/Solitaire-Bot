@@ -60,9 +60,7 @@ var NAVTREEINDEX0 =
 "functions_func.html":[0,2,1],
 "functions_vars.html":[0,2,2],
 "index.html":[],
-"main_8py_source.html":[1,0,0],
 "pages.html":[],
-"solitaire_8py.html":[1,0,1],
-"solitaire_8py_source.html":[1,0,1],
-"solver_8py_source.html":[1,0,2]
+"solitaire_8py.html":[1,0,0],
+"solitaire_8py_source.html":[1,0,0]
 };

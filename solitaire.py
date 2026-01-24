@@ -1,3 +1,12 @@
+## @mainpage
+# This project aims to create a simple solitaire game using pygame,
+# as well as a solver for the game.
+# @par Latest Release:
+# V1.0 - 1/17/2026
+# @par Created by: I. Finney
+# @par Revision History:
+# @version 1.0 Initial release.
+
 ## @file solitaire.py
 # @brief Implements a fully functional version of solitaire using pygame.
 
