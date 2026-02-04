@@ -40,10 +40,10 @@ class Solitaire:
         self.__card_height = 84
         ## @brief Array of card objects
         # @hideinitializer
-        self.__cards = []
+        self.cards = []
         for a in range(4):
             for b in range(13):
-                self.__cards.append(PlayingCard(a, b,
+                self.cards.append(PlayingCard(a, b,
                                        self.__card_width, self.__card_height))
 
         # Card width multiplier used for card horizontal spacing
@@ -81,11 +81,18 @@ class Solitaire:
 
         ## @brief Current selected card struct
         # @hideinitializer
-        self.__selected_card = ['none', 0, 0]
+        self.__selected_entity = ['none', 0, 0]
+
+        ## @brief Source card struct
+        # @hideinitializer
+        self.from_entity = [0, 0]
+        ## @brief Destination card struct
+        # @hideinitializer
+        self.to_entity = [0, 0]
 
         ## @brief Array of card indexes in the tableau
         # @hideinitializer
-        self.__tableau = []
+        self.tableau = []
         ## @brief Array of tableau start rectangle objects
         # @hideinitializer
         self.__tableau_rects = []
@@ -112,15 +119,15 @@ class Solitaire:
                 idx_column.append(-1)
                 position = [x_start + a * dx, y_start + b * dy]
                 position_column.append(position)
-            self.__tableau.append(idx_column)
+            self.tableau.append(idx_column)
             self.__tableau_positions.append(position_column)
 
         ## @brief Array of card indices in the stock
         # @hideinitializer
-        self.__stock = []
+        self.stock = []
         ## @brief Current stock index
         # @hideinitializer
-        self.__stock_idx = -1
+        self.stock_idx = -1
         ## @brief Array of stock rectangle objects
         # @hideinitializer
         self.__stock_rects = []
@@ -139,13 +146,13 @@ class Solitaire:
 
         ## @brief Array of foundation card indices
         # @hideinitializer
-        self.__found_idxs = []
+        self.found_idxs = []
         # Initializing foundation card indices
         for a in range(4):
             found_idxs_row = []
             for b in range(13):
                 found_idxs_row.append(-1)
-            self.__found_idxs.append(found_idxs_row)
+            self.found_idxs.append(found_idxs_row)
         ## @brief Array of foundation suits
         # @hideinitializer
         self.__found_suits = [-1, -1, -1, -1]
@@ -170,7 +177,7 @@ class Solitaire:
 
         ## @brief Moves tracking variable
         # @hideinitializer
-        self.__moves = 0
+        self.moves = 0
         ## @brief Score tracking variable
         # @hideinitializer
         self.__score = 0
@@ -193,41 +200,41 @@ class Solitaire:
     # @return None
     def __reset_game(self):
         # Resetting GUI variables
-        self.__moves = 0
+        self.moves = 0
         self.__score = 0
         self.__time = 0
         self.__win = False
         self.__clear_selected_cards()
         # Resetting tableau index array
-        for a in range(len(self.__tableau)):
-            for b in range(len(self.__tableau[a])):
-                self.__tableau[a][b] = -1
+        for a in range(len(self.tableau)):
+            for b in range(len(self.tableau[a])):
+                self.tableau[a][b] = -1
         # Shuffling cards
         random_idxs = rnd.sample(range(0, 52), 52)
         # Assigning card indices to tableau
         temp_idx = 0
-        for a in range(len(self.__tableau)):
+        for a in range(len(self.tableau)):
             for b in range(a + 1):
                 idx = random_idxs[temp_idx]
-                self.__tableau[a][b] = idx
+                self.tableau[a][b] = idx
                 # Only revealing card at the bottom of the tableau column
                 if b == a:
-                    self.__cards[idx].flipped = False
+                    self.cards[idx].flipped = False
                 else:
-                    self.__cards[idx].flipped = True
+                    self.cards[idx].flipped = True
                 temp_idx += 1
         # Resetting stock index and array
-        self.__stock_idx = -1
-        self.__stock = []
+        self.stock_idx = -1
+        self.stock = []
         # Assigning card indices to stock
         for a in range(28, 52):
             idx = random_idxs[a]
-            self.__cards[idx].flipped = True
-            self.__stock.append(idx)
+            self.cards[idx].flipped = True
+            self.stock.append(idx)
         # Resetting foundation piles
-        for a in range(len(self.__found_idxs)):
-            for b in range(len(self.__found_idxs[a])):
-                self.__found_idxs[a][b] = -1
+        for a in range(len(self.found_idxs)):
+            for b in range(len(self.found_idxs[a])):
+                self.found_idxs[a][b] = -1
             self.__found_suits[a] = -1
             self.__found_ranks[a] = -1
 
@@ -235,17 +242,17 @@ class Solitaire:
     # @return None
     def __get_card_positions(self):
         # Getting tableau card positions
-        for a in range(len(self.__tableau)):
-            for b in range(len(self.__tableau[a])):
-                idx = self.__tableau[a][b]
+        for a in range(len(self.tableau)):
+            for b in range(len(self.tableau[a])):
+                idx = self.tableau[a][b]
                 if idx != -1:
-                    self.__cards[idx].rect.x = self.__tableau_positions[a][b][0]
-                    self.__cards[idx].rect.y = self.__tableau_positions[a][b][1]
+                    self.cards[idx].rect.x = self.__tableau_positions[a][b][0]
+                    self.cards[idx].rect.y = self.__tableau_positions[a][b][1]
         # Getting stock card positions
-        for a in range(len(self.__stock)):
-            card = self.__cards[self.__stock[a]]
+        for a in range(len(self.stock)):
+            card = self.cards[self.stock[a]]
             # Reveal pile
-            if a <= self.__stock_idx:
+            if a <= self.stock_idx:
                 card.rect.x = self.__stock_rects[0].x + self.__pile_offset
                 card.rect.y = self.__stock_rects[0].y + self.__pile_offset
             # Hidden pile
@@ -253,11 +260,11 @@ class Solitaire:
                 card.rect.x = self.__stock_rects[1].x + self.__pile_offset
                 card.rect.y = self.__stock_rects[1].y + self.__pile_offset
         # Getting foundation card positions
-        for a in range(len(self.__found_idxs)):
-            for b in range(len(self.__found_idxs[a])):
-                idx = self.__found_idxs[a][b]
+        for a in range(len(self.found_idxs)):
+            for b in range(len(self.found_idxs[a])):
+                idx = self.found_idxs[a][b]
                 if idx >= 0:
-                    card = self.__cards[idx]
+                    card = self.cards[idx]
                     card.rect.x = self.__found_rects[a].x + self.__pile_offset
                     card.rect.y = self.__found_rects[a].y + self.__pile_offset
 
@@ -268,26 +275,26 @@ class Solitaire:
         for rect in self.__stock_rects:
             pygame.draw.rect(self.__screen, self.__pile_color, rect, width = 0)
         # Drawing stock cards
-        for idx in self.__stock:
-            card = self.__cards[idx]
+        for idx in self.stock:
+            card = self.cards[idx]
             card.draw_card(self.__screen)
         # Drawing foundation pile markers
         for rect in self.__found_rects:
             pygame.draw.rect(self.__screen, self.__pile_color, rect, width = 0)
         # Drawing foundation cards
-        for idxs in self.__found_idxs:
+        for idxs in self.found_idxs:
             for idx in idxs:
                 if idx >= 0:
-                    card = self.__cards[idx]
+                    card = self.cards[idx]
                     card.draw_card(self.__screen)
         # Drawing tableau pile markers
         for rect in self.__tableau_rects:
             pygame.draw.rect(self.__screen, self.__pile_color, rect, width=0)
         # Drawing tableau
-        for col in self.__tableau:
+        for col in self.tableau:
             for idx in col:
                 if idx >= 0:
-                    card = self.__cards[idx]
+                    card = self.cards[idx]
                     card.draw_card(self.__screen)
 
     ## @brief Draws the game UI.
@@ -296,7 +303,7 @@ class Solitaire:
         font = pygame.font.SysFont('Arial', 18)
         font.bold = True
         # Moves label
-        moves_text = 'Moves: ' + str(self.__moves)
+        moves_text = 'Moves: ' + str(self.moves)
         moves = font.render(moves_text, True, (255, 255, 255))
         moves_rect = moves.get_rect()
         moves_rect.center = (int(self.__screen_width / 4),
@@ -344,23 +351,23 @@ class Solitaire:
     # @return None
     def __clear_selected_cards(self):
         # Clearing select card variables
-        for card in self.__cards:
+        for card in self.cards:
             card.selected = False
-        self.__selected_card = ['none', 0, 0]
+        self.__selected_entity = ['none', 0, 0]
 
     ## @brief Increments the stock pile.
     # @return None
     def __increment_stock(self):
-        self.__stock_idx += 1
+        self.stock_idx += 1
         # Resets the stock pile if all cards were revealed
-        if self.__stock_idx >= len(self.__stock):
-            self.__stock_idx = -1
-            for idx in self.__stock:
-                card = self.__cards[idx]
+        if self.stock_idx >= len(self.stock):
+            self.stock_idx = -1
+            for idx in self.stock:
+                card = self.cards[idx]
                 card.flipped = True
         else:
             # Flips the card
-            card = self.__cards[self.__stock[self.__stock_idx]]
+            card = self.cards[self.stock[self.stock_idx]]
             card.flipped = False
         self.__clear_selected_cards()
 
@@ -370,8 +377,8 @@ class Solitaire:
     # @return None
     def __flip_next_card(self, col, row):
         if row != 0:
-            idx = self.__tableau[col][row - 1]
-            self.__cards[idx].flipped = False
+            idx = self.tableau[col][row - 1]
+            self.cards[idx].flipped = False
 
     ## @brief Moves one set of cards to another in the tableau.
     # @param from_col Source tableau column index
@@ -380,12 +387,12 @@ class Solitaire:
     # @param to_row Destination tableau row index
     # @return None
     def __move_tableau_cards(self, from_col, from_row, to_col, to_row):
-        for a in range(from_row, len(self.__tableau[from_col])):
+        for a in range(from_row, len(self.tableau[from_col])):
             aug_idx = to_row + a - from_row + 1
-            if aug_idx < len(self.__tableau[to_col]):
-                self.__tableau[to_col][aug_idx] = (
-                    self.__tableau)[from_col][a]
-            self.__tableau[from_col][a] = -1
+            if aug_idx < len(self.tableau[to_col]):
+                self.tableau[to_col][aug_idx] = (
+                    self.tableau)[from_col][a]
+            self.tableau[from_col][a] = -1
 
     ## @brief Gets the clicked card or pile.
     # @param cursor Cursor position array
@@ -402,31 +409,31 @@ class Solitaire:
             if self.__found_rects[a].collidepoint(cursor):
                 return ['foundation', a, 0]
         # Click on tableau card(s)
-        for a in range(len(self.__tableau)):
-            for b in range(len(self.__tableau[a])):
+        for a in range(len(self.tableau)):
+            for b in range(len(self.tableau[a])):
                 # Click checking rectangle
                 check_rect = pygame.Rect(0, 0, 0, 0)
                 # Current card index
-                idx = self.__tableau[a][b]
+                idx = self.tableau[a][b]
                 # If not at the end of the tableau column
-                if b != len(self.__tableau[a]) - 1:
+                if b != len(self.tableau[a]) - 1:
                     # Next card index
-                    next_idx = self.__tableau[a][b + 1]
+                    next_idx = self.tableau[a][b + 1]
                     # If the next card is not empty
                     if next_idx >= 0:
-                        card_rect = self.__cards[idx].rect
-                        next_card_rect = self.__cards[next_idx].rect
+                        card_rect = self.cards[idx].rect
+                        next_card_rect = self.cards[next_idx].rect
                         check_rect = copy.copy(card_rect)
                         check_rect.height = next_card_rect.y - card_rect.y
                     # If the next card is empty
                     else:
-                        check_rect = self.__cards[idx].rect
+                        check_rect = self.cards[idx].rect
                 # End of the tableau column
                 else:
                     if idx >= 0:
-                        check_rect = self.__cards[idx].rect
+                        check_rect = self.cards[idx].rect
                 # Only selects the card if it is not empty and it is clicked
-                if idx >= 0 and not self.__cards[idx].flipped:
+                if idx >= 0 and not self.cards[idx].flipped:
                     if check_rect.collidepoint(cursor):
                         return ['tableau_card', a, b]
         # Click on tableau pile
@@ -440,25 +447,25 @@ class Solitaire:
     # @param clicked_entity Destination entity where the card will be moved
     # @return True if the card can be moved
     def __can_card_move(self, clicked_entity):
-        select_col = self.__selected_card[1]
-        select_row = self.__selected_card[2]
+        select_col = self.__selected_entity[1]
+        select_row = self.__selected_entity[2]
         clicked_col = clicked_entity[1]
         clicked_row = clicked_entity[2]
         if clicked_entity[0] == 'foundation':
             # Selected card
             card = None
-            if self.__selected_card[0] == 'tableau_card':
-                card_idx = self.__tableau[select_col][
+            if self.__selected_entity[0] == 'tableau_card':
+                card_idx = self.tableau[select_col][
                     select_row]
                 # Don't move card to foundation if it has other cards attached
-                if select_row != len(self.__tableau[0]) - 1:
-                    next_card_idx = self.__tableau[select_col][
+                if select_row != len(self.tableau[0]) - 1:
+                    next_card_idx = self.tableau[select_col][
                         select_row + 1]
                     if next_card_idx >= 0:
                         return False
-                card = self.__cards[card_idx]
-            elif self.__selected_card[0] == 'stock_reveal':
-                card = self.__cards[self.__stock[self.__stock_idx]]
+                card = self.cards[card_idx]
+            elif self.__selected_entity[0] == 'stock_reveal':
+                card = self.cards[self.stock[self.stock_idx]]
             if card is None:
                 return False
             found_idx = clicked_col
@@ -470,21 +477,21 @@ class Solitaire:
         elif clicked_entity[0] == 'tableau_card':
             # Selected card
             select_card = None
-            if self.__selected_card[0] == 'tableau_card':
-                select_card = self.__cards[
-                    self.__tableau[select_col]
+            if self.__selected_entity[0] == 'tableau_card':
+                select_card = self.cards[
+                    self.tableau[select_col]
                     [select_row]]
-            elif self.__selected_card[0] == 'stock_reveal':
-                select_card = self.__cards[self.__stock[self.__stock_idx]]
-            elif self.__selected_card[0] == 'foundation':
+            elif self.__selected_entity[0] == 'stock_reveal':
+                select_card = self.cards[self.stock[self.stock_idx]]
+            elif self.__selected_entity[0] == 'foundation':
                 rank = self.__found_ranks[select_col]
-                card_idx = self.__found_idxs[select_col][rank]
-                select_card = self.__cards[card_idx]
+                card_idx = self.found_idxs[select_col][rank]
+                select_card = self.cards[card_idx]
             if select_card is None:
                 return False
             # Destination card
-            dest_card = self.__cards[
-                self.__tableau[clicked_col][clicked_row]]
+            dest_card = self.cards[
+                self.tableau[clicked_col][clicked_row]]
             # Checking if suits are opposite colors
             if ((select_card.suit < 2 and dest_card.suit > 1)
                 or (select_card.suit > 1 and dest_card.suit < 2)):
@@ -494,22 +501,22 @@ class Solitaire:
         elif clicked_entity[0] == 'tableau_pile':
             # Selected card
             select_card = None
-            if self.__selected_card[0] == 'tableau_card':
-                select_card = self.__cards[
-                    self.__tableau[select_col]
+            if self.__selected_entity[0] == 'tableau_card':
+                select_card = self.cards[
+                    self.tableau[select_col]
                     [select_row]]
-            elif self.__selected_card[0] == 'stock_reveal':
-                select_card = self.__cards[self.__stock[self.__stock_idx]]
-            elif self.__selected_card[0] == 'foundation':
+            elif self.__selected_entity[0] == 'stock_reveal':
+                select_card = self.cards[self.stock[self.stock_idx]]
+            elif self.__selected_entity[0] == 'foundation':
                 rank = self.__found_ranks[select_col]
-                card_idx = self.__found_idxs[select_col][rank]
-                select_card = self.__cards[card_idx]
+                card_idx = self.found_idxs[select_col][rank]
+                select_card = self.cards[card_idx]
             if select_card is None:
                 return False
             # Card can only move to the tableau pile start if it is a king
             # and the pile is empty
             if select_card.rank == 12:
-                if self.__tableau[clicked_col][0] == -1:
+                if self.tableau[clicked_col][0] == -1:
                     return True
         return False
 
@@ -517,48 +524,64 @@ class Solitaire:
     # @param cursor Cursor position array
     # @return True if a move was made
     def __click_handler(self, cursor):
+        select_col = self.__selected_entity[1]
+        select_row = self.__selected_entity[2]
         clicked_entity = self.__get_clicked(cursor)
-        select_col = self.__selected_card[1]
-        select_row = self.__selected_card[2]
         clicked_col = clicked_entity[1]
         clicked_row = clicked_entity[2]
+        # Setting card from/to structs
+        clicked_entities = [self.__selected_entity, clicked_entity]
+        entity_idx_structs = [self.from_entity, self.to_entity]
+        for a in range(len(clicked_entities)):
+            entity_idx_structs[a][0] = clicked_entities[a][0]
+            entity_idx_structs[a][1] = 0
+            match entity_idx_structs[a][0]:
+                case 'foundation':
+                    entity_idx_structs[a][1] = entity_idx_structs[a][1] + 1
+                case 'tableau_card':
+                    col_idx = clicked_entities[a][1]
+                    row_idx = clicked_entities[a][2]
+                    card_idx = self.tableau[col_idx][row_idx] + 1
+                    entity_idx_structs[a][1] = card_idx
+                case 'tableau_pile':
+                    entity_idx_structs[a][1] = entity_idx_structs[a][1] + 1
         if clicked_entity[0] == 'tableau_card':
             # If a card was not selected previously or the current selection
             # is in the same tableau column as the previous selection
-            if (self.__selected_card[0] == 'none'
-                    or (self.__selected_card[0] == 'tableau_card'
+            if (self.__selected_entity[0] == 'none'
+                    or (self.__selected_entity[0] == 'tableau_card'
                     and select_col == clicked_col)):
                 # Selects the card(s)
                 self.__clear_selected_cards()
-                self.__selected_card = clicked_entity
-                for a in range(clicked_row, len(self.__tableau[clicked_col])):
-                    idx = self.__tableau[clicked_col][a]
+                self.__selected_entity = clicked_entity
+                for a in range(clicked_row, len(self.tableau[clicked_col])):
+                    idx = self.tableau[clicked_col][a]
                     if idx >= 0:
-                        self.__cards[idx].selected = True
+                        self.cards[idx].selected = True
                 return False
             else:
                 if self.__can_card_move(clicked_entity):
                     # If the previously selected card was in the tableau
-                    if self.__selected_card[0] == 'tableau_card':
+                    if self.__selected_entity[0] == 'tableau_card':
                         self.__move_tableau_cards(select_col, select_row,
                                                 clicked_col, clicked_row)
                         self.__flip_next_card(select_col, select_row)
                     # If the previously selected card was in the stock
-                    elif self.__selected_card[0] == 'stock_reveal':
+                    elif self.__selected_entity[0] == 'stock_reveal':
                         # Adds stock card to the clicked cards column
-                        self.__tableau[clicked_col][clicked_row + 1] = (
-                            self.__stock)[self.__stock_idx]
+                        self.tableau[clicked_col][clicked_row + 1] = (
+                            self.stock)[self.stock_idx]
                         # Removes card index from the stock
-                        self.__stock.pop(self.__stock_idx)
-                        self.__stock_idx -= 1
+                        self.stock.pop(self.stock_idx)
+                        self.stock_idx -= 1
                     # If the previously selected card was in the foundation
-                    elif self.__selected_card[0] == 'foundation':
+                    elif self.__selected_entity[0] == 'foundation':
                         # Adds foundation card to the clicked cards column
                         rank = self.__found_ranks[select_col]
-                        card_idx = self.__found_idxs[select_col][rank]
-                        self.__tableau[clicked_col][clicked_row + 1] = card_idx
+                        card_idx = self.found_idxs[select_col][rank]
+                        self.tableau[clicked_col][clicked_row + 1] = card_idx
                         # Removes card from foundation pile
-                        self.__found_idxs[select_col][rank] = -1
+                        self.found_idxs[select_col][rank] = -1
                         self.__found_ranks[select_col] -= 1
                         # Resets foundation suit if empty
                         if self.__found_ranks[select_col] < 0:
@@ -572,18 +595,18 @@ class Solitaire:
         elif clicked_entity[0] == 'tableau_pile':
             if self.__can_card_move(clicked_entity):
                 # If the previously selected card was in the tableau
-                if self.__selected_card[0] == 'tableau_card':
+                if self.__selected_entity[0] == 'tableau_card':
                     self.__move_tableau_cards(select_col, select_row,
                                             clicked_col, clicked_row)
                     self.__flip_next_card(select_col, select_row)
                 # If the previously selected card was in the stock
-                elif self.__selected_card[0] == 'stock_reveal':
+                elif self.__selected_entity[0] == 'stock_reveal':
                     # Adds stock card to the clicked pile column
-                    self.__tableau[clicked_col][0] = (
-                        self.__stock)[self.__stock_idx]
+                    self.tableau[clicked_col][0] = (
+                        self.stock)[self.stock_idx]
                     # Removing card index from the stock
-                    self.__stock.pop(self.__stock_idx)
-                    self.__stock_idx -= 1
+                    self.stock.pop(self.stock_idx)
+                    self.stock_idx -= 1
                 else:
                     return False
                 self.__clear_selected_cards()
@@ -591,11 +614,11 @@ class Solitaire:
             else:
                 return False
         elif clicked_entity[0] == 'stock_reveal':
-            if len(self.__stock) > 0 and self.__stock_idx >= 0:
+            if len(self.stock) > 0 and self.stock_idx >= 0:
                 # Selecting the revealed card in the stock
                 self.__clear_selected_cards()
-                self.__selected_card = clicked_entity
-                card = self.__cards[self.__stock[self.__stock_idx]]
+                self.__selected_entity = clicked_entity
+                card = self.cards[self.stock[self.stock_idx]]
                 card.selected = True
                 return False
             else:
@@ -606,42 +629,42 @@ class Solitaire:
         elif clicked_entity[0] == 'foundation':
             # If a card was not selected previously and the foundation pile
             # is not empty
-            if (self.__selected_card[0] == 'none'
+            if (self.__selected_entity[0] == 'none'
                     and self.__found_suits[clicked_col] >= 0):
                 self.__clear_selected_cards()
                 rank = self.__found_ranks[clicked_col]
-                card = self.__cards[self.__found_idxs[clicked_col][rank]]
-                self.__selected_card = clicked_entity
+                card = self.cards[self.found_idxs[clicked_col][rank]]
+                self.__selected_entity = clicked_entity
                 card.selected = True
                 return False
             # If a card was selected previously
             else:
                 if self.__can_card_move(clicked_entity):
-                    if self.__selected_card[0] == 'tableau_card':
-                        card_idx = self.__tableau[select_col][select_row]
+                    if self.__selected_entity[0] == 'tableau_card':
+                        card_idx = self.tableau[select_col][select_row]
                         # Adding card to the foundation
                         if self.__found_suits[clicked_col] == -1:
                             self.__found_suits[clicked_col] = (
-                                self.__cards[card_idx].suit)
+                                self.cards[card_idx].suit)
                         self.__found_ranks[clicked_col] += 1
                         rank = self.__found_ranks[clicked_col]
-                        self.__found_idxs[clicked_col][rank] = card_idx
+                        self.found_idxs[clicked_col][rank] = card_idx
                         # Removing card from the tableau
-                        self.__tableau[select_col][select_row] = -1
+                        self.tableau[select_col][select_row] = -1
                         self.__flip_next_card(select_col, select_row)
                         self.__clear_selected_cards()
-                    elif self.__selected_card[0] == 'stock_reveal':
-                        card_idx = self.__stock[self.__stock_idx]
+                    elif self.__selected_entity[0] == 'stock_reveal':
+                        card_idx = self.stock[self.stock_idx]
                         # Adding card to the foundation
                         if self.__found_suits[clicked_col] == -1:
                             self.__found_suits[clicked_col] = (
-                                self.__cards[card_idx].suit)
+                                self.cards[card_idx].suit)
                         self.__found_ranks[clicked_col] += 1
                         rank = self.__found_ranks[clicked_col]
-                        self.__found_idxs[clicked_col][rank] = card_idx
+                        self.found_idxs[clicked_col][rank] = card_idx
                         # Removing card index from the stock
-                        self.__stock.pop(self.__stock_idx)
-                        self.__stock_idx -= 1
+                        self.stock.pop(self.stock_idx)
+                        self.stock_idx -= 1
                     self.__clear_selected_cards()
                     return True
                 else:
@@ -674,13 +697,13 @@ class Solitaire:
                         self.__reset_game()
                     if not self.__win:
                         if self.__click_handler(event.pos):
-                            self.__moves += 1
+                            self.moves += 1
                         self.__get_game_win()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     if not self.__win:
                         self.__increment_stock()
-                        self.__moves += 1
+                        self.moves += 1
         self.__screen.fill(self.__screen_color)
         self.__get_card_positions()
         self.__draw_game()
