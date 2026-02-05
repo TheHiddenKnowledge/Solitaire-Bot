@@ -1,0 +1,512 @@
+\doxysection{netrunner.\+Net\+Runner Class Reference}
+\hypertarget{classnetrunner_1_1_net_runner}{}\label{classnetrunner_1_1_net_runner}\index{netrunner.NetRunner@{netrunner.NetRunner}}
+
+
+Contains methods and attributes used for implementing and training a neural net.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a6e05848a66b7d99447c1b4bcf34a02a7}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, net\+\_\+layers)
+\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a0e0a79e0e2db43ec3fbca6253f1cc9a3}{resize\+\_\+net}} (self, net\+\_\+layers)
+\begin{DoxyCompactList}\small\item\em Resizes the neural net given the new layers list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4bc89d598f760a4bac5e5a4566158519}{init\+\_\+net}} (self)
+\begin{DoxyCompactList}\small\item\em Initializes the weights and biases of the neural net. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a79c4f054cb10a312a39ecff0a7c4929c}{forward\+\_\+pass}} (self, net\+\_\+input)
+\begin{DoxyCompactList}\small\item\em Forward passes the neural net given an input array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a746cc8c7e6c9a0300dc414859a732219}{init\+\_\+runner}} (self, rate, beta)
+\begin{DoxyCompactList}\small\item\em Initializes the neural net runner. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a9e79834c04638a715a83888b3b4c01e3}{init\+\_\+mini\+\_\+batch}} (self, batch, mini\+\_\+batch\+\_\+size, is\+\_\+shuffled)
+\begin{DoxyCompactList}\small\item\em Initializes mini batch parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a8f881657bb8bcb7503fab88d92e0e84f}{step\+\_\+epoch}} (self, batch)
+\begin{DoxyCompactList}\small\item\em Performs gradient descent on all mini batches in the epoch. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a91dc295678d4d71f4e3f79d3b0295c19}{loadnet}} (self, file)
+\begin{DoxyCompactList}\small\item\em Loads neural net from a npz file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_ae30ccb373ce29b29aa4d6a75ba1851b2}{savenet}} (self, file)
+\begin{DoxyCompactList}\small\item\em Save neural net to a npz file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a977f6c7caa22fb1679b3e9de74388185}{\+\_\+\+\_\+check\+\_\+net}} (self)
+\begin{DoxyCompactList}\small\item\em Checks the layers of the neural net to see if the net is valid. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a90cafb45a4f795ec74467379ecef915e}{\+\_\+\+\_\+get\+\_\+gradients}} (self, expected\+\_\+output)
+\begin{DoxyCompactList}\small\item\em Gets the gradients for the weights and biases. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_ad387e6f3c021d3ac213ca04476408e9b}{\+\_\+\+\_\+step\+\_\+mini\+\_\+batch}} (self, mini\+\_\+batch)
+\begin{DoxyCompactList}\small\item\em Performs gradient descent on the mini batch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\+\_\+\+\_\+net\+\_\+layers}}
+\begin{DoxyCompactList}\small\item\em List of \doxylink{classnetrunner_1_1_net_layer}{Net\+Layer} objects. \end{DoxyCompactList}\item 
+list \mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\+\_\+\+\_\+weights}}
+\begin{DoxyCompactList}\small\item\em Weights used to transform the values from one layer into another. \end{DoxyCompactList}\item 
+list \mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\+\_\+\+\_\+biases}}
+\begin{DoxyCompactList}\small\item\em Biases applied to each layer output after transformation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4a2e8589d1b746d5cdf4131d749cccc3}{\+\_\+\+\_\+weight\+\_\+gradient}}
+\begin{DoxyCompactList}\small\item\em Gradient for all weights. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_a1f3113327c939628b6272b2e2659020f}{\+\_\+\+\_\+bias\+\_\+gradient}}
+\begin{DoxyCompactList}\small\item\em Gradient for all biases. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac4231421eac97310c934352210953a37}{\+\_\+\+\_\+prev\+\_\+weight\+\_\+velocity}}
+\begin{DoxyCompactList}\small\item\em Previous average gradient velocity for all weights. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac292d048d3688571d2247ce10f043471}{\+\_\+\+\_\+prev\+\_\+bias\+\_\+velocity}}
+\begin{DoxyCompactList}\small\item\em Previous average gradient velocity for all biases. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classnetrunner_1_1_net_runner_afd85855448bd94687681a0e20687fc35}{\+\_\+\+\_\+rate}}
+\begin{DoxyCompactList}\small\item\em Learning rate used for gradient descent. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}{\+\_\+\+\_\+beta}}
+\begin{DoxyCompactList}\small\item\em Velocity utilization factor for gradient descent. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908}{\+\_\+\+\_\+mini\+\_\+batch\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em Size of the mini batch. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classnetrunner_1_1_net_runner_a800c69e92097a086cc924b73d48da811}{\+\_\+\+\_\+mini\+\_\+batch\+\_\+max\+\_\+index}}
+\begin{DoxyCompactList}\small\item\em Maximum index used for looping through the mini batches. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classnetrunner_1_1_net_runner_ab4c1507f3c7bf69c048424f617fa0561}{\+\_\+\+\_\+epoch}}
+\begin{DoxyCompactList}\small\item\em Current epoch count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains methods and attributes used for implementing and training a neural net. 
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00097}{97}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classnetrunner_1_1_net_runner_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classnetrunner_1_1_net_runner_a6e05848a66b7d99447c1b4bcf34a02a7}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a6e05848a66b7d99447c1b4bcf34a02a7} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{net\+\_\+layers}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em net\+\_\+layers} & List of \doxylink{classnetrunner_1_1_net_layer}{Net\+Layer} objects \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00099}{99}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classnetrunner_1_1_net_runner_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classnetrunner_1_1_net_runner_a977f6c7caa22fb1679b3e9de74388185}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_check\_net@{\_\_check\_net}}
+\index{\_\_check\_net@{\_\_check\_net}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_check\_net()}{\_\_check\_net()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a977f6c7caa22fb1679b3e9de74388185} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+check\+\_\+net (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks the layers of the neural net to see if the net is valid. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00152}{152}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a90cafb45a4f795ec74467379ecef915e}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_get\_gradients@{\_\_get\_gradients}}
+\index{\_\_get\_gradients@{\_\_get\_gradients}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_get\_gradients()}{\_\_get\_gradients()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a90cafb45a4f795ec74467379ecef915e} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+get\+\_\+gradients (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{expected\+\_\+output}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gets the gradients for the weights and biases. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em expected\+\_\+output} & The expected output for the training example \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00229}{229}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_ad387e6f3c021d3ac213ca04476408e9b}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_step\_mini\_batch@{\_\_step\_mini\_batch}}
+\index{\_\_step\_mini\_batch@{\_\_step\_mini\_batch}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_step\_mini\_batch()}{\_\_step\_mini\_batch()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_ad387e6f3c021d3ac213ca04476408e9b} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+step\+\_\+mini\+\_\+batch (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{mini\+\_\+batch}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Performs gradient descent on the mini batch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mini\+\_\+batch} & The mini batch of training examples \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The average cost value of the mini batch 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00313}{313}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a79c4f054cb10a312a39ecff0a7c4929c}\index{netrunner.NetRunner@{netrunner.NetRunner}!forward\_pass@{forward\_pass}}
+\index{forward\_pass@{forward\_pass}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{forward\_pass()}{forward\_pass()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a79c4f054cb10a312a39ecff0a7c4929c} 
+netrunner.\+Net\+Runner.\+forward\+\_\+pass (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{net\+\_\+input}{}\end{DoxyParamCaption})}
+
+
+
+Forward passes the neural net given an input array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net\+\_\+input} & Input for the neural net \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output values of neural net 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00215}{215}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a9e79834c04638a715a83888b3b4c01e3}\index{netrunner.NetRunner@{netrunner.NetRunner}!init\_mini\_batch@{init\_mini\_batch}}
+\index{init\_mini\_batch@{init\_mini\_batch}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{init\_mini\_batch()}{init\_mini\_batch()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a9e79834c04638a715a83888b3b4c01e3} 
+netrunner.\+Net\+Runner.\+init\+\_\+mini\+\_\+batch (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{batch}{, }\item[{}]{mini\+\_\+batch\+\_\+size}{, }\item[{}]{is\+\_\+shuffled}{}\end{DoxyParamCaption})}
+
+
+
+Initializes mini batch parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em batch} & The whole batch of training examples \\
+\hline
+{\em mini\+\_\+batch\+\_\+size} & The size of a mini batch \\
+\hline
+{\em is\+\_\+shuffled} & Shuffles the batch if true \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00299}{299}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a4bc89d598f760a4bac5e5a4566158519}\index{netrunner.NetRunner@{netrunner.NetRunner}!init\_net@{init\_net}}
+\index{init\_net@{init\_net}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{init\_net()}{init\_net()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a4bc89d598f760a4bac5e5a4566158519} 
+netrunner.\+Net\+Runner.\+init\+\_\+net (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the weights and biases of the neural net. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00204}{204}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a746cc8c7e6c9a0300dc414859a732219}\index{netrunner.NetRunner@{netrunner.NetRunner}!init\_runner@{init\_runner}}
+\index{init\_runner@{init\_runner}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{init\_runner()}{init\_runner()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a746cc8c7e6c9a0300dc414859a732219} 
+netrunner.\+Net\+Runner.\+init\+\_\+runner (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{rate}{, }\item[{}]{beta}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the neural net runner. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rate} & Learning rate \\
+\hline
+{\em beta} & Velocity utilization factor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00287}{287}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a91dc295678d4d71f4e3f79d3b0295c19}\index{netrunner.NetRunner@{netrunner.NetRunner}!loadnet@{loadnet}}
+\index{loadnet@{loadnet}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{loadnet()}{loadnet()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a91dc295678d4d71f4e3f79d3b0295c19} 
+netrunner.\+Net\+Runner.\+loadnet (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{file}{}\end{DoxyParamCaption})}
+
+
+
+Loads neural net from a npz file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & File name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00361}{361}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a0e0a79e0e2db43ec3fbca6253f1cc9a3}\index{netrunner.NetRunner@{netrunner.NetRunner}!resize\_net@{resize\_net}}
+\index{resize\_net@{resize\_net}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{resize\_net()}{resize\_net()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a0e0a79e0e2db43ec3fbca6253f1cc9a3} 
+netrunner.\+Net\+Runner.\+resize\+\_\+net (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{net\+\_\+layers}{}\end{DoxyParamCaption})}
+
+
+
+Resizes the neural net given the new layers list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net\+\_\+layers} & New list of \doxylink{classnetrunner_1_1_net_layer}{Net\+Layer} objects \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00170}{170}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_ae30ccb373ce29b29aa4d6a75ba1851b2}\index{netrunner.NetRunner@{netrunner.NetRunner}!savenet@{savenet}}
+\index{savenet@{savenet}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{savenet()}{savenet()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_ae30ccb373ce29b29aa4d6a75ba1851b2} 
+netrunner.\+Net\+Runner.\+savenet (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{file}{}\end{DoxyParamCaption})}
+
+
+
+Save neural net to a npz file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & File name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00369}{369}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a8f881657bb8bcb7503fab88d92e0e84f}\index{netrunner.NetRunner@{netrunner.NetRunner}!step\_epoch@{step\_epoch}}
+\index{step\_epoch@{step\_epoch}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{step\_epoch()}{step\_epoch()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a8f881657bb8bcb7503fab88d92e0e84f} 
+netrunner.\+Net\+Runner.\+step\+\_\+epoch (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{batch}{}\end{DoxyParamCaption})}
+
+
+
+Performs gradient descent on all mini batches in the epoch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em batch} & The whole batch of training examples \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The final average cost and the epoch count 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00348}{348}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classnetrunner_1_1_net_runner_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_beta@{\_\_beta}}
+\index{\_\_beta@{\_\_beta}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_beta}{\_\_beta}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+beta\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Velocity utilization factor for gradient descent. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00138}{138}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a1f3113327c939628b6272b2e2659020f}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_bias\_gradient@{\_\_bias\_gradient}}
+\index{\_\_bias\_gradient@{\_\_bias\_gradient}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_bias\_gradient}{\_\_bias\_gradient}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a1f3113327c939628b6272b2e2659020f} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+bias\+\_\+gradient\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gradient for all biases. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00124}{124}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_biases@{\_\_biases}}
+\index{\_\_biases@{\_\_biases}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_biases}{\_\_biases}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+biases\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Biases applied to each layer output after transformation. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00115}{115}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_ab4c1507f3c7bf69c048424f617fa0561}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_epoch@{\_\_epoch}}
+\index{\_\_epoch@{\_\_epoch}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_epoch}{\_\_epoch}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_ab4c1507f3c7bf69c048424f617fa0561} 
+int netrunner.\+Net\+Runner.\+\_\+\+\_\+epoch\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current epoch count. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00148}{148}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a800c69e92097a086cc924b73d48da811}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_mini\_batch\_max\_index@{\_\_mini\_batch\_max\_index}}
+\index{\_\_mini\_batch\_max\_index@{\_\_mini\_batch\_max\_index}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_mini\_batch\_max\_index}{\_\_mini\_batch\_max\_index}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a800c69e92097a086cc924b73d48da811} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+mini\+\_\+batch\+\_\+max\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Maximum index used for looping through the mini batches. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00145}{145}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_mini\_batch\_size@{\_\_mini\_batch\_size}}
+\index{\_\_mini\_batch\_size@{\_\_mini\_batch\_size}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_mini\_batch\_size}{\_\_mini\_batch\_size}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+mini\+\_\+batch\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Size of the mini batch. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00142}{142}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_net\_layers@{\_\_net\_layers}}
+\index{\_\_net\_layers@{\_\_net\_layers}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_net\_layers}{\_\_net\_layers}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+net\+\_\+layers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of \doxylink{classnetrunner_1_1_net_layer}{Net\+Layer} objects. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00102}{102}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_ac292d048d3688571d2247ce10f043471}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_prev\_bias\_velocity@{\_\_prev\_bias\_velocity}}
+\index{\_\_prev\_bias\_velocity@{\_\_prev\_bias\_velocity}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_prev\_bias\_velocity}{\_\_prev\_bias\_velocity}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_ac292d048d3688571d2247ce10f043471} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+prev\+\_\+bias\+\_\+velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Previous average gradient velocity for all biases. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00131}{131}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_ac4231421eac97310c934352210953a37}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_prev\_weight\_velocity@{\_\_prev\_weight\_velocity}}
+\index{\_\_prev\_weight\_velocity@{\_\_prev\_weight\_velocity}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_prev\_weight\_velocity}{\_\_prev\_weight\_velocity}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_ac4231421eac97310c934352210953a37} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+prev\+\_\+weight\+\_\+velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Previous average gradient velocity for all weights. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00128}{128}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_afd85855448bd94687681a0e20687fc35}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_rate@{\_\_rate}}
+\index{\_\_rate@{\_\_rate}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_rate}{\_\_rate}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_afd85855448bd94687681a0e20687fc35} 
+int netrunner.\+Net\+Runner.\+\_\+\+\_\+rate\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Learning rate used for gradient descent. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00135}{135}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a4a2e8589d1b746d5cdf4131d749cccc3}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_weight\_gradient@{\_\_weight\_gradient}}
+\index{\_\_weight\_gradient@{\_\_weight\_gradient}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_weight\_gradient}{\_\_weight\_gradient}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a4a2e8589d1b746d5cdf4131d749cccc3} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+weight\+\_\+gradient\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gradient for all weights. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00121}{121}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}\index{netrunner.NetRunner@{netrunner.NetRunner}!\_\_weights@{\_\_weights}}
+\index{\_\_weights@{\_\_weights}!netrunner.NetRunner@{netrunner.NetRunner}}
+\doxysubsubsection{\texorpdfstring{\_\_weights}{\_\_weights}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd} 
+netrunner.\+Net\+Runner.\+\_\+\+\_\+weights\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Weights used to transform the values from one layer into another. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00108}{108}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{netrunner_8py}{netrunner.\+py}}\end{DoxyCompactItemize}

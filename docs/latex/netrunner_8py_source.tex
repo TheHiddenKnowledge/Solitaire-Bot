@@ -1,0 +1,314 @@
+\doxysection{netrunner.\+py}
+\hypertarget{netrunner_8py_source}{}\label{netrunner_8py_source}\mbox{\hyperlink{netrunner_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00015}00015\ \textcolor{keyword}{import}\ numpy\ \textcolor{keyword}{as}\ np}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00016}00016\ \textcolor{keyword}{import}\ copy}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00017}00017\ \textcolor{keyword}{import}\ random\ \textcolor{keyword}{as}\ rnd}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00018}00018\ \textcolor{keyword}{import}\ math}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00022}\mbox{\hyperlink{classnetrunner_1_1_net_error}{00022}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classnetrunner_1_1_net_error}{NetError}}(Exception):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ value,\ message):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_error_ab4d59b3cf405e9e0f3b410dfe913b8c9}{value}}\ =\ value}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_error_aed06bcf05ab65b2253b6af92a62d513a}{message}}\ =\ message}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ super().\_\_init\_\_(self.\mbox{\hyperlink{classnetrunner_1_1_net_error_aed06bcf05ab65b2253b6af92a62d513a}{message}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{def\ }\_\_str\_\_(self):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Override\ the\ default\ string\ representation}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ f\textcolor{stringliteral}{'\{self.value\}\ -\/>\ \{self.message\}'}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00034}\mbox{\hyperlink{classnetrunner_1_1_net_layer}{00034}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classnetrunner_1_1_net_layer}{NetLayer}}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00035}00035\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00037}\mbox{\hyperlink{classnetrunner_1_1_net_layer_aa806b40bba8973d238e095aac5b807cb}{00037}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_layer_aa806b40bba8973d238e095aac5b807cb}{\_\_init\_\_}}(self,\ neuron\_count,\ activation):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00040}\mbox{\hyperlink{classnetrunner_1_1_net_layer_a0dfad11915d6e6598fa2d22773dc3437}{00040}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a0dfad11915d6e6598fa2d22773dc3437}{neuron\_count}}\ =\ neuron\_count}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00043}\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{00043}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}\ =\ activation}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00046}\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{00046}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\_values}}\ =\ np.zeros((neuron\_count,\ 1))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00049}\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{00049}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\_values}}\ =\ np.zeros((neuron\_count,\ 1))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00052}\mbox{\hyperlink{classnetrunner_1_1_net_layer_af44d5acab974cae71487b9087a12eaaf}{00052}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_af44d5acab974cae71487b9087a12eaaf}{active\_derivatives}}\ =\ np.zeros((neuron\_count,\ 1))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00054}00054\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00058}\mbox{\hyperlink{classnetrunner_1_1_net_layer_a8d21747e1999f547329b4d51bd65aa5a}{00058}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_layer_a8d21747e1999f547329b4d51bd65aa5a}{set\_layer\_values}}(self,\ layer\_values):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\_values}}\ =\ layer\_values.copy()}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a44ed3554ed7ada3d786e6443493d8e6c}{use\_active\_functions}}()}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_aa7103ad5bb0f7ef523c28fdb26e98151}{get\_active\_derivatives}}()}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00063}00063\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00065}\mbox{\hyperlink{classnetrunner_1_1_net_layer_a44ed3554ed7ada3d786e6443493d8e6c}{00065}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_layer_a44ed3554ed7ada3d786e6443493d8e6c}{use\_active\_functions}}(self):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}\ ==\ \textcolor{stringliteral}{'input'}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\_values}}\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\_values}}.copy()}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}\ ==\ \textcolor{stringliteral}{'sigmoid'}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\_values}}\ =\ 1\ /\ (1\ +\ np.exp(-\/self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\_values}}))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}\ ==\ \textcolor{stringliteral}{'tanh'}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\_values}}\ =\ np.tanh(self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\_values}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}\ ==\ \textcolor{stringliteral}{'relu'}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\_values}}\ =\ np.where(self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\_values}}\ >\ 0,}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\_values}},}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .1\ *\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\_values}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ \mbox{\hyperlink{classnetrunner_1_1_net_error}{NetError}}(self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}},\ \textcolor{stringliteral}{"{}Invalid\ activation\ function."{}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00079}00079\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00081}\mbox{\hyperlink{classnetrunner_1_1_net_layer_aa7103ad5bb0f7ef523c28fdb26e98151}{00081}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_layer_aa7103ad5bb0f7ef523c28fdb26e98151}{get\_active\_derivatives}}(self):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}\ ==\ \textcolor{stringliteral}{'input'}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_af44d5acab974cae71487b9087a12eaaf}{active\_derivatives}}\ =\ np.zeros\_like(self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\_values}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}\ ==\ \textcolor{stringliteral}{'sigmoid'}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_af44d5acab974cae71487b9087a12eaaf}{active\_derivatives}}\ =\ \ (self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\_values}}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ (1\ -\/\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\_values}}))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}\ ==\ \textcolor{stringliteral}{'tanh'}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_af44d5acab974cae71487b9087a12eaaf}{active\_derivatives}}\ =\ 1\ -\/\ np.power(self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\_values}},\ 2)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}\ ==\ \textcolor{stringliteral}{'relu'}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_af44d5acab974cae71487b9087a12eaaf}{active\_derivatives}}\ =\ np.where(self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\_values}}\ >\ 0,\ 1,\ .1)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ \mbox{\hyperlink{classnetrunner_1_1_net_error}{NetError}}(self.\mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}},\ \textcolor{stringliteral}{"{}Invalid\ activation\ function."{}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00097}\mbox{\hyperlink{classnetrunner_1_1_net_runner}{00097}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner}{NetRunner}}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00098}00098\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00099}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a6e05848a66b7d99447c1b4bcf34a02a7}{00099}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a6e05848a66b7d99447c1b4bcf34a02a7}{\_\_init\_\_}}(self,\ net\_layers):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00102}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{00102}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}\ =\ copy.deepcopy(net\_layers)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a977f6c7caa22fb1679b3e9de74388185}{\_\_check\_net}}()}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00108}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{00108}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}})\ -\/\ 1):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ neuron\_count\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a].neuron\_count}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ next\_neuron\_count\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a\ +\ 1].neuron\_count}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}.append(np.zeros((next\_neuron\_count,\ neuron\_count)))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00115}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{00115}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}})\ -\/\ 1):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ next\_neuron\_count\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a\ +\ 1].neuron\_count}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}}.append(np.zeros((next\_neuron\_count,\ 1)))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00119}00119\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00121}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4a2e8589d1b746d5cdf4131d749cccc3}{00121}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4a2e8589d1b746d5cdf4131d749cccc3}{\_\_weight\_gradient}}\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00124}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a1f3113327c939628b6272b2e2659020f}{00124}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a1f3113327c939628b6272b2e2659020f}{\_\_bias\_gradient}}\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00128}\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac4231421eac97310c934352210953a37}{00128}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac4231421eac97310c934352210953a37}{\_\_prev\_weight\_velocity}}\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00129}00129\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00131}\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac292d048d3688571d2247ce10f043471}{00131}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac292d048d3688571d2247ce10f043471}{\_\_prev\_bias\_velocity}}\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00135}\mbox{\hyperlink{classnetrunner_1_1_net_runner_afd85855448bd94687681a0e20687fc35}{00135}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_afd85855448bd94687681a0e20687fc35}{\_\_rate}}\ =\ 0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00138}\mbox{\hyperlink{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}{00138}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}{\_\_beta}}\ =\ 0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00142}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908}{00142}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908}{\_\_mini\_batch\_size}}\ =\ 0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00145}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a800c69e92097a086cc924b73d48da811}{00145}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a800c69e92097a086cc924b73d48da811}{\_\_mini\_batch\_max\_index}}\ =\ 0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00148}\mbox{\hyperlink{classnetrunner_1_1_net_runner_ab4c1507f3c7bf69c048424f617fa0561}{00148}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ab4c1507f3c7bf69c048424f617fa0561}{\_\_epoch}}\ =\ 0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00150}00150\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00152}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a977f6c7caa22fb1679b3e9de74388185}{00152}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a977f6c7caa22fb1679b3e9de74388185}{\_\_check\_net}}(self):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ The\ minimum\ layer\ count\ is\ 2}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}})\ <\ 2:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ \mbox{\hyperlink{classnetrunner_1_1_net_error}{NetError}}(self,\ \textcolor{stringliteral}{"{}Layer\ count\ is\ less\ than\ 2."{}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Checking\ for\ the\ input\ layer}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ input\_index\ =\ -\/1}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}})):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ net\_layer\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ net\_layer.activation\ ==\ \textcolor{stringliteral}{'input'}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ input\_index\ =\ a}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ input\_index\ <\ 0:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ \mbox{\hyperlink{classnetrunner_1_1_net_error}{NetError}}(self,\ \textcolor{stringliteral}{"{}Input\ layer\ not\ present."{}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ input\_index\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ \mbox{\hyperlink{classnetrunner_1_1_net_error}{NetError}}(self,\ \textcolor{stringliteral}{"{}Input\ layer\ is\ not\ at\ the\ right\ position."{}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00167}00167\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00170}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a0e0a79e0e2db43ec3fbca6253f1cc9a3}{00170}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a0e0a79e0e2db43ec3fbca6253f1cc9a3}{resize\_net}}(self,\ net\_layers):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00171}00171\ \ \ \ \ \ \ \ \ has\_resized\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Checking\ if\ the\ neural\ net\ has\ resized}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(net\_layers)\ !=\ len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ has\_resized\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(net\_layers)):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_neuron\_count\ =\ net\_layers[a].neuron\_count}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ old\_neuron\_count\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a].neuron\_count}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ new\_neuron\_count\ !=\ old\_neuron\_count:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ has\_resized\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Resizing\ neural\ net\ parameters}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ has\_resized:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}\ =\ copy.deepcopy(net\_layers)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a977f6c7caa22fb1679b3e9de74388185}{\_\_check\_net}}()}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}})\ -\/\ 1):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ neuron\_count\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a].neuron\_count}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ next\_neuron\_count\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a\ +\ 1].neuron\_count}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}.append(}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ np.zeros((next\_neuron\_count,\ neuron\_count)))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}})\ -\/\ 1):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ next\_neuron\_count\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a\ +\ 1].neuron\_count}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}}.append(np.zeros((next\_neuron\_count,\ 1)))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4a2e8589d1b746d5cdf4131d749cccc3}{\_\_weight\_gradient}}\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a1f3113327c939628b6272b2e2659020f}{\_\_bias\_gradient}}\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac4231421eac97310c934352210953a37}{\_\_prev\_weight\_velocity}}\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac292d048d3688571d2247ce10f043471}{\_\_prev\_bias\_velocity}}\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00202}00202\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00204}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4bc89d598f760a4bac5e5a4566158519}{00204}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4bc89d598f760a4bac5e5a4566158519}{init\_net}}(self):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ weight\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ variance\ =\ 1\ /\ weight.shape[1]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ random\_weight\ =\ np.random.uniform(-\/variance,\ variance,\ weight.shape)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ np.copyto(weight,\ random\_weight)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00209}00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ bias\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ bias.fill(0)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00212}00212\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00215}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a79c4f054cb10a312a39ecff0a7c4929c}{00215}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a79c4f054cb10a312a39ecff0a7c4929c}{forward\_pass}}(self,\ net\_input):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[0].set\_layer\_values(net\_input)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ current\_values\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a].active\_values}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Transforming\ the\ previous\ layer\ into\ the\ next\ layer}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ next\_values\ =\ (np.matmul(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}[a],\ current\_values)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}}[a])}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a\ +\ 1].set\_layer\_values(next\_values)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00223}00223\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Returns\ the\ last\ layer\ (output)}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[-\/1].active\_values}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00226}00226\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00229}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a90cafb45a4f795ec74467379ecef915e}{00229}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a90cafb45a4f795ec74467379ecef915e}{\_\_get\_gradients}}(self,\ expected\_output):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ List\ of\ layer\ derivatives\ with\ respect\ to\ cost}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00231}00231\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ (used\ for\ backpropagation)}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00232}00232\ \ \ \ \ \ \ \ \ layer\_derivatives\ =\ []}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00233}00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ net\_layer\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ layer\_derivatives.append(np.zeros\_like(net\_layer.original\_values))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ reversed(range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}))):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ active\_values\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a].active\_values}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ next\_active\_values\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a\ +\ 1].active\_values}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ next\_active\_derivatives\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[a\ +\ 1].active\_derivatives}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ b\ \textcolor{keywordflow}{in}\ range(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}[a].shape[0]):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Getting\ bias\ gradient\ for\ last\ hidden\ layer}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ a\ ==\ len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})\ -\/\ 1:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a1f3113327c939628b6272b2e2659020f}{\_\_bias\_gradient}}[a][b]\ =\ (}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ next\_active\_derivatives[b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ 2\ *\ (next\_active\_values[b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ expected\_output[b][0])}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Getting\ bias\ gradient\ used\ backpropagation}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a1f3113327c939628b6272b2e2659020f}{\_\_bias\_gradient}}[a][b]\ =\ (}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ next\_active\_derivatives[b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ layer\_derivatives[a\ +\ 1][b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ c\ \textcolor{keywordflow}{in}\ range(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}[a].shape[1]):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ a\ ==\ len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})\ -\/\ 1:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Getting\ weight\ gradient\ for\ last\ hidden\ layer}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4a2e8589d1b746d5cdf4131d749cccc3}{\_\_weight\_gradient}}[a][b][c]\ =\ (}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ active\_values[c][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ next\_active\_derivatives[b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ 2\ *\ (next\_active\_values[b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ expected\_output[b][0])}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Calculating\ layer\ derivatives\ with\ respect\ to\ cost}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layer\_derivatives[a][c][0]\ +=\ (}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}[a][b][c]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ next\_active\_derivatives[b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ 2\ *\ (next\_active\_values[b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ expected\_output[b][0])}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Getting\ weight\ gradient\ using\ backpropagation}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4a2e8589d1b746d5cdf4131d749cccc3}{\_\_weight\_gradient}}[a][b][c]\ =\ (}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ active\_values[c][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ next\_active\_derivatives[b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ layer\_derivatives[a\ +\ 1][b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Calculating\ layer\ derivatives\ with\ respect\ to\ cost}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layer\_derivatives[a][c][0]\ +=\ (}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}[a][b][c]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ next\_active\_derivatives[b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ layer\_derivatives[a\ +\ 1][b][0]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00283}00283\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00287}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a746cc8c7e6c9a0300dc414859a732219}{00287}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a746cc8c7e6c9a0300dc414859a732219}{init\_runner}}(self,\ rate,\ beta):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00288}00288\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_afd85855448bd94687681a0e20687fc35}{\_\_rate}}\ =\ rate}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ beta\ >\ 1\ \textcolor{keywordflow}{or}\ beta\ <\ 0:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ \mbox{\hyperlink{classnetrunner_1_1_net_error}{NetError}}(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}{\_\_beta}},\ \textcolor{stringliteral}{'Beta\ must\ be\ between\ 0\ and\ 1.'})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00291}00291\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}{\_\_beta}}\ =\ beta}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00292}00292\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ab4c1507f3c7bf69c048424f617fa0561}{\_\_epoch}}\ =\ 0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00294}00294\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00299}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a9e79834c04638a715a83888b3b4c01e3}{00299}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a9e79834c04638a715a83888b3b4c01e3}{init\_mini\_batch}}(self,\ batch,\ mini\_batch\_size,\ is\_shuffled):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00300}00300\ \ \ \ \ \ \ \ \ batch\_size\ =\ len(batch)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ mini\_batch\_size\ >\ batch\_size:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ \mbox{\hyperlink{classnetrunner_1_1_net_error}{NetError}}(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908}{\_\_mini\_batch\_size}},\ \textcolor{stringliteral}{'Mini\ batch\ size\ must\ be\ '}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'less\ than\ the\ batch\ size.'})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00304}00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ is\_shuffled:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ rnd.shuffle(batch)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00306}00306\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908}{\_\_mini\_batch\_size}}\ =\ mini\_batch\_size}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00307}00307\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a800c69e92097a086cc924b73d48da811}{\_\_mini\_batch\_max\_index}}\ =\ math.ceil(batch\_size}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ /\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908}{\_\_mini\_batch\_size}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00310}00310\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00313}\mbox{\hyperlink{classnetrunner_1_1_net_runner_ad387e6f3c021d3ac213ca04476408e9b}{00313}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_ad387e6f3c021d3ac213ca04476408e9b}{\_\_step\_mini\_batch}}(self,\ mini\_batch):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00314}00314\ \ \ \ \ \ \ \ \ avg\_weight\_gradient\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00315}00315\ \ \ \ \ \ \ \ \ avg\_bias\_gradient\ =\ copy.deepcopy(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}})}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00316}00316\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ avg\_weight\_gradient[a].fill(0)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ avg\_bias\_gradient[a].fill(0)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00319}00319\ \ \ \ \ \ \ \ \ avg\_cost\ =\ 0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(mini\_batch)):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a79c4f054cb10a312a39ecff0a7c4929c}{forward\_pass}}(mini\_batch[a][0])}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a90cafb45a4f795ec74467379ecef915e}{\_\_get\_gradients}}(mini\_batch[a][1])}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ b\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avg\_weight\_gradient[b]\ +=\ (self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a4a2e8589d1b746d5cdf4131d749cccc3}{\_\_weight\_gradient}}[b]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ /\ len(mini\_batch))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avg\_bias\_gradient[b]\ +=\ (self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a1f3113327c939628b6272b2e2659020f}{\_\_bias\_gradient}}[b]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ /\ len(mini\_batch))}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ cost\ =\ 0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ b\ \textcolor{keywordflow}{in}\ range(len(mini\_batch[a][1])):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\_values\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a26757e8f2734e7a881498a23512bc780}{\_\_net\_layers}}[-\/1].active\_values}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cost\ +=\ (output\_values[b][0]\ -\/\ mini\_batch[a][1][b][0])\ **\ 2}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ avg\_cost\ +=\ cost\ /\ len(mini\_batch)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Descending\ the\ gradient\ using\ the\ momentum\ theorem\ for\ neural\ nets}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}})):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ weight\_velocity\ =\ (self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}{\_\_beta}}\ *\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac4231421eac97310c934352210953a37}{\_\_prev\_weight\_velocity}}[a]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ (1\ -\/\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}{\_\_beta}})\ *\ avg\_weight\_gradient[a])}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ bias\_veloctiy\ =\ (self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}{\_\_beta}}\ *\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac292d048d3688571d2247ce10f043471}{\_\_prev\_bias\_velocity}}[a]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ (1\ -\/\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_acc6083b7c12cb5646a8697b2bdb963a4}{\_\_beta}})\ *\ avg\_bias\_gradient[a])}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}[a]\ -\/=\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_afd85855448bd94687681a0e20687fc35}{\_\_rate}}\ *\ weight\_velocity}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}}[a]\ -\/=\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_afd85855448bd94687681a0e20687fc35}{\_\_rate}}\ *\ bias\_veloctiy}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ np.copyto(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac4231421eac97310c934352210953a37}{\_\_prev\_weight\_velocity}}[a],\ weight\_velocity)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ np.copyto(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ac292d048d3688571d2247ce10f043471}{\_\_prev\_bias\_velocity}}[a],\ bias\_veloctiy)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00343}00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ avg\_cost}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00345}00345\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00348}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a8f881657bb8bcb7503fab88d92e0e84f}{00348}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a8f881657bb8bcb7503fab88d92e0e84f}{step\_epoch}}(self,\ batch):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00349}00349\ \ \ \ \ \ \ \ \ avg\_cost\ =\ 0}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a800c69e92097a086cc924b73d48da811}{\_\_mini\_batch\_max\_index}}):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ start\_idx\ =\ a\ *\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908}{\_\_mini\_batch\_size}}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ end\_idx\ =\ (a\ +\ 1)\ *\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a45c7fc4841ce501bc28ddbfcdd1d4908}{\_\_mini\_batch\_size}}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ mini\_batch\ =\ batch[start\_idx:end\_idx]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ avg\_cost\ =\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ad387e6f3c021d3ac213ca04476408e9b}{\_\_step\_mini\_batch}}(mini\_batch)}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00355}00355\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ab4c1507f3c7bf69c048424f617fa0561}{\_\_epoch}}\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00356}00356\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ avg\_cost,\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_ab4c1507f3c7bf69c048424f617fa0561}{\_\_epoch}}}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00358}00358\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00361}\mbox{\hyperlink{classnetrunner_1_1_net_runner_a91dc295678d4d71f4e3f79d3b0295c19}{00361}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_a91dc295678d4d71f4e3f79d3b0295c19}{loadnet}}(self,\ file):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00362}00362\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(np.load(file\ +\ \textcolor{stringliteral}{'.npz'},\ allow\_pickle=\textcolor{keyword}{True}).files)\ >\ 1:}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}}\ =\ np.load(file\ +\ \textcolor{stringliteral}{'.npz'},\ allow\_pickle=\textcolor{keyword}{True})[\textcolor{stringliteral}{'arr\_0'}]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}}\ =\ np.load(file\ +\ \textcolor{stringliteral}{'.npz'},\ allow\_pickle=\textcolor{keyword}{True})[\textcolor{stringliteral}{'arr\_1'}]}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00366}00366\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00369}\mbox{\hyperlink{classnetrunner_1_1_net_runner_ae30ccb373ce29b29aa4d6a75ba1851b2}{00369}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classnetrunner_1_1_net_runner_ae30ccb373ce29b29aa4d6a75ba1851b2}{savenet}}(self,\ file):}
+\DoxyCodeLine{\Hypertarget{netrunner_8py_source_l00370}00370\ \ \ \ \ \ \ \ \ np.savez(file,\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a2ea24e7e208e8413002ef1b4038205cd}{\_\_weights}},\ self.\mbox{\hyperlink{classnetrunner_1_1_net_runner_a11fe39aed002127f2d1aa1b43560ff0d}{\_\_biases}},\ fmt=\textcolor{stringliteral}{'\%s'})}
+
+\end{DoxyCode}
