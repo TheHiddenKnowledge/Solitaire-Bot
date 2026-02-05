@@ -1,0 +1,27 @@
+var classnetrunner_1_1_net_runner =
+[
+    [ "__init__", "classnetrunner_1_1_net_runner.html#a6e05848a66b7d99447c1b4bcf34a02a7", null ],
+    [ "__check_net", "classnetrunner_1_1_net_runner.html#a977f6c7caa22fb1679b3e9de74388185", null ],
+    [ "__get_gradients", "classnetrunner_1_1_net_runner.html#a90cafb45a4f795ec74467379ecef915e", null ],
+    [ "__step_mini_batch", "classnetrunner_1_1_net_runner.html#ad387e6f3c021d3ac213ca04476408e9b", null ],
+    [ "forward_pass", "classnetrunner_1_1_net_runner.html#a79c4f054cb10a312a39ecff0a7c4929c", null ],
+    [ "init_mini_batch", "classnetrunner_1_1_net_runner.html#a9e79834c04638a715a83888b3b4c01e3", null ],
+    [ "init_net", "classnetrunner_1_1_net_runner.html#a4bc89d598f760a4bac5e5a4566158519", null ],
+    [ "init_runner", "classnetrunner_1_1_net_runner.html#a746cc8c7e6c9a0300dc414859a732219", null ],
+    [ "loadnet", "classnetrunner_1_1_net_runner.html#a91dc295678d4d71f4e3f79d3b0295c19", null ],
+    [ "resize_net", "classnetrunner_1_1_net_runner.html#a0e0a79e0e2db43ec3fbca6253f1cc9a3", null ],
+    [ "savenet", "classnetrunner_1_1_net_runner.html#ae30ccb373ce29b29aa4d6a75ba1851b2", null ],
+    [ "step_epoch", "classnetrunner_1_1_net_runner.html#a8f881657bb8bcb7503fab88d92e0e84f", null ],
+    [ "__beta", "classnetrunner_1_1_net_runner.html#acc6083b7c12cb5646a8697b2bdb963a4", null ],
+    [ "__bias_gradient", "classnetrunner_1_1_net_runner.html#a1f3113327c939628b6272b2e2659020f", null ],
+    [ "__biases", "classnetrunner_1_1_net_runner.html#a11fe39aed002127f2d1aa1b43560ff0d", null ],
+    [ "__epoch", "classnetrunner_1_1_net_runner.html#ab4c1507f3c7bf69c048424f617fa0561", null ],
+    [ "__mini_batch_max_index", "classnetrunner_1_1_net_runner.html#a800c69e92097a086cc924b73d48da811", null ],
+    [ "__mini_batch_size", "classnetrunner_1_1_net_runner.html#a45c7fc4841ce501bc28ddbfcdd1d4908", null ],
+    [ "__net_layers", "classnetrunner_1_1_net_runner.html#a26757e8f2734e7a881498a23512bc780", null ],
+    [ "__prev_bias_velocity", "classnetrunner_1_1_net_runner.html#ac292d048d3688571d2247ce10f043471", null ],
+    [ "__prev_weight_velocity", "classnetrunner_1_1_net_runner.html#ac4231421eac97310c934352210953a37", null ],
+    [ "__rate", "classnetrunner_1_1_net_runner.html#afd85855448bd94687681a0e20687fc35", null ],
+    [ "__weight_gradient", "classnetrunner_1_1_net_runner.html#a4a2e8589d1b746d5cdf4131d749cccc3", null ],
+    [ "__weights", "classnetrunner_1_1_net_runner.html#a2ea24e7e208e8413002ef1b4038205cd", null ]
+];

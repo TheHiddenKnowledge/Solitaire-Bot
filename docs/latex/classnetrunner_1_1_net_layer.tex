@@ -1,0 +1,201 @@
+\doxysection{netrunner.\+Net\+Layer Class Reference}
+\hypertarget{classnetrunner_1_1_net_layer}{}\label{classnetrunner_1_1_net_layer}\index{netrunner.NetLayer@{netrunner.NetLayer}}
+
+
+Contains methods and attributes for a neural net layer.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_layer_aa806b40bba8973d238e095aac5b807cb}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classnetrunner_1_1_net_layer_a0dfad11915d6e6598fa2d22773dc3437}{neuron\+\_\+count}}, \mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}})
+\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_layer_a8d21747e1999f547329b4d51bd65aa5a}{set\+\_\+layer\+\_\+values}} (self, layer\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Sets the layers values, applies the activation function, and gets the applicable derivatives. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_layer_a44ed3554ed7ada3d786e6443493d8e6c}{use\+\_\+active\+\_\+functions}} (self)
+\begin{DoxyCompactList}\small\item\em Applies the applicable activation function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_layer_aa7103ad5bb0f7ef523c28fdb26e98151}{get\+\_\+active\+\_\+derivatives}} (self)
+\begin{DoxyCompactList}\small\item\em Gets the derivatives for the applicable activation function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_layer_a0dfad11915d6e6598fa2d22773dc3437}{neuron\+\_\+count}}
+\begin{DoxyCompactList}\small\item\em Neuron count in the layer. \end{DoxyCompactList}\item 
+str \mbox{\hyperlink{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}{activation}}
+\begin{DoxyCompactList}\small\item\em String declaring which activation function to use. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}{original\+\_\+values}}
+\begin{DoxyCompactList}\small\item\em Layer values before the activation function is applied. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}{active\+\_\+values}}
+\begin{DoxyCompactList}\small\item\em Layer values after the activation function is applied. \end{DoxyCompactList}\item 
+tuple \mbox{\hyperlink{classnetrunner_1_1_net_layer_af44d5acab974cae71487b9087a12eaaf}{active\+\_\+derivatives}}
+\begin{DoxyCompactList}\small\item\em Derivative of the activation function for each layer value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains methods and attributes for a neural net layer. 
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00034}{34}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classnetrunner_1_1_net_layer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classnetrunner_1_1_net_layer_aa806b40bba8973d238e095aac5b807cb}\index{netrunner.NetLayer@{netrunner.NetLayer}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!netrunner.NetLayer@{netrunner.NetLayer}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_layer_aa806b40bba8973d238e095aac5b807cb} 
+netrunner.\+Net\+Layer.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{neuron\+\_\+count}{, }\item[{}]{activation}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em neuron\+\_\+count} & Neuron count in the layer \\
+\hline
+{\em activation} & String declaring which activation function to use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00037}{37}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classnetrunner_1_1_net_layer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classnetrunner_1_1_net_layer_aa7103ad5bb0f7ef523c28fdb26e98151}\index{netrunner.NetLayer@{netrunner.NetLayer}!get\_active\_derivatives@{get\_active\_derivatives}}
+\index{get\_active\_derivatives@{get\_active\_derivatives}!netrunner.NetLayer@{netrunner.NetLayer}}
+\doxysubsubsection{\texorpdfstring{get\_active\_derivatives()}{get\_active\_derivatives()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_layer_aa7103ad5bb0f7ef523c28fdb26e98151} 
+netrunner.\+Net\+Layer.\+get\+\_\+active\+\_\+derivatives (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Gets the derivatives for the applicable activation function. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00081}{81}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_layer_a8d21747e1999f547329b4d51bd65aa5a}\index{netrunner.NetLayer@{netrunner.NetLayer}!set\_layer\_values@{set\_layer\_values}}
+\index{set\_layer\_values@{set\_layer\_values}!netrunner.NetLayer@{netrunner.NetLayer}}
+\doxysubsubsection{\texorpdfstring{set\_layer\_values()}{set\_layer\_values()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_layer_a8d21747e1999f547329b4d51bd65aa5a} 
+netrunner.\+Net\+Layer.\+set\+\_\+layer\+\_\+values (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{layer\+\_\+values}{}\end{DoxyParamCaption})}
+
+
+
+Sets the layers values, applies the activation function, and gets the applicable derivatives. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em layer\+\_\+values} & Layer values to be assigned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00058}{58}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_layer_a44ed3554ed7ada3d786e6443493d8e6c}\index{netrunner.NetLayer@{netrunner.NetLayer}!use\_active\_functions@{use\_active\_functions}}
+\index{use\_active\_functions@{use\_active\_functions}!netrunner.NetLayer@{netrunner.NetLayer}}
+\doxysubsubsection{\texorpdfstring{use\_active\_functions()}{use\_active\_functions()}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_layer_a44ed3554ed7ada3d786e6443493d8e6c} 
+netrunner.\+Net\+Layer.\+use\+\_\+active\+\_\+functions (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Applies the applicable activation function. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00065}{65}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classnetrunner_1_1_net_layer_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4}\index{netrunner.NetLayer@{netrunner.NetLayer}!activation@{activation}}
+\index{activation@{activation}!netrunner.NetLayer@{netrunner.NetLayer}}
+\doxysubsubsection{\texorpdfstring{activation}{activation}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_layer_afe9f48e7d5d1580f6f73b740aefd64c4} 
+netrunner.\+Net\+Layer.\+activation}
+
+
+
+String declaring which activation function to use. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00043}{43}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_layer_af44d5acab974cae71487b9087a12eaaf}\index{netrunner.NetLayer@{netrunner.NetLayer}!active\_derivatives@{active\_derivatives}}
+\index{active\_derivatives@{active\_derivatives}!netrunner.NetLayer@{netrunner.NetLayer}}
+\doxysubsubsection{\texorpdfstring{active\_derivatives}{active\_derivatives}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_layer_af44d5acab974cae71487b9087a12eaaf} 
+tuple netrunner.\+Net\+Layer.\+active\+\_\+derivatives}
+
+
+
+Derivative of the activation function for each layer value. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00052}{52}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48}\index{netrunner.NetLayer@{netrunner.NetLayer}!active\_values@{active\_values}}
+\index{active\_values@{active\_values}!netrunner.NetLayer@{netrunner.NetLayer}}
+\doxysubsubsection{\texorpdfstring{active\_values}{active\_values}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_layer_a7fa18fd211bc5cb6dc7792d6a2f12c48} 
+int netrunner.\+Net\+Layer.\+active\+\_\+values}
+
+
+
+Layer values after the activation function is applied. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00049}{49}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_layer_a0dfad11915d6e6598fa2d22773dc3437}\index{netrunner.NetLayer@{netrunner.NetLayer}!neuron\_count@{neuron\_count}}
+\index{neuron\_count@{neuron\_count}!netrunner.NetLayer@{netrunner.NetLayer}}
+\doxysubsubsection{\texorpdfstring{neuron\_count}{neuron\_count}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_layer_a0dfad11915d6e6598fa2d22773dc3437} 
+netrunner.\+Net\+Layer.\+neuron\+\_\+count}
+
+
+
+Neuron count in the layer. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00040}{40}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+\Hypertarget{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8}\index{netrunner.NetLayer@{netrunner.NetLayer}!original\_values@{original\_values}}
+\index{original\_values@{original\_values}!netrunner.NetLayer@{netrunner.NetLayer}}
+\doxysubsubsection{\texorpdfstring{original\_values}{original\_values}}
+{\footnotesize\ttfamily \label{classnetrunner_1_1_net_layer_a08bf4de52d2318ba75ce2a287acc1bf8} 
+netrunner.\+Net\+Layer.\+original\+\_\+values}
+
+
+
+Layer values before the activation function is applied. 
+
+
+
+Definition at line \mbox{\hyperlink{netrunner_8py_source_l00046}{46}} of file \mbox{\hyperlink{netrunner_8py_source}{netrunner.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{netrunner_8py}{netrunner.\+py}}\end{DoxyCompactItemize}

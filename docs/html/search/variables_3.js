@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rank_0',['rank',['../classsolitaire_1_1_playing_card.html#ac23fc5c439b607a0c3af60e9d9021ba0',1,'solitaire::PlayingCard']]],
-  ['rect_1',['rect',['../classsolitaire_1_1_playing_card.html#af7da9fbc90ee65ac72bbd91f32ed96ad',1,'solitaire::PlayingCard']]]
+  ['flipped_0',['flipped',['../classsolitaire_1_1_playing_card.html#a84a9155a598adf86f49de4aae29185fa',1,'solitaire::PlayingCard']]],
+  ['found_5fidxs_1',['found_idxs',['../classsolitaire_1_1_solitaire.html#ab9a3347a773973f19f2f7c01239a812e',1,'solitaire::Solitaire']]]
 ];

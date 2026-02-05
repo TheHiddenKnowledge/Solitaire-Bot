@@ -103,8 +103,24 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:ae70035c178f2e6fb8b864ae274fa9ae3" id="r_ae70035c178f2e6fb8b864ae274fa9ae3"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae70035c178f2e6fb8b864ae274fa9ae3">cards</a></td></tr>
+<tr class="memdesc:ae70035c178f2e6fb8b864ae274fa9ae3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of card objects.  <br /></td></tr>
 <tr class="memitem:adb7f166354d1de9cfd9ac20e8461f622" id="r_adb7f166354d1de9cfd9ac20e8461f622"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb7f166354d1de9cfd9ac20e8461f622">quit</a></td></tr>
 <tr class="memdesc:adb7f166354d1de9cfd9ac20e8461f622"><td class="mdescLeft">&#160;</td><td class="mdescRight">The game has been quit if true.  <br /></td></tr>
+<tr class="memitem:a5302210cd4f3a4ffe5012617b2d2a8cb" id="r_a5302210cd4f3a4ffe5012617b2d2a8cb"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5302210cd4f3a4ffe5012617b2d2a8cb">src_entity</a></td></tr>
+<tr class="memdesc:a5302210cd4f3a4ffe5012617b2d2a8cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Source entity struct.  <br /></td></tr>
+<tr class="memitem:a23256345f07709a75f55b5b77b34aa10" id="r_a23256345f07709a75f55b5b77b34aa10"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23256345f07709a75f55b5b77b34aa10">dest_entity</a></td></tr>
+<tr class="memdesc:a23256345f07709a75f55b5b77b34aa10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destination entity struct.  <br /></td></tr>
+<tr class="memitem:a175d1cc441a3a1e92565ec85f40c9096" id="r_a175d1cc441a3a1e92565ec85f40c9096"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a175d1cc441a3a1e92565ec85f40c9096">tableau</a></td></tr>
+<tr class="memdesc:a175d1cc441a3a1e92565ec85f40c9096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of card indexes in the tableau.  <br /></td></tr>
+<tr class="memitem:a34dae9c96768b7645807c7e0f9c693d8" id="r_a34dae9c96768b7645807c7e0f9c693d8"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34dae9c96768b7645807c7e0f9c693d8">stock</a></td></tr>
+<tr class="memdesc:a34dae9c96768b7645807c7e0f9c693d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of card indices in the stock.  <br /></td></tr>
+<tr class="memitem:aaa74ca9d7c965c640f61aceb7874adc8" id="r_aaa74ca9d7c965c640f61aceb7874adc8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa74ca9d7c965c640f61aceb7874adc8">stock_idx</a></td></tr>
+<tr class="memdesc:aaa74ca9d7c965c640f61aceb7874adc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current stock index.  <br /></td></tr>
+<tr class="memitem:ab9a3347a773973f19f2f7c01239a812e" id="r_ab9a3347a773973f19f2f7c01239a812e"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9a3347a773973f19f2f7c01239a812e">found_idxs</a></td></tr>
+<tr class="memdesc:ab9a3347a773973f19f2f7c01239a812e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of foundation card indices.  <br /></td></tr>
+<tr class="memitem:a85c1e42c4e7b60c7d0bf51ef597fc8c0" id="r_a85c1e42c4e7b60c7d0bf51ef597fc8c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85c1e42c4e7b60c7d0bf51ef597fc8c0">moves</a></td></tr>
+<tr class="memdesc:a85c1e42c4e7b60c7d0bf51ef597fc8c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves tracking variable.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -118,16 +134,16 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:a38f04aa773181a81283a7609afb62833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the game UI.  <br /></td></tr>
 <tr class="memitem:a90eb89eaa2abbf95a4d5ce8a68ad1288" id="r_a90eb89eaa2abbf95a4d5ce8a68ad1288"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90eb89eaa2abbf95a4d5ce8a68ad1288">__clear_selected_cards</a> (self)</td></tr>
 <tr class="memdesc:a90eb89eaa2abbf95a4d5ce8a68ad1288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all selected cards.  <br /></td></tr>
+<tr class="memitem:a655af946b5c7c09216d69476bfd5932e" id="r_a655af946b5c7c09216d69476bfd5932e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a655af946b5c7c09216d69476bfd5932e">__select_cards</a> (self)</td></tr>
+<tr class="memdesc:a655af946b5c7c09216d69476bfd5932e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selects card code-wise per card type.  <br /></td></tr>
 <tr class="memitem:a90da70b00b5a1f5455b5a85ceaf32227" id="r_a90da70b00b5a1f5455b5a85ceaf32227"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90da70b00b5a1f5455b5a85ceaf32227">__increment_stock</a> (self)</td></tr>
 <tr class="memdesc:a90da70b00b5a1f5455b5a85ceaf32227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the stock pile.  <br /></td></tr>
-<tr class="memitem:a1328f9bb9c00ffa098c6e845ac91cc88" id="r_a1328f9bb9c00ffa098c6e845ac91cc88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1328f9bb9c00ffa098c6e845ac91cc88">__flip_next_card</a> (self, col, row)</td></tr>
-<tr class="memdesc:a1328f9bb9c00ffa098c6e845ac91cc88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flips the next card in a tableau column.  <br /></td></tr>
-<tr class="memitem:a66d255de6265ef984605b821659fceda" id="r_a66d255de6265ef984605b821659fceda"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66d255de6265ef984605b821659fceda">__move_tableau_cards</a> (self, from_col, from_row, to_col, to_row)</td></tr>
-<tr class="memdesc:a66d255de6265ef984605b821659fceda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves one set of cards to another in the tableau.  <br /></td></tr>
+<tr class="memitem:a5b863de6d73352273c54a20e15998eb4" id="r_a5b863de6d73352273c54a20e15998eb4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b863de6d73352273c54a20e15998eb4">__can_card_move</a> (self)</td></tr>
+<tr class="memdesc:a5b863de6d73352273c54a20e15998eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the selected card can be moved to designated location.  <br /></td></tr>
+<tr class="memitem:a5145d6676be8869c5d3cf2c9bbceb533" id="r_a5145d6676be8869c5d3cf2c9bbceb533"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5145d6676be8869c5d3cf2c9bbceb533">__move_cards</a> (self)</td></tr>
+<tr class="memdesc:a5145d6676be8869c5d3cf2c9bbceb533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves card(s) from one place to another.  <br /></td></tr>
 <tr class="memitem:a7a9988744ef53b658a2f3ab9bd8b2e57" id="r_a7a9988744ef53b658a2f3ab9bd8b2e57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a9988744ef53b658a2f3ab9bd8b2e57">__get_clicked</a> (self, cursor)</td></tr>
 <tr class="memdesc:a7a9988744ef53b658a2f3ab9bd8b2e57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the clicked card or pile.  <br /></td></tr>
-<tr class="memitem:ad50364ad52fa6344668d0f780cbd3905" id="r_ad50364ad52fa6344668d0f780cbd3905"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad50364ad52fa6344668d0f780cbd3905">__can_card_move</a> (self, clicked_entity)</td></tr>
-<tr class="memdesc:ad50364ad52fa6344668d0f780cbd3905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the selected card can be moved to designated location.  <br /></td></tr>
 <tr class="memitem:a8a2bbba07e8327a57472a47868f5723a" id="r_a8a2bbba07e8327a57472a47868f5723a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a2bbba07e8327a57472a47868f5723a">__click_handler</a> (self, cursor)</td></tr>
 <tr class="memdesc:a8a2bbba07e8327a57472a47868f5723a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for the left click event.  <br /></td></tr>
 <tr class="memitem:a7fd64dfcd8fe54010a07e7d70501730f" id="r_a7fd64dfcd8fe54010a07e7d70501730f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7fd64dfcd8fe54010a07e7d70501730f">__get_game_win</a> (self)</td></tr>
@@ -145,8 +161,6 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:acf33551dcef3392fe35aba0529b441bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Card width in pixels.  <br /></td></tr>
 <tr class="memitem:a431407ceaa29dacb5e6a77471922c767" id="r_a431407ceaa29dacb5e6a77471922c767"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a431407ceaa29dacb5e6a77471922c767">__card_height</a></td></tr>
 <tr class="memdesc:a431407ceaa29dacb5e6a77471922c767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Card height in pixels.  <br /></td></tr>
-<tr class="memitem:a061a4b9a20cb776caa7adcc07a4bfc03" id="r_a061a4b9a20cb776caa7adcc07a4bfc03"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a061a4b9a20cb776caa7adcc07a4bfc03">__cards</a></td></tr>
-<tr class="memdesc:a061a4b9a20cb776caa7adcc07a4bfc03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of card objects.  <br /></td></tr>
 <tr class="memitem:a7eb3e8fb5b0107717201fa9132529d33" id="r_a7eb3e8fb5b0107717201fa9132529d33"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7eb3e8fb5b0107717201fa9132529d33">__window_margin</a></td></tr>
 <tr class="memdesc:a7eb3e8fb5b0107717201fa9132529d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Margin between the window and the game area.  <br /></td></tr>
 <tr class="memitem:a26499c697955268f40984a115e69829b" id="r_a26499c697955268f40984a115e69829b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26499c697955268f40984a115e69829b">__screen_width</a></td></tr>
@@ -157,30 +171,16 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:a4d2429bf1d3f57002c81da8376e8d263"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock object for pygame.  <br /></td></tr>
 <tr class="memitem:aace8561e2727eb2526443d75bd8557f6" id="r_aace8561e2727eb2526443d75bd8557f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aace8561e2727eb2526443d75bd8557f6">__screen</a></td></tr>
 <tr class="memdesc:aace8561e2727eb2526443d75bd8557f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game screen object.  <br /></td></tr>
-<tr class="memitem:abc1e984ad90d0bfa6be2110fce9512a7" id="r_abc1e984ad90d0bfa6be2110fce9512a7"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc1e984ad90d0bfa6be2110fce9512a7">__selected_card</a></td></tr>
-<tr class="memdesc:abc1e984ad90d0bfa6be2110fce9512a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current selected card struct.  <br /></td></tr>
-<tr class="memitem:ae100b9a94ad1dd2a7c0f4e1277010c76" id="r_ae100b9a94ad1dd2a7c0f4e1277010c76"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae100b9a94ad1dd2a7c0f4e1277010c76">__tableau</a></td></tr>
-<tr class="memdesc:ae100b9a94ad1dd2a7c0f4e1277010c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of card indexes in the tableau.  <br /></td></tr>
+<tr class="memitem:a253075fbc381e6c358bf7a5607db88ee" id="r_a253075fbc381e6c358bf7a5607db88ee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a253075fbc381e6c358bf7a5607db88ee">__is_selected</a></td></tr>
+<tr class="memdesc:a253075fbc381e6c358bf7a5607db88ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean determining if a card is selected.  <br /></td></tr>
 <tr class="memitem:a77198c2e31dc43b637a7a134c63e6a70" id="r_a77198c2e31dc43b637a7a134c63e6a70"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77198c2e31dc43b637a7a134c63e6a70">__tableau_rects</a></td></tr>
 <tr class="memdesc:a77198c2e31dc43b637a7a134c63e6a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of tableau start rectangle objects.  <br /></td></tr>
 <tr class="memitem:ad0414bef0cceea137aeed2a663840a51" id="r_ad0414bef0cceea137aeed2a663840a51"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0414bef0cceea137aeed2a663840a51">__tableau_positions</a></td></tr>
 <tr class="memdesc:ad0414bef0cceea137aeed2a663840a51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of tableau card positions.  <br /></td></tr>
-<tr class="memitem:a69ad03767e4459a709ea33b4b7f01273" id="r_a69ad03767e4459a709ea33b4b7f01273"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69ad03767e4459a709ea33b4b7f01273">__stock</a></td></tr>
-<tr class="memdesc:a69ad03767e4459a709ea33b4b7f01273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of card indices in the stock.  <br /></td></tr>
-<tr class="memitem:a0d045ce5f038fc7f83fd42c145841dca" id="r_a0d045ce5f038fc7f83fd42c145841dca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d045ce5f038fc7f83fd42c145841dca">__stock_idx</a></td></tr>
-<tr class="memdesc:a0d045ce5f038fc7f83fd42c145841dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current stock index.  <br /></td></tr>
 <tr class="memitem:a470acd10151889354e280f89f5ba71dc" id="r_a470acd10151889354e280f89f5ba71dc"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a470acd10151889354e280f89f5ba71dc">__stock_rects</a></td></tr>
 <tr class="memdesc:a470acd10151889354e280f89f5ba71dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of stock rectangle objects.  <br /></td></tr>
-<tr class="memitem:a86c74105663b1ec81de05cc6ade31c1f" id="r_a86c74105663b1ec81de05cc6ade31c1f"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86c74105663b1ec81de05cc6ade31c1f">__found_idxs</a></td></tr>
-<tr class="memdesc:a86c74105663b1ec81de05cc6ade31c1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of foundation card indices.  <br /></td></tr>
-<tr class="memitem:abf59d76164d455a1f1623b9e9b874afd" id="r_abf59d76164d455a1f1623b9e9b874afd"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf59d76164d455a1f1623b9e9b874afd">__found_suits</a></td></tr>
-<tr class="memdesc:abf59d76164d455a1f1623b9e9b874afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of foundation suits.  <br /></td></tr>
-<tr class="memitem:af441b2e77fc3636e22a6b98b893d1168" id="r_af441b2e77fc3636e22a6b98b893d1168"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af441b2e77fc3636e22a6b98b893d1168">__found_ranks</a></td></tr>
-<tr class="memdesc:af441b2e77fc3636e22a6b98b893d1168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of foundation ranks.  <br /></td></tr>
 <tr class="memitem:a85d8ca806eefe0803b42ac43db8645cb" id="r_a85d8ca806eefe0803b42ac43db8645cb"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85d8ca806eefe0803b42ac43db8645cb">__found_rects</a></td></tr>
 <tr class="memdesc:a85d8ca806eefe0803b42ac43db8645cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of foundation rectangle objects.  <br /></td></tr>
-<tr class="memitem:a1255740422df0839d2e2ba76584e5b7f" id="r_a1255740422df0839d2e2ba76584e5b7f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1255740422df0839d2e2ba76584e5b7f">__moves</a></td></tr>
-<tr class="memdesc:a1255740422df0839d2e2ba76584e5b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves tracking variable.  <br /></td></tr>
 <tr class="memitem:a891a62b620e195205e26e469e4027e9c" id="r_a891a62b620e195205e26e469e4027e9c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a891a62b620e195205e26e469e4027e9c">__score</a></td></tr>
 <tr class="memdesc:a891a62b620e195205e26e469e4027e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Score tracking variable.  <br /></td></tr>
 <tr class="memitem:a6bb41ef833b4ef961b38adc6316d6d94" id="r_a6bb41ef833b4ef961b38adc6316d6d94"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bb41ef833b4ef961b38adc6316d6d94">__time</a></td></tr>
@@ -189,6 +189,7 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:ad771a40a145854a470e438d39f668ad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rectangle for the reset button.  <br /></td></tr>
 <tr class="memitem:a02b541a63a384c2cb8aff67a12320f7f" id="r_a02b541a63a384c2cb8aff67a12320f7f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02b541a63a384c2cb8aff67a12320f7f">__win</a></td></tr>
 <tr class="memdesc:a02b541a63a384c2cb8aff67a12320f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game win status.  <br /></td></tr>
+<tr class="memitem:ac4e55aaa1d7adcb6c5f3198e5ed44f01" id="r_ac4e55aaa1d7adcb6c5f3198e5ed44f01"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4e55aaa1d7adcb6c5f3198e5ed44f01">__selected_entity</a> = ['none', 0, 0]</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains methods and attributes used for running solitaire. </p>
@@ -216,8 +217,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ad50364ad52fa6344668d0f780cbd3905" name="ad50364ad52fa6344668d0f780cbd3905"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad50364ad52fa6344668d0f780cbd3905">&#9670;&#160;</a></span>__can_card_move()</h2>
+<a id="a5b863de6d73352273c54a20e15998eb4" name="a5b863de6d73352273c54a20e15998eb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b863de6d73352273c54a20e15998eb4">&#9670;&#160;</a></span>__can_card_move()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,12 +229,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">solitaire.Solitaire.__can_card_move </td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>clicked_entity</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -252,7 +249,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the card can be moved </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00442">442</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00397">397</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -282,7 +279,7 @@ Private Attributes</h2></td></tr>
 <p>Clears all selected cards. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00345">345</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00344">344</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -322,7 +319,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if a move was made </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00519">519</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00602">602</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -352,7 +349,7 @@ Private Attributes</h2></td></tr>
 <p>Draws the game as a whole. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00266">266</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00265">265</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -382,53 +379,7 @@ Private Attributes</h2></td></tr>
 <p>Draws the game UI. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00295">295</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
-
-</div>
-</div>
-<a id="a1328f9bb9c00ffa098c6e845ac91cc88" name="a1328f9bb9c00ffa098c6e845ac91cc88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1328f9bb9c00ffa098c6e845ac91cc88">&#9670;&#160;</a></span>__flip_next_card()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">solitaire.Solitaire.__flip_next_card </td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>col</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>row</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Flips the next card in a tableau column. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">col</td><td>Tableau column index </td></tr>
-    <tr><td class="paramname">row</td><td>Tableau row index </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00371">371</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00294">294</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -458,7 +409,7 @@ Private Attributes</h2></td></tr>
 <p>Gets all card positions. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00236">236</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00235">235</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -498,7 +449,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Array of data for the clicked card or pile </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00393">393</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00553">553</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -528,7 +479,7 @@ Private Attributes</h2></td></tr>
 <p>Checks if the game is won. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00655">655</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00681">681</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -558,12 +509,12 @@ Private Attributes</h2></td></tr>
 <p>Increments the stock pile. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00353">353</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00380">380</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
-<a id="a66d255de6265ef984605b821659fceda" name="a66d255de6265ef984605b821659fceda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66d255de6265ef984605b821659fceda">&#9670;&#160;</a></span>__move_tableau_cards()</h2>
+<a id="a5145d6676be8869c5d3cf2c9bbceb533" name="a5145d6676be8869c5d3cf2c9bbceb533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5145d6676be8869c5d3cf2c9bbceb533">&#9670;&#160;</a></span>__move_cards()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -572,29 +523,10 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">solitaire.Solitaire.__move_tableau_cards </td>
+          <td class="memname">solitaire.Solitaire.__move_cards </td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>from_col</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>from_row</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>to_col</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>to_row</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -604,19 +536,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Moves one set of cards to another in the tableau. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">from_col</td><td>Source tableau column index </td></tr>
-    <tr><td class="paramname">from_row</td><td>Source tableau row index </td></tr>
-    <tr><td class="paramname">to_col</td><td>Destination tableau column index </td></tr>
-    <tr><td class="paramname">to_row</td><td>Destination tableau row index </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Moves card(s) from one place to another. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00382">382</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00463">463</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -646,7 +569,37 @@ Private Attributes</h2></td></tr>
 <p>Shuffles the cards and resets the game. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00194">194</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00195">195</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+
+</div>
+</div>
+<a id="a655af946b5c7c09216d69476bfd5932e" name="a655af946b5c7c09216d69476bfd5932e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a655af946b5c7c09216d69476bfd5932e">&#9670;&#160;</a></span>__select_cards()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitaire.Solitaire.__select_cards </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Selects card code-wise per card type. </p>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00352">352</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -668,7 +621,7 @@ Private Attributes</h2></td></tr>
 <p>Runs the game (must be in a continuous loop). </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00667">667</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00693">693</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -725,32 +678,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a061a4b9a20cb776caa7adcc07a4bfc03" name="a061a4b9a20cb776caa7adcc07a4bfc03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a061a4b9a20cb776caa7adcc07a4bfc03">&#9670;&#160;</a></span>__cards</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">list solitaire.Solitaire.__cards</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Array of card objects. </p>
-
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00043">43</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
-
-</div>
-</div>
 <a id="a4d2429bf1d3f57002c81da8376e8d263" name="a4d2429bf1d3f57002c81da8376e8d263"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d2429bf1d3f57002c81da8376e8d263">&#9670;&#160;</a></span>__clock</h2>
 
@@ -777,58 +704,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a86c74105663b1ec81de05cc6ade31c1f" name="a86c74105663b1ec81de05cc6ade31c1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86c74105663b1ec81de05cc6ade31c1f">&#9670;&#160;</a></span>__found_idxs</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">solitaire.Solitaire.__found_idxs</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Array of foundation card indices. </p>
-
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00142">142</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
-
-</div>
-</div>
-<a id="af441b2e77fc3636e22a6b98b893d1168" name="af441b2e77fc3636e22a6b98b893d1168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af441b2e77fc3636e22a6b98b893d1168">&#9670;&#160;</a></span>__found_ranks</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">list solitaire.Solitaire.__found_ranks</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Array of foundation ranks. </p>
-
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00154">154</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
-
-</div>
-</div>
 <a id="a85d8ca806eefe0803b42ac43db8645cb" name="a85d8ca806eefe0803b42ac43db8645cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a85d8ca806eefe0803b42ac43db8645cb">&#9670;&#160;</a></span>__found_rects</h2>
 
@@ -851,12 +726,12 @@ Private Attributes</h2></td></tr>
 
 <p>Array of foundation rectangle objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00157">157</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00158">158</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
-<a id="abf59d76164d455a1f1623b9e9b874afd" name="abf59d76164d455a1f1623b9e9b874afd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf59d76164d455a1f1623b9e9b874afd">&#9670;&#160;</a></span>__found_suits</h2>
+<a id="a253075fbc381e6c358bf7a5607db88ee" name="a253075fbc381e6c358bf7a5607db88ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a253075fbc381e6c358bf7a5607db88ee">&#9670;&#160;</a></span>__is_selected</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -865,7 +740,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">list solitaire.Solitaire.__found_suits</td>
+          <td class="memname">bool solitaire.Solitaire.__is_selected</td>
         </tr>
       </table>
   </td>
@@ -875,35 +750,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Array of foundation suits. </p>
+<p>Boolean determining if a card is selected. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00151">151</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
-
-</div>
-</div>
-<a id="a1255740422df0839d2e2ba76584e5b7f" name="a1255740422df0839d2e2ba76584e5b7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1255740422df0839d2e2ba76584e5b7f">&#9670;&#160;</a></span>__moves</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int solitaire.Solitaire.__moves</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Moves tracking variable. </p>
-
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00173">173</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00084">84</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -981,7 +830,7 @@ Private Attributes</h2></td></tr>
 
 <p>Rectangle for the reset button. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00182">182</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00183">183</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -1007,7 +856,7 @@ Private Attributes</h2></td></tr>
 
 <p>Score tracking variable. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00176">176</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00177">177</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -1115,8 +964,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abc1e984ad90d0bfa6be2110fce9512a7" name="abc1e984ad90d0bfa6be2110fce9512a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc1e984ad90d0bfa6be2110fce9512a7">&#9670;&#160;</a></span>__selected_card</h2>
+<a id="ac4e55aaa1d7adcb6c5f3198e5ed44f01" name="ac4e55aaa1d7adcb6c5f3198e5ed44f01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4e55aaa1d7adcb6c5f3198e5ed44f01">&#9670;&#160;</a></span>__selected_entity</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1125,7 +974,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">list solitaire.Solitaire.__selected_card</td>
+          <td class="memname">list solitaire.Solitaire.__selected_entity = ['none', 0, 0]</td>
         </tr>
       </table>
   </td>
@@ -1135,61 +984,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Current selected card struct. </p>
-
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00084">84</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
-
-</div>
-</div>
-<a id="a69ad03767e4459a709ea33b4b7f01273" name="a69ad03767e4459a709ea33b4b7f01273"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69ad03767e4459a709ea33b4b7f01273">&#9670;&#160;</a></span>__stock</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">solitaire.Solitaire.__stock</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Array of card indices in the stock. </p>
-
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00120">120</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
-
-</div>
-</div>
-<a id="a0d045ce5f038fc7f83fd42c145841dca" name="a0d045ce5f038fc7f83fd42c145841dca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d045ce5f038fc7f83fd42c145841dca">&#9670;&#160;</a></span>__stock_idx</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">solitaire.Solitaire.__stock_idx</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Current stock index. </p>
-
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00123">123</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00348">348</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -1215,33 +1010,7 @@ Private Attributes</h2></td></tr>
 
 <p>Array of stock rectangle objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00126">126</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
-
-</div>
-</div>
-<a id="ae100b9a94ad1dd2a7c0f4e1277010c76" name="ae100b9a94ad1dd2a7c0f4e1277010c76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae100b9a94ad1dd2a7c0f4e1277010c76">&#9670;&#160;</a></span>__tableau</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">solitaire.Solitaire.__tableau</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Array of card indexes in the tableau. </p>
-
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00088">88</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00133">133</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -1267,7 +1036,7 @@ Private Attributes</h2></td></tr>
 
 <p>Array of tableau card positions. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00094">94</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00101">101</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -1293,7 +1062,7 @@ Private Attributes</h2></td></tr>
 
 <p>Array of tableau start rectangle objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00091">91</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00098">98</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -1319,7 +1088,7 @@ Private Attributes</h2></td></tr>
 
 <p>Time tracking variable. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00179">179</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00180">180</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -1345,7 +1114,7 @@ Private Attributes</h2></td></tr>
 
 <p>Game win status. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00188">188</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00189">189</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
@@ -1375,6 +1144,78 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae70035c178f2e6fb8b864ae274fa9ae3" name="ae70035c178f2e6fb8b864ae274fa9ae3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae70035c178f2e6fb8b864ae274fa9ae3">&#9670;&#160;</a></span>cards</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list solitaire.Solitaire.cards</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Array of card objects. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00043">43</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+
+</div>
+</div>
+<a id="a23256345f07709a75f55b5b77b34aa10" name="a23256345f07709a75f55b5b77b34aa10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23256345f07709a75f55b5b77b34aa10">&#9670;&#160;</a></span>dest_entity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list solitaire.Solitaire.dest_entity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destination entity struct. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00091">91</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+
+</div>
+</div>
+<a id="ab9a3347a773973f19f2f7c01239a812e" name="ab9a3347a773973f19f2f7c01239a812e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9a3347a773973f19f2f7c01239a812e">&#9670;&#160;</a></span>found_idxs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitaire.Solitaire.found_idxs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Array of foundation card indices. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00149">149</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+
+</div>
+</div>
+<a id="a85c1e42c4e7b60c7d0bf51ef597fc8c0" name="a85c1e42c4e7b60c7d0bf51ef597fc8c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85c1e42c4e7b60c7d0bf51ef597fc8c0">&#9670;&#160;</a></span>moves</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int solitaire.Solitaire.moves</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Moves tracking variable. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00174">174</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+
+</div>
+</div>
 <a id="adb7f166354d1de9cfd9ac20e8461f622" name="adb7f166354d1de9cfd9ac20e8461f622"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adb7f166354d1de9cfd9ac20e8461f622">&#9670;&#160;</a></span>quit</h2>
 
@@ -1390,6 +1231,78 @@ Private Attributes</h2></td></tr>
 <p>The game has been quit if true. </p>
 
 <p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00076">76</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+
+</div>
+</div>
+<a id="a5302210cd4f3a4ffe5012617b2d2a8cb" name="a5302210cd4f3a4ffe5012617b2d2a8cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5302210cd4f3a4ffe5012617b2d2a8cb">&#9670;&#160;</a></span>src_entity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list solitaire.Solitaire.src_entity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Source entity struct. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00088">88</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+
+</div>
+</div>
+<a id="a34dae9c96768b7645807c7e0f9c693d8" name="a34dae9c96768b7645807c7e0f9c693d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34dae9c96768b7645807c7e0f9c693d8">&#9670;&#160;</a></span>stock</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitaire.Solitaire.stock</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Array of card indices in the stock. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00127">127</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+
+</div>
+</div>
+<a id="aaa74ca9d7c965c640f61aceb7874adc8" name="aaa74ca9d7c965c640f61aceb7874adc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa74ca9d7c965c640f61aceb7874adc8">&#9670;&#160;</a></span>stock_idx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitaire.Solitaire.stock_idx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Current stock index. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00130">130</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
+
+</div>
+</div>
+<a id="a175d1cc441a3a1e92565ec85f40c9096" name="a175d1cc441a3a1e92565ec85f40c9096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a175d1cc441a3a1e92565ec85f40c9096">&#9670;&#160;</a></span>tableau</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitaire.Solitaire.tableau</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Array of card indexes in the tableau. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitaire_8py_source.html#l00095">95</a> of file <a class="el" href="solitaire_8py_source.html">solitaire.py</a>.</p>
 
 </div>
 </div>
