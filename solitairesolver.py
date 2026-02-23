@@ -100,7 +100,7 @@ class SolitaireSolver:
     # @return True if the file exists
     def __load_training(self):
         try:
-            with open('data.pkl', 'rb') as file:
+            with open('data/data.pkl', 'rb') as file:
                 self.__input_data, self.__output_data = pickle.load(file)
             return True
         except FileNotFoundError:
@@ -109,7 +109,7 @@ class SolitaireSolver:
     ## @brief Saves the training data to file.
     # @return None
     def __save_training(self):
-        with open('data.pkl', 'wb') as file:
+        with open('data/data.pkl', 'wb') as file:
             pickle.dump((self.__input_data, self.__output_data), file)
 
     ## @brief Runs a game loop used to gather training data.
@@ -128,7 +128,7 @@ class SolitaireSolver:
     # @return True if the file exists
     def __load_net(self):
         try:
-            self.__net.load_state_dict(torch.load('solver_net.pt'))
+            self.__net.load_state_dict(torch.load('data/solver_net.pt'))
             return True
         except FileNotFoundError:
             return False
@@ -136,7 +136,7 @@ class SolitaireSolver:
     ## @brief Saves the neural net to file.
     # @return None
     def __save_net(self):
-        torch.save(self.__net.state_dict(), 'solver_net.pt')
+        torch.save(self.__net.state_dict(), 'data/solver_net.pt')
 
     ## @brief Trains the neural net for a given amount of epochs.
     # @param max_epoch Maximum epoch count for training
