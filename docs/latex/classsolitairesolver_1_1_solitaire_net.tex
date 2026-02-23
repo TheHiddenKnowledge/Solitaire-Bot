@@ -1,0 +1,126 @@
+\doxysection{solitairesolver.\+Solitaire\+Net Class Reference}
+\hypertarget{classsolitairesolver_1_1_solitaire_net}{}\label{classsolitairesolver_1_1_solitaire_net}\index{solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}}
+
+
+Neural net module for playing solitaire.  
+
+
+Inheritance diagram for solitairesolver.\+Solitaire\+Net\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsolitairesolver_1_1_solitaire_net}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a3be40222edbc2543a99d376b036ae1a9}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, input\+\_\+size)
+\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_abe37067dc6f688e206c063d62705c24a}{forward}} (self, layer)
+\begin{DoxyCompactList}\small\item\em Performs a forward pass. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a1c60718f322bd9f6132de3eb12389c08}{fc1}} = nn.\+Linear(input\+\_\+size, 2 \texorpdfstring{$\ast$}{*} input\+\_\+size)
+\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_aca62d8b3c2f9d95f42903ee2b0fcd9cf}{fc2}} = nn.\+Linear(2 \texorpdfstring{$\ast$}{*} input\+\_\+size, 2 \texorpdfstring{$\ast$}{*} input\+\_\+size)
+\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a68a81fc1ef98ddc72d184182496af7cc}{fc3}} = nn.\+Linear(2 \texorpdfstring{$\ast$}{*} input\+\_\+size, 4)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Neural net module for playing solitaire. 
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00009}{9}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classsolitairesolver_1_1_solitaire_net_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsolitairesolver_1_1_solitaire_net_a3be40222edbc2543a99d376b036ae1a9}\index{solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_net_a3be40222edbc2543a99d376b036ae1a9} 
+solitairesolver.\+Solitaire\+Net.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{input\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+size} & Size of the input layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00012}{12}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classsolitairesolver_1_1_solitaire_net_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsolitairesolver_1_1_solitaire_net_abe37067dc6f688e206c063d62705c24a}\index{solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}!forward@{forward}}
+\index{forward@{forward}!solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_net_abe37067dc6f688e206c063d62705c24a} 
+solitairesolver.\+Solitaire\+Net.\+forward (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{layer}{}\end{DoxyParamCaption})}
+
+
+
+Performs a forward pass. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em layer} & Input layer values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00021}{21}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classsolitairesolver_1_1_solitaire_net_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsolitairesolver_1_1_solitaire_net_a1c60718f322bd9f6132de3eb12389c08}\index{solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}!fc1@{fc1}}
+\index{fc1@{fc1}!solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}}
+\doxysubsubsection{\texorpdfstring{fc1}{fc1}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_net_a1c60718f322bd9f6132de3eb12389c08} 
+solitairesolver.\+Solitaire\+Net.\+fc1 = nn.\+Linear(input\+\_\+size, 2 \texorpdfstring{$\ast$}{*} input\+\_\+size)}
+
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00014}{14}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_net_aca62d8b3c2f9d95f42903ee2b0fcd9cf}\index{solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}!fc2@{fc2}}
+\index{fc2@{fc2}!solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}}
+\doxysubsubsection{\texorpdfstring{fc2}{fc2}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_net_aca62d8b3c2f9d95f42903ee2b0fcd9cf} 
+solitairesolver.\+Solitaire\+Net.\+fc2 = nn.\+Linear(2 \texorpdfstring{$\ast$}{*} input\+\_\+size, 2 \texorpdfstring{$\ast$}{*} input\+\_\+size)}
+
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00015}{15}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_net_a68a81fc1ef98ddc72d184182496af7cc}\index{solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}!fc3@{fc3}}
+\index{fc3@{fc3}!solitairesolver.SolitaireNet@{solitairesolver.SolitaireNet}}
+\doxysubsubsection{\texorpdfstring{fc3}{fc3}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_net_a68a81fc1ef98ddc72d184182496af7cc} 
+solitairesolver.\+Solitaire\+Net.\+fc3 = nn.\+Linear(2 \texorpdfstring{$\ast$}{*} input\+\_\+size, 4)}
+
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00016}{16}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+solitairesolver.\+py\end{DoxyCompactItemize}

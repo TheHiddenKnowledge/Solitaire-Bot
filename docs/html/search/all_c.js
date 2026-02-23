@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['playingcard_0',['PlayingCard',['../classsolitaire_1_1_playing_card.html',1,'solitaire']]]
+  ['win_0',['win',['../classsolitaire_1_1_solitaire.html#a210dd14bb399534960bada41a94e8bba',1,'solitaire::Solitaire']]]
 ];

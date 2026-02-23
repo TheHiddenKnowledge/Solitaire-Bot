@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['moves_0',['moves',['../classsolitaire_1_1_solitaire.html#a85c1e42c4e7b60c7d0bf51ef597fc8c0',1,'solitaire::Solitaire']]]
+  ['move_5fmade_0',['move_made',['../classsolitaire_1_1_solitaire.html#a2943b8a79afa18d8f25026a7be7ffc78',1,'solitaire::Solitaire']]]
 ];

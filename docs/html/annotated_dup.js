@@ -5,6 +5,7 @@ var annotated_dup =
       [ "PlayingCard", "classsolitaire_1_1_playing_card.html", "classsolitaire_1_1_playing_card" ]
     ] ],
     [ "solitairesolver", null, [
-      [ "SolitaireSolver", "classsolitairesolver_1_1_solitaire_solver.html", null ]
+      [ "SolitaireNet", "classsolitairesolver_1_1_solitaire_net.html", "classsolitairesolver_1_1_solitaire_net" ],
+      [ "SolitaireSolver", "classsolitairesolver_1_1_solitaire_solver.html", "classsolitairesolver_1_1_solitaire_solver" ]
     ] ]
 ];

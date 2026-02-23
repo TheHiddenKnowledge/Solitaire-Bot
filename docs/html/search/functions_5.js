@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loadnet_0',['loadnet',['../classnetrunner_1_1_net_runner.html#a91dc295678d4d71f4e3f79d3b0295c19',1,'netrunner::NetRunner']]]
+  ['run_5fgame_0',['run_game',['../classsolitaire_1_1_solitaire.html#a63722373be9454391ea04a06b6897d85',1,'solitaire::Solitaire']]]
 ];

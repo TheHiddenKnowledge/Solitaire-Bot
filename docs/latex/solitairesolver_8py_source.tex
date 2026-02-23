@@ -1,72 +1,159 @@
 \doxysection{solitairesolver.\+py}
 \hypertarget{solitairesolver_8py_source}{}\label{solitairesolver_8py_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00001}00001\ \textcolor{keyword}{import}\ numpy\ \textcolor{keyword}{as}\ np}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00002}00002\ }
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00003}00003\ \textcolor{comment}{\#\ Neural\ net\ input\ structure:}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00004}00004\ \textcolor{comment}{\#\ Column\ vector}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00005}00005\ \textcolor{comment}{\#\ Filled\ with\ card\ indices\ mostly}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00006}00006\ \textcolor{comment}{\#\ Columns\ of\ the\ tableau\ stacked\ on\ top\ of\ eachother,\ with\ empties\ being\ zeroed}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00007}00007\ \textcolor{comment}{\#\ Top\ most\ revealed\ stock\ card\ index,\ zero\ if\ empty}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00008}00008\ \textcolor{comment}{\#\ Card\ count\ in\ the\ stock}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00009}00009\ \textcolor{comment}{\#\ Foundation\ cards\ are\ recorded\ as\ the\ top\ most\ card\ index,\ with\ empties}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00010}00010\ \textcolor{comment}{\#\ being\ zeroed}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00011}00011\ }
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00012}00012\ \textcolor{comment}{\#\ Neural\ net\ output\ structure:}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00013}00013\ \textcolor{comment}{\#\ From\ card\ origin}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00014}00014\ \textcolor{comment}{\#\ From\ card}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00015}00015\ \textcolor{comment}{\#\ To\ card\ origin}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00016}00016\ \textcolor{comment}{\#\ To\ card}}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00001}00001\ \textcolor{keyword}{import}\ torch}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00002}00002\ \textcolor{keyword}{import}\ torch.nn\ \textcolor{keyword}{as}\ nn}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00003}00003\ \textcolor{keyword}{import}\ torch.optim\ \textcolor{keyword}{as}\ optim}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00004}00004\ \textcolor{keyword}{import}\ pickle}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00005}00005\ \textcolor{keyword}{import}\ time}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00009}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net}{SolitaireNet}}(nn.Module):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00010}00010\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00012}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a3be40222edbc2543a99d376b036ae1a9}{00012}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a3be40222edbc2543a99d376b036ae1a9}{\_\_init\_\_}}(self,\ input\_size):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00013}00013\ \ \ \ \ \ \ \ \ super(SolitaireNet,\ self).\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a3be40222edbc2543a99d376b036ae1a9}{\_\_init\_\_}}()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a1c60718f322bd9f6132de3eb12389c08}{fc1}}\ =\ nn.Linear(input\_size,\ 2\ *\ input\_size)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_aca62d8b3c2f9d95f42903ee2b0fcd9cf}{fc2}}\ =\ nn.Linear(2\ *\ input\_size,\ 2\ *\ input\_size)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a68a81fc1ef98ddc72d184182496af7cc}{fc3}}\ =\ nn.Linear(2\ *\ input\_size,\ 4)}
 \DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00017}00017\ }
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00018}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver}{00018}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver}{SolitaireSolver}}:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ game):}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}\ =\ game}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ input\_size\ =\ len(game.tableau)\ *\ len(game.tableau[0])\ +\ 6}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}{\_\_input}}\ =\ np.zeros((input\_size,\ 1))}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a5466f78cfcdc4fce7fa35b11232fca47}{\_\_output}}\ =\ np.zeros((4,\ 1))}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00024}00024\ }
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{def\ }get\_input(self):}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ input\_idx\ =\ 0}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.tableau)):}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ b\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.tableau[a])):}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ card\_idx\ =\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.tableau[a][b]}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ card\_idx\ >=\ 0:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.cards[card\_idx].flipped:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}{\_\_input}}[input\_idx,\ 0]\ =\ 0}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}{\_\_input}}[input\_idx,\ 0]\ =\ card\_idx\ +\ 1}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}{\_\_input}}[input\_idx,\ 0]\ =\ 0}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ input\_idx\ +=\ 1}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock\_idx\ >=\ 0:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}{\_\_input}}[input\_idx,\ 0]\ =\ (self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock[}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock\_idx]\ +\ 1)}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}{\_\_input}}[input\_idx,\ 0]\ =\ 0}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ input\_idx\ +=\ 1}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ stock\_count\ =\ 0}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock)):}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock[a]\ >=\ 0:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stock\_count\ +=\ 1}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}{\_\_input}}[input\_idx,\ 0]\ =\ stock\_count}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ input\_idx\ +=\ 1}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.found\_idxs)):}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ found\_idx\ =\ 0}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ b\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.found\_idxs[a])):}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.found\_idxs[a][b]\ >=\ 0:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\_idx\ =\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.found\_idxs[a][b]}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}{\_\_input}}[input\_idx,\ 0]\ =\ found\_idx}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ input\_idx\ +=\ 1}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00059}00059\ }
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{def\ }get\_output(self):}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ entity\_names\ =\ [\textcolor{stringliteral}{'none'},\ \textcolor{stringliteral}{'stock\_reveal'},\ \textcolor{stringliteral}{'stock\_hidden'},}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'foundation'},\ \textcolor{stringliteral}{'tableau\_card'},\ \textcolor{stringliteral}{'tableau\_pile'}]}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ card\_structs\ =\ [self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.src\_entity,\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.dest\_entity]}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(2):}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a5466f78cfcdc4fce7fa35b11232fca47}{\_\_output}}[2\ *\ a,\ 0]\ =\ entity\_names.index(card\_structs[a][0])}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a5466f78cfcdc4fce7fa35b11232fca47}{\_\_output}}[2\ *\ a\ +\ 1,\ 0]\ =\ card\_structs[a][1]}
-\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ print(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a5466f78cfcdc4fce7fa35b11232fca47}{\_\_output}})}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00018}00018\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00021}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_abe37067dc6f688e206c063d62705c24a}{00021}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_abe37067dc6f688e206c063d62705c24a}{forward}}(self,\ layer):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ layer\ =\ torch.relu(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a1c60718f322bd9f6132de3eb12389c08}{fc1}}(layer))}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ layer\ =\ torch.relu(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_aca62d8b3c2f9d95f42903ee2b0fcd9cf}{fc2}}(layer))}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ layer\ =\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net_a68a81fc1ef98ddc72d184182496af7cc}{fc3}}(layer)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ layer}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00029}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver}{00029}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver}{SolitaireSolver}}:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00030}00030\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00032}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ae12eda5187d4d16f6950fdc8d0cc6a20}{00032}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ae12eda5187d4d16f6950fdc8d0cc6a20}{\_\_init\_\_}}(self,\ game):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00035}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{00035}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}\ =\ game}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ input\_size\ =\ len(game.tableau)\ *\ len(game.tableau[0])\ +\ 6}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00039}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}{00039}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}{\_\_net}}\ =\ \mbox{\hyperlink{classsolitairesolver_1_1_solitaire_net}{SolitaireNet}}(input\_size)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00043}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a}{00043}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a}{\_\_input\_data}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00046}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823}{00046}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823}{\_\_output\_data}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ab61666ed086dfa3eed8876196f8f92e6}{\_\_load\_training}}():}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{'No\ training\ data\ present.'})}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a6197d59ca4cc919d94a91b250bdba1a3}{\_\_load\_net}}():}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{'No\ saved\ neural\ net\ present.'})}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00053}00053\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00055}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_aee6607c7466bd7d708fe567a0a36d79e}{00055}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_aee6607c7466bd7d708fe567a0a36d79e}{\_\_get\_input}}(self):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ game\_input\ =\ []}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.tableau)):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ b\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.tableau[a])):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ card\_idx\ =\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.tableau[a][b]}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ card\_idx\ >=\ 0:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.cards[card\_idx].flipped:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game\_input.append(0)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game\_input.append(card\_idx\ +\ 1)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game\_input.append(0)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock\_idx\ >=\ 0:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ game\_input.append((self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock[}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock\_idx]\ +\ 1))}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ game\_input.append(0)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ stock\_count\ =\ 0}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock)):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.stock[a]\ >=\ 0:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stock\_count\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ game\_input.append(stock\_count)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.found\_idxs)):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ found\_idx\ =\ 0}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ b\ \textcolor{keywordflow}{in}\ range(len(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.found\_idxs[a])):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.found\_idxs[a][b]\ >=\ 0:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\_idx\ =\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.found\_idxs[a][b]}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ game\_input.append(found\_idx)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ game\_input}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00087}00087\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00089}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_aa288a06d598719bf1fc99e32ec686f44}{00089}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_aa288a06d598719bf1fc99e32ec686f44}{\_\_get\_output}}(self):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ game\_output\ =\ []}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ entity\_names\ =\ [\textcolor{stringliteral}{'none'},\ \textcolor{stringliteral}{'stock\_reveal'},\ \textcolor{stringliteral}{'stock\_hidden'},}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'foundation'},\ \textcolor{stringliteral}{'tableau\_card'},\ \textcolor{stringliteral}{'tableau\_pile'}]}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ card\_structs\ =\ [self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.src\_entity,\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.dest\_entity]}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a\ \textcolor{keywordflow}{in}\ range(2):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ game\_output.append(entity\_names.index(card\_structs[a][0]))}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ game\_output.append(card\_structs[a][1])}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ game\_output}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00099}00099\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00101}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ab61666ed086dfa3eed8876196f8f92e6}{00101}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ab61666ed086dfa3eed8876196f8f92e6}{\_\_load\_training}}(self):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(\textcolor{stringliteral}{'data.pkl'},\ \textcolor{stringliteral}{'rb'})\ \textcolor{keyword}{as}\ file:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a}{\_\_input\_data}},\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823}{\_\_output\_data}}\ =\ pickle.load(file)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ FileNotFoundError:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00109}00109\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00111}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a498726da4bb8e535043c1abe180a29d8}{00111}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a498726da4bb8e535043c1abe180a29d8}{\_\_save\_training}}(self):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(\textcolor{stringliteral}{'data.pkl'},\ \textcolor{stringliteral}{'wb'})\ \textcolor{keyword}{as}\ file:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ pickle.dump((self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a}{\_\_input\_data}},\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823}{\_\_output\_data}}),\ file)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00115}00115\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00117}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a0384f68d000580d57b32ea092afd1760}{00117}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a0384f68d000580d57b32ea092afd1760}{gather\_training}}(self):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.quit:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ game\_state\ =\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_aee6607c7466bd7d708fe567a0a36d79e}{\_\_get\_input}}()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.run\_game()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.move\_made:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a}{\_\_input\_data}}.append(game\_state)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823}{\_\_output\_data}}.append(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_aa288a06d598719bf1fc99e32ec686f44}{\_\_get\_output}}())}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.quit:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a498726da4bb8e535043c1abe180a29d8}{\_\_save\_training}}()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00127}00127\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00129}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a6197d59ca4cc919d94a91b250bdba1a3}{00129}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a6197d59ca4cc919d94a91b250bdba1a3}{\_\_load\_net}}(self):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}{\_\_net}}.load\_state\_dict(torch.load(\textcolor{stringliteral}{'solver\_net.pt'}))}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ FileNotFoundError:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00136}00136\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00138}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ad0f97011baf8bbf629030255a4d1b416}{00138}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ad0f97011baf8bbf629030255a4d1b416}{\_\_save\_net}}(self):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ torch.save(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}{\_\_net}}.state\_dict(),\ \textcolor{stringliteral}{'solver\_net.pt'})}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00141}00141\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00144}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a168e65d8715422f2fb8c543e5e4e2320}{00144}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a168e65d8715422f2fb8c543e5e4e2320}{train\_net}}(self,\ max\_epoch):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Normalizing\ training\ data}}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ trans\_input\ =\ torch.Tensor(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a}{\_\_input\_data}})\ /\ 52}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ trans\_output\ =\ torch.Tensor(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823}{\_\_output\_data}})\ /\ 52}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ criterion\ =\ nn.MSELoss()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00149}00149\ \ \ \ \ \ \ \ \ optimizer\ =\ optim.Adam(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}{\_\_net}}.parameters(),\ lr\ =\ 0.0005)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Used\ for\ displaying\ epoch\ results}}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ epoch\_div\ =\ 0}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ max\_epoch\ \%\ 100\ !=\ max\_epoch:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ epoch\_div\ =\ round(max\_epoch\ /\ 100)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ epoch\ \textcolor{keywordflow}{in}\ range(max\_epoch):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}{\_\_net}}.train()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ outputs\ =\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}{\_\_net}}(trans\_input)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ loss\ =\ criterion(outputs,\ trans\_output)}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ optimizer.zero\_grad()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ loss.backward()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ optimizer.step()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (epoch\ +\ 1)\ \%\ epoch\_div\ ==\ 0\ \textcolor{keywordflow}{and}\ epoch\_div\ !=\ 0:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{'Epoch\ \{epoch\ +\ 1\},\ Loss:\ \{loss.item():.6f\}'})}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ epoch\ ==\ max\_epoch\ -\/\ 1:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ epoch\_div\ ==\ 0\ \textcolor{keywordflow}{or}\ (epoch\ +\ 1)\ \%\ epoch\_div\ !=\ 0:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{'Epoch\ \{epoch\ +\ 1\},\ Loss:\ \{loss.item():.6f\}'})}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00166}00166\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ad0f97011baf8bbf629030255a4d1b416}{\_\_save\_net}}()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00168}00168\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00170}\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ae0c9f3559a9149f1dc03b8ba5f921dc5}{00170}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ae0c9f3559a9149f1dc03b8ba5f921dc5}{play\_game}}(self):}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.quit:}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ game\_state\ =\ torch.Tensor(self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_aee6607c7466bd7d708fe567a0a36d79e}{\_\_get\_input}}())\ /\ 52}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ move\ =\ (52\ *\ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}{\_\_net}}(game\_state)).round()}
+\DoxyCodeLine{\Hypertarget{solitairesolver_8py_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\_\_game}}.run\_game()}
 
 \end{DoxyCode}

@@ -91,22 +91,50 @@ $(function(){initNavTree('classsolitairesolver_1_1_solitaire_solver.html','','cl
   <div class="headertitle"><div class="title">solitairesolver.SolitaireSolver Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Contains functions for training and running the neural net.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae12eda5187d4d16f6950fdc8d0cc6a20" id="r_ae12eda5187d4d16f6950fdc8d0cc6a20"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae12eda5187d4d16f6950fdc8d0cc6a20">__init__</a> (self, game)</td></tr>
-<tr class="memitem:a854de2f95c7cd1f0a0bf7a959e0d611d" id="r_a854de2f95c7cd1f0a0bf7a959e0d611d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a854de2f95c7cd1f0a0bf7a959e0d611d">get_input</a> (self)</td></tr>
-<tr class="memitem:a5425c280345c1b805a4d01c1abb94484" id="r_a5425c280345c1b805a4d01c1abb94484"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5425c280345c1b805a4d01c1abb94484">get_output</a> (self)</td></tr>
+<tr class="memitem:a0384f68d000580d57b32ea092afd1760" id="r_a0384f68d000580d57b32ea092afd1760"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0384f68d000580d57b32ea092afd1760">gather_training</a> (self)</td></tr>
+<tr class="memdesc:a0384f68d000580d57b32ea092afd1760"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a game loop used to gather training data.  <br /></td></tr>
+<tr class="memitem:a168e65d8715422f2fb8c543e5e4e2320" id="r_a168e65d8715422f2fb8c543e5e4e2320"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a168e65d8715422f2fb8c543e5e4e2320">train_net</a> (self, max_epoch)</td></tr>
+<tr class="memdesc:a168e65d8715422f2fb8c543e5e4e2320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trains the neural net for a given amount of epochs.  <br /></td></tr>
+<tr class="memitem:ae0c9f3559a9149f1dc03b8ba5f921dc5" id="r_ae0c9f3559a9149f1dc03b8ba5f921dc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0c9f3559a9149f1dc03b8ba5f921dc5">play_game</a> (self)</td></tr>
+<tr class="memdesc:ae0c9f3559a9149f1dc03b8ba5f921dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays solitaire using the trained nural net.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aee6607c7466bd7d708fe567a0a36d79e" id="r_aee6607c7466bd7d708fe567a0a36d79e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee6607c7466bd7d708fe567a0a36d79e">__get_input</a> (self)</td></tr>
+<tr class="memdesc:aee6607c7466bd7d708fe567a0a36d79e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the neural net input from the current game state.  <br /></td></tr>
+<tr class="memitem:aa288a06d598719bf1fc99e32ec686f44" id="r_aa288a06d598719bf1fc99e32ec686f44"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa288a06d598719bf1fc99e32ec686f44">__get_output</a> (self)</td></tr>
+<tr class="memdesc:aa288a06d598719bf1fc99e32ec686f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the neural net output from the current game state.  <br /></td></tr>
+<tr class="memitem:ab61666ed086dfa3eed8876196f8f92e6" id="r_ab61666ed086dfa3eed8876196f8f92e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab61666ed086dfa3eed8876196f8f92e6">__load_training</a> (self)</td></tr>
+<tr class="memdesc:ab61666ed086dfa3eed8876196f8f92e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the training data from file.  <br /></td></tr>
+<tr class="memitem:a498726da4bb8e535043c1abe180a29d8" id="r_a498726da4bb8e535043c1abe180a29d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a498726da4bb8e535043c1abe180a29d8">__save_training</a> (self)</td></tr>
+<tr class="memdesc:a498726da4bb8e535043c1abe180a29d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the training data to file.  <br /></td></tr>
+<tr class="memitem:a6197d59ca4cc919d94a91b250bdba1a3" id="r_a6197d59ca4cc919d94a91b250bdba1a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6197d59ca4cc919d94a91b250bdba1a3">__load_net</a> (self)</td></tr>
+<tr class="memdesc:a6197d59ca4cc919d94a91b250bdba1a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the neural net from file.  <br /></td></tr>
+<tr class="memitem:ad0f97011baf8bbf629030255a4d1b416" id="r_ad0f97011baf8bbf629030255a4d1b416"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0f97011baf8bbf629030255a4d1b416">__save_net</a> (self)</td></tr>
+<tr class="memdesc:ad0f97011baf8bbf629030255a4d1b416"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the neural net to file.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a8d3cd3796193b5a674ff12bde80ddc20" id="r_a8d3cd3796193b5a674ff12bde80ddc20"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d3cd3796193b5a674ff12bde80ddc20">__game</a> = game</td></tr>
-<tr class="memitem:a1b0e8856832d560463cceffdb40df3c7" id="r_a1b0e8856832d560463cceffdb40df3c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b0e8856832d560463cceffdb40df3c7">__input</a> = np.zeros((input_size, 1))</td></tr>
-<tr class="memitem:a5466f78cfcdc4fce7fa35b11232fca47" id="r_a5466f78cfcdc4fce7fa35b11232fca47"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5466f78cfcdc4fce7fa35b11232fca47">__output</a> = np.zeros((4, 1))</td></tr>
+<tr class="memitem:a8d3cd3796193b5a674ff12bde80ddc20" id="r_a8d3cd3796193b5a674ff12bde80ddc20"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d3cd3796193b5a674ff12bde80ddc20">__game</a></td></tr>
+<tr class="memdesc:a8d3cd3796193b5a674ff12bde80ddc20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game instance object.  <br /></td></tr>
+<tr class="memitem:a861e3bd3360011d9ca5d04b2b18a87ef" id="r_a861e3bd3360011d9ca5d04b2b18a87ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a861e3bd3360011d9ca5d04b2b18a87ef">__net</a></td></tr>
+<tr class="memdesc:a861e3bd3360011d9ca5d04b2b18a87ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Neural net module.  <br /></td></tr>
+<tr class="memitem:a72834e76a0156ee0f5bf36c150c96e6a" id="r_a72834e76a0156ee0f5bf36c150c96e6a"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72834e76a0156ee0f5bf36c150c96e6a">__input_data</a></td></tr>
+<tr class="memdesc:a72834e76a0156ee0f5bf36c150c96e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input data array.  <br /></td></tr>
+<tr class="memitem:a108ca28176a6ee2428bede28162c6823" id="r_a108ca28176a6ee2428bede28162c6823"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a108ca28176a6ee2428bede28162c6823">__output_data</a></td></tr>
+<tr class="memdesc:a108ca28176a6ee2428bede28162c6823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output data array.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00018">18</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<div class="textblock"><p>Contains functions for training and running the neural net. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00029">29</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae12eda5187d4d16f6950fdc8d0cc6a20" name="ae12eda5187d4d16f6950fdc8d0cc6a20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae12eda5187d4d16f6950fdc8d0cc6a20">&#9670;&#160;</a></span>__init__()</h2>
@@ -126,20 +154,207 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>Game instance object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00019">19</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00032">32</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a854de2f95c7cd1f0a0bf7a959e0d611d" name="a854de2f95c7cd1f0a0bf7a959e0d611d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a854de2f95c7cd1f0a0bf7a959e0d611d">&#9670;&#160;</a></span>get_input()</h2>
+<a id="aee6607c7466bd7d708fe567a0a36d79e" name="aee6607c7466bd7d708fe567a0a36d79e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee6607c7466bd7d708fe567a0a36d79e">&#9670;&#160;</a></span>__get_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.__get_input </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the neural net input from the current game state. </p>
+<dl class="section return"><dt>Returns</dt><dd>Input array </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00055">55</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="aa288a06d598719bf1fc99e32ec686f44" name="aa288a06d598719bf1fc99e32ec686f44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa288a06d598719bf1fc99e32ec686f44">&#9670;&#160;</a></span>__get_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.__get_output </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the neural net output from the current game state. </p>
+<dl class="section return"><dt>Returns</dt><dd>Output array </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00089">89</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="a6197d59ca4cc919d94a91b250bdba1a3" name="a6197d59ca4cc919d94a91b250bdba1a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6197d59ca4cc919d94a91b250bdba1a3">&#9670;&#160;</a></span>__load_net()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.__load_net </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads the neural net from file. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the file exists </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00129">129</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="ab61666ed086dfa3eed8876196f8f92e6" name="ab61666ed086dfa3eed8876196f8f92e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61666ed086dfa3eed8876196f8f92e6">&#9670;&#160;</a></span>__load_training()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.__load_training </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads the training data from file. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the file exists </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00101">101</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="ad0f97011baf8bbf629030255a4d1b416" name="ad0f97011baf8bbf629030255a4d1b416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0f97011baf8bbf629030255a4d1b416">&#9670;&#160;</a></span>__save_net()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.__save_net </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Saves the neural net to file. </p>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00138">138</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="a498726da4bb8e535043c1abe180a29d8" name="a498726da4bb8e535043c1abe180a29d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a498726da4bb8e535043c1abe180a29d8">&#9670;&#160;</a></span>__save_training()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.__save_training </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Saves the training data to file. </p>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00111">111</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="a0384f68d000580d57b32ea092afd1760" name="a0384f68d000580d57b32ea092afd1760"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0384f68d000580d57b32ea092afd1760">&#9670;&#160;</a></span>gather_training()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">solitairesolver.SolitaireSolver.get_input </td>
+          <td class="memname">solitairesolver.SolitaireSolver.gather_training </td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
           <td></td>
@@ -147,18 +362,21 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00025">25</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p>Runs a game loop used to gather training data. </p>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00117">117</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
-<a id="a5425c280345c1b805a4d01c1abb94484" name="a5425c280345c1b805a4d01c1abb94484"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5425c280345c1b805a4d01c1abb94484">&#9670;&#160;</a></span>get_output()</h2>
+<a id="ae0c9f3559a9149f1dc03b8ba5f921dc5" name="ae0c9f3559a9149f1dc03b8ba5f921dc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0c9f3559a9149f1dc03b8ba5f921dc5">&#9670;&#160;</a></span>play_game()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">solitairesolver.SolitaireSolver.get_output </td>
+          <td class="memname">solitairesolver.SolitaireSolver.play_game </td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
           <td></td>
@@ -166,7 +384,42 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00060">60</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p>Plays solitaire using the trained nural net. </p>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00170">170</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="a168e65d8715422f2fb8c543e5e4e2320" name="a168e65d8715422f2fb8c543e5e4e2320"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a168e65d8715422f2fb8c543e5e4e2320">&#9670;&#160;</a></span>train_net()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.train_net </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>max_epoch</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Trains the neural net for a given amount of epochs. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max_epoch</td><td>Maximum epoch count for training </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00144">144</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -181,7 +434,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">solitairesolver.SolitaireSolver.__game = game</td>
+          <td class="memname">solitairesolver.SolitaireSolver.__game</td>
         </tr>
       </table>
   </td>
@@ -191,12 +444,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00020">20</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p>Game instance object. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00035">35</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
-<a id="a1b0e8856832d560463cceffdb40df3c7" name="a1b0e8856832d560463cceffdb40df3c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b0e8856832d560463cceffdb40df3c7">&#9670;&#160;</a></span>__input</h2>
+<a id="a72834e76a0156ee0f5bf36c150c96e6a" name="a72834e76a0156ee0f5bf36c150c96e6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72834e76a0156ee0f5bf36c150c96e6a">&#9670;&#160;</a></span>__input_data</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,7 +460,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">solitairesolver.SolitaireSolver.__input = np.zeros((input_size, 1))</td>
+          <td class="memname">solitairesolver.SolitaireSolver.__input_data</td>
         </tr>
       </table>
   </td>
@@ -215,12 +470,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00022">22</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p>Input data array. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00043">43</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
-<a id="a5466f78cfcdc4fce7fa35b11232fca47" name="a5466f78cfcdc4fce7fa35b11232fca47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5466f78cfcdc4fce7fa35b11232fca47">&#9670;&#160;</a></span>__output</h2>
+<a id="a861e3bd3360011d9ca5d04b2b18a87ef" name="a861e3bd3360011d9ca5d04b2b18a87ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a861e3bd3360011d9ca5d04b2b18a87ef">&#9670;&#160;</a></span>__net</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +486,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">solitairesolver.SolitaireSolver.__output = np.zeros((4, 1))</td>
+          <td class="memname">solitairesolver.SolitaireSolver.__net</td>
         </tr>
       </table>
   </td>
@@ -239,7 +496,35 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00023">23</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p>Neural net module. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00039">39</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="a108ca28176a6ee2428bede28162c6823" name="a108ca28176a6ee2428bede28162c6823"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a108ca28176a6ee2428bede28162c6823">&#9670;&#160;</a></span>__output_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.__output_data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output data array. </p>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00046">46</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>

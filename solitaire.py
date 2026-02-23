@@ -2,10 +2,11 @@
 # This project aims to create a simple solitaire game using pygame,
 # as well as a solver for the game.
 # @par Latest Release:
-# V1.0 - 1/17/2026
+# V1.1 - 2/22/2026
 # @par Created by: I. Finney
 # @par Revision History:
 # @version 1.0 Initial release.
+# @version 1.1 Initial implementation of solver.
 
 ## @file solitaire.py
 # @brief Implements a fully functional version of solitaire using pygame.
@@ -121,6 +122,9 @@ class Solitaire:
                 position_column.append(position)
             self.tableau.append(idx_column)
             self.__tableau_positions.append(position_column)
+        ## @brief Boolean for tracking if a card was flipped in the tableau
+        # @hideinitializer
+        self.__card_flipped = False
 
         ## @brief Array of card indices in the stock
         # @hideinitializer
@@ -171,13 +175,19 @@ class Solitaire:
 
         ## @brief Moves tracking variable
         # @hideinitializer
-        self.moves = 0
+        self.__moves = 0
+        ## @brief Boolean that tracks if a move was made
+        # @hideinitializer
+        self.move_made = False
         ## @brief Score tracking variable
         # @hideinitializer
         self.__score = 0
         ## @brief Time tracking variable
         # @hideinitializer
         self.__time = 0
+        ## @brief Boolean that tracks if a time-based score reduction occurred
+        # @hideinitializer
+        self.__time_deduct = False
         ## @brief Rectangle for the reset button
         # @hideinitializer
         self.__reset_rect = pygame.Rect(0, 0, 75, self.__window_margin / 2)
@@ -186,7 +196,7 @@ class Solitaire:
                                   - self.__window_margin / 2))
         ## @brief Game win status
         # @hideinitializer
-        self.__win = False
+        self.win = False
 
         self.__reset_game()
 
@@ -194,10 +204,10 @@ class Solitaire:
     # @return None
     def __reset_game(self):
         # Resetting GUI variables
-        self.moves = 0
+        self.__moves = 0
         self.__score = 0
         self.__time = 0
-        self.__win = False
+        self.win = False
         self.__clear_selected_cards()
         # Resetting tableau index array
         for a in range(len(self.tableau)):
@@ -295,7 +305,7 @@ class Solitaire:
         font = pygame.font.SysFont('Arial', 18)
         font.bold = True
         # Moves label
-        moves_text = 'Moves: ' + str(self.moves)
+        moves_text = 'Moves: ' + str(self.__moves)
         moves = font.render(moves_text, True, (255, 255, 255))
         moves_rect = moves.get_rect()
         moves_rect.center = (int(self.__screen_width / 4),
@@ -331,7 +341,7 @@ class Solitaire:
         time_rect.center = (int(self.__screen_width / 4),
                              int(self.__window_margin / 2))
         self.__screen.blit(time, time_rect)
-        if self.__win:
+        if self.win:
             # Win label
             win = font.render('You won!', True, (255, 255, 255))
             win_rect = moves.get_rect()
@@ -367,8 +377,8 @@ class Solitaire:
             card.selected = True
         elif self.src_entity[0] == 'foundation':
             rank = 12
-            for a in range(len(self.found_idxs[self.dest_entity[1]])):
-                if self.found_idxs[self.dest_entity[1]][a] < 0:
+            for a in range(len(self.found_idxs[self.src_entity[1]])):
+                if self.found_idxs[self.src_entity[1]][a] < 0:
                     rank = a - 1
                     break
             card_idx = self.found_idxs[self.src_entity[1]][rank]
@@ -415,11 +425,11 @@ class Solitaire:
             src_card = self.cards[self.stock[self.stock_idx]]
         elif self.src_entity[0] == 'foundation':
             rank = 12
-            for a in range(len(self.found_idxs[self.dest_entity[1]])):
-                if self.found_idxs[self.dest_entity[1]][a] < 0:
+            for a in range(len(self.found_idxs[self.src_entity[1]])):
+                if self.found_idxs[self.src_entity[1]][a] < 0:
                     rank = a - 1
                     break
-            card_idx = self.found_idxs[self.dest_entity[1]][rank]
+            card_idx = self.found_idxs[self.src_entity[1]][rank]
             src_card = self.cards[card_idx]
 
         if self.dest_entity[0] == 'tableau_card':
@@ -437,6 +447,8 @@ class Solitaire:
                 if src_row < len(self.tableau[src_col]) - 1:
                     if self.tableau[src_col][src_row + 1] > 0:
                         return False
+            if self.src_entity[0] == 'foundation':
+                return False
             rank = 12
             for a in range(len(self.found_idxs[self.dest_entity[1]])):
                 if self.found_idxs[self.dest_entity[1]][a] < 0:
@@ -489,7 +501,9 @@ class Solitaire:
                     self.tableau[src_col][a] = -1
                 if src_row != 0:
                     idx = self.tableau[src_col][src_row - 1]
-                    self.cards[idx].flipped = False
+                    if self.cards[idx].flipped:
+                        self.cards[idx].flipped = False
+                        self.__card_flipped = True
             elif self.dest_entity[0] == 'tableau_pile':
                 for a in range(src_row, len(self.tableau[src_col])):
                     aug_idx = a - src_row
@@ -499,7 +513,9 @@ class Solitaire:
                     self.tableau[src_col][a] = -1
                 if src_row != 0:
                     idx = self.tableau[src_col][src_row - 1]
-                    self.cards[idx].flipped = False
+                    if self.cards[idx].flipped:
+                        self.cards[idx].flipped = False
+                        self.__card_flipped = True
             elif self.dest_entity[0] == 'foundation':
                 rank = 12
                 for a in range(len(self.found_idxs[self.dest_entity[1]])):
@@ -512,7 +528,9 @@ class Solitaire:
                 self.tableau[src_col][src_row] = -1
                 if src_row != 0:
                     idx = self.tableau[src_col][src_row - 1]
-                    self.cards[idx].flipped = False
+                    if self.cards[idx].flipped:
+                        self.cards[idx].flipped = False
+                        self.__card_flipped = True
         elif self.src_entity[0] == 'stock_reveal':
             if self.dest_entity[0] == 'tableau_card':
                 self.tableau[dest_col][dest_row + 1] = (
@@ -535,13 +553,13 @@ class Solitaire:
             self.stock_idx -= 1
         elif self.src_entity[0] == 'foundation':
             rank = 12
-            for a in range(len(self.found_idxs[self.dest_entity[1]])):
-                if self.found_idxs[self.dest_entity[1]][a] < 0:
+            for a in range(len(self.found_idxs[self.src_entity[1]])):
+                if self.found_idxs[self.src_entity[1]][a] < 0:
                     rank = a - 1
                     break
             if self.dest_entity[0] == 'tableau_card':
-                self.tableau[src_col][src_row] = (
-                    self.found_idxs[self.dest_entity[1]][rank]
+                self.tableau[dest_col][dest_row + 1] = (
+                    self.found_idxs[self.src_entity[1]][rank]
                 )
             elif self.dest_entity[0] == 'tableau_pile':
                 self.tableau[self.dest_entity[1]][0] = (
@@ -679,6 +697,37 @@ class Solitaire:
             self.__clear_selected_cards()
             return False
 
+    ## @brief Gets the score for the game based on the last move.
+    # @return None
+    def __get_score(self):
+        time_score = 0
+        if not int(self.__time) % 10 and not self.__time_deduct:
+            time_score -= 2
+            self.__time_deduct = True
+        elif int(self.__time) % 10:
+            self.__time_deduct = False
+        move_score = 0
+        if self.move_made:
+            if self.src_entity[0] == 'tableau_card':
+                if self.dest_entity[0] == 'foundation':
+                    move_score += 10
+            elif self.src_entity[0] == 'stock_reveal':
+                if self.src_entity[0] == 'tableau_card':
+                    move_score += 5
+                elif self.dest_entity[0] == 'foundation':
+                    move_score += 15
+            elif self.src_entity[0] == 'stock_hidden':
+                if self.stock_idx == -1:
+                    move_score -= 100
+            elif self.src_entity[0] == 'foundation':
+                if self.src_entity[0] == 'tableau_card':
+                    move_score -= 15
+            if self.__card_flipped:
+                move_score += 5
+        self.__score += move_score + time_score
+        if self.__score < 0:
+            self.__score = 0
+
     ## @brief Checks if the game is won.
     # @return None
     def __get_game_win(self):
@@ -689,11 +738,13 @@ class Solitaire:
                 win_check *= 1
             else:
                 win_check *= 0
-        self.__win = (win_check == 1)
+        self.win = (win_check == 1)
 
     ## @brief Runs the game (must be in a continuous loop).
     # @return None
     def run_game(self):
+        self.__card_flipped = False
+        self.move_made = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.quit = True
@@ -701,22 +752,26 @@ class Solitaire:
                 if event.button == 1:
                     if self.__reset_rect.collidepoint(event.pos):
                         self.__reset_game()
-                    if not self.__win:
+                    if not self.win:
                         if self.__click_handler(event.pos):
-                            self.moves += 1
+                            self.__moves += 1
+                            self.move_made = True
                         self.__get_game_win()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    if not self.__win:
+                    if not self.win:
                         self.src_entity = ['stock_hidden', 0]
                         self.dest_entity = ['none', 0]
                         self.__increment_stock()
-                        self.moves += 1
+                        self.__moves += 1
+                        self.move_made = True
+        self.__get_score()
         self.__screen.fill(self.__screen_color)
         self.__get_card_positions()
         self.__draw_game()
         self.__draw_gui()
-        self.__time += self.__clock.get_time() / 1000
+        if not self.win:
+            self.__time += self.__clock.get_time() / 1000
         self.__clock.tick(60)
         pygame.display.flip()
 

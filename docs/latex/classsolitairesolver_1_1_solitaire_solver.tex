@@ -1,29 +1,53 @@
 \doxysection{solitairesolver.\+Solitaire\+Solver Class Reference}
 \hypertarget{classsolitairesolver_1_1_solitaire_solver}{}\label{classsolitairesolver_1_1_solitaire_solver}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+
+
+Contains functions for training and running the neural net.  
+
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ae12eda5187d4d16f6950fdc8d0cc6a20}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, game)
 \item 
-\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a854de2f95c7cd1f0a0bf7a959e0d611d}{get\+\_\+input}} (self)
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a0384f68d000580d57b32ea092afd1760}{gather\+\_\+training}} (self)
+\begin{DoxyCompactList}\small\item\em Runs a game loop used to gather training data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a168e65d8715422f2fb8c543e5e4e2320}{train\+\_\+net}} (self, max\+\_\+epoch)
+\begin{DoxyCompactList}\small\item\em Trains the neural net for a given amount of epochs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ae0c9f3559a9149f1dc03b8ba5f921dc5}{play\+\_\+game}} (self)
+\begin{DoxyCompactList}\small\item\em Plays solitaire using the trained nural net. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a5425c280345c1b805a4d01c1abb94484}{get\+\_\+output}} (self)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_aee6607c7466bd7d708fe567a0a36d79e}{\+\_\+\+\_\+get\+\_\+input}} (self)
+\begin{DoxyCompactList}\small\item\em Gets the neural net input from the current game state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_aa288a06d598719bf1fc99e32ec686f44}{\+\_\+\+\_\+get\+\_\+output}} (self)
+\begin{DoxyCompactList}\small\item\em Gets the neural net output from the current game state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ab61666ed086dfa3eed8876196f8f92e6}{\+\_\+\+\_\+load\+\_\+training}} (self)
+\begin{DoxyCompactList}\small\item\em Loads the training data from file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a498726da4bb8e535043c1abe180a29d8}{\+\_\+\+\_\+save\+\_\+training}} (self)
+\begin{DoxyCompactList}\small\item\em Saves the training data to file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a6197d59ca4cc919d94a91b250bdba1a3}{\+\_\+\+\_\+load\+\_\+net}} (self)
+\begin{DoxyCompactList}\small\item\em Loads the neural net from file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ad0f97011baf8bbf629030255a4d1b416}{\+\_\+\+\_\+save\+\_\+net}} (self)
+\begin{DoxyCompactList}\small\item\em Saves the neural net to file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\+\_\+\+\_\+game}} = game
-\item 
-\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}{\+\_\+\+\_\+input}} = np.\+zeros((input\+\_\+size, 1))
-\item 
-\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a5466f78cfcdc4fce7fa35b11232fca47}{\+\_\+\+\_\+output}} = np.\+zeros((4, 1))
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20}{\+\_\+\+\_\+game}}
+\begin{DoxyCompactList}\small\item\em Game instance object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}{\+\_\+\+\_\+net}}
+\begin{DoxyCompactList}\small\item\em Neural net module. \end{DoxyCompactList}\item 
+list \mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a}{\+\_\+\+\_\+input\+\_\+data}}
+\begin{DoxyCompactList}\small\item\em Input data array. \end{DoxyCompactList}\item 
+list \mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823}{\+\_\+\+\_\+output\+\_\+data}}
+\begin{DoxyCompactList}\small\item\em Output data array. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Contains functions for training and running the neural net. 
 
-
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00018}{18}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00029}{29}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 
 
@@ -37,33 +61,179 @@ Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00018}{18}} of f
 solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{game}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyParams}{Parameters}
+{\em game} & Game instance object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00019}{19}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00032}{32}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 
 
 \label{doc-func-members}
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_doc-func-members}
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a854de2f95c7cd1f0a0bf7a959e0d611d}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!get\_input@{get\_input}}
-\index{get\_input@{get\_input}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
-\doxysubsubsection{\texorpdfstring{get\_input()}{get\_input()}}
-{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a854de2f95c7cd1f0a0bf7a959e0d611d} 
-solitairesolver.\+Solitaire\+Solver.\+get\+\_\+input (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_aee6607c7466bd7d708fe567a0a36d79e}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_get\_input@{\_\_get\_input}}
+\index{\_\_get\_input@{\_\_get\_input}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_get\_input()}{\_\_get\_input()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_aee6607c7466bd7d708fe567a0a36d79e} 
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+get\+\_\+input (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00025}{25}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Gets the neural net input from the current game state. 
 
-\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a5425c280345c1b805a4d01c1abb94484}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!get\_output@{get\_output}}
-\index{get\_output@{get\_output}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
-\doxysubsubsection{\texorpdfstring{get\_output()}{get\_output()}}
-{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a5425c280345c1b805a4d01c1abb94484} 
-solitairesolver.\+Solitaire\+Solver.\+get\+\_\+output (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+\begin{DoxyReturn}{Returns}
+Input array 
+\end{DoxyReturn}
 
 
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00055}{55}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00060}{60}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_aa288a06d598719bf1fc99e32ec686f44}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_get\_output@{\_\_get\_output}}
+\index{\_\_get\_output@{\_\_get\_output}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_get\_output()}{\_\_get\_output()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_aa288a06d598719bf1fc99e32ec686f44} 
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+get\+\_\+output (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gets the neural net output from the current game state. 
+
+\begin{DoxyReturn}{Returns}
+Output array 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00089}{89}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a6197d59ca4cc919d94a91b250bdba1a3}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_load\_net@{\_\_load\_net}}
+\index{\_\_load\_net@{\_\_load\_net}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_load\_net()}{\_\_load\_net()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a6197d59ca4cc919d94a91b250bdba1a3} 
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+load\+\_\+net (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Loads the neural net from file. 
+
+\begin{DoxyReturn}{Returns}
+True if the file exists 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00129}{129}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_ab61666ed086dfa3eed8876196f8f92e6}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_load\_training@{\_\_load\_training}}
+\index{\_\_load\_training@{\_\_load\_training}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_load\_training()}{\_\_load\_training()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_ab61666ed086dfa3eed8876196f8f92e6} 
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+load\+\_\+training (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Loads the training data from file. 
+
+\begin{DoxyReturn}{Returns}
+True if the file exists 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00101}{101}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_ad0f97011baf8bbf629030255a4d1b416}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_save\_net@{\_\_save\_net}}
+\index{\_\_save\_net@{\_\_save\_net}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_save\_net()}{\_\_save\_net()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_ad0f97011baf8bbf629030255a4d1b416} 
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+save\+\_\+net (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Saves the neural net to file. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00138}{138}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a498726da4bb8e535043c1abe180a29d8}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_save\_training@{\_\_save\_training}}
+\index{\_\_save\_training@{\_\_save\_training}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_save\_training()}{\_\_save\_training()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a498726da4bb8e535043c1abe180a29d8} 
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+save\+\_\+training (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Saves the training data to file. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00111}{111}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a0384f68d000580d57b32ea092afd1760}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!gather\_training@{gather\_training}}
+\index{gather\_training@{gather\_training}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{gather\_training()}{gather\_training()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a0384f68d000580d57b32ea092afd1760} 
+solitairesolver.\+Solitaire\+Solver.\+gather\+\_\+training (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Runs a game loop used to gather training data. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00117}{117}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_ae0c9f3559a9149f1dc03b8ba5f921dc5}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!play\_game@{play\_game}}
+\index{play\_game@{play\_game}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{play\_game()}{play\_game()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_ae0c9f3559a9149f1dc03b8ba5f921dc5} 
+solitairesolver.\+Solitaire\+Solver.\+play\+\_\+game (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Plays solitaire using the trained nural net. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00170}{170}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a168e65d8715422f2fb8c543e5e4e2320}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!train\_net@{train\_net}}
+\index{train\_net@{train\_net}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{train\_net()}{train\_net()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a168e65d8715422f2fb8c543e5e4e2320} 
+solitairesolver.\+Solitaire\+Solver.\+train\+\_\+net (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{max\+\_\+epoch}{}\end{DoxyParamCaption})}
+
+
+
+Trains the neural net for a given amount of epochs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+epoch} & Maximum epoch count for training \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00144}{144}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 
 
@@ -74,31 +244,57 @@ Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00060}{60}} of f
 \index{\_\_game@{\_\_game}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
 \doxysubsubsection{\texorpdfstring{\_\_game}{\_\_game}}
 {\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a8d3cd3796193b5a674ff12bde80ddc20} 
-solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+game = game\hspace{0.3cm}{\ttfamily [private]}}
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+game\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00020}{20}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
-
-\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_input@{\_\_input}}
-\index{\_\_input@{\_\_input}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
-\doxysubsubsection{\texorpdfstring{\_\_input}{\_\_input}}
-{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a1b0e8856832d560463cceffdb40df3c7} 
-solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+input = np.\+zeros((input\+\_\+size, 1))\hspace{0.3cm}{\ttfamily [private]}}
+Game instance object. 
 
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00022}{22}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00035}{35}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
-\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a5466f78cfcdc4fce7fa35b11232fca47}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_output@{\_\_output}}
-\index{\_\_output@{\_\_output}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
-\doxysubsubsection{\texorpdfstring{\_\_output}{\_\_output}}
-{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a5466f78cfcdc4fce7fa35b11232fca47} 
-solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+output = np.\+zeros((4, 1))\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_input\_data@{\_\_input\_data}}
+\index{\_\_input\_data@{\_\_input\_data}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_input\_data}{\_\_input\_data}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a} 
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+input\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00023}{23}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Input data array. 
+
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00043}{43}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_net@{\_\_net}}
+\index{\_\_net@{\_\_net}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_net}{\_\_net}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef} 
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+net\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Neural net module. 
+
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00039}{39}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_output\_data@{\_\_output\_data}}
+\index{\_\_output\_data@{\_\_output\_data}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_output\_data}{\_\_output\_data}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823} 
+solitairesolver.\+Solitaire\+Solver.\+\_\+\+\_\+output\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Output data array. 
+
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00046}{46}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 
 

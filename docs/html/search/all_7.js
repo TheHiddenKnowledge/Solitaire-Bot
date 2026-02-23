@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['quit_0',['quit',['../classsolitaire_1_1_solitaire.html#adb7f166354d1de9cfd9ac20e8461f622',1,'solitaire::Solitaire']]]
+  ['play_5fgame_0',['play_game',['../classsolitairesolver_1_1_solitaire_solver.html#ae0c9f3559a9149f1dc03b8ba5f921dc5',1,'solitairesolver::SolitaireSolver']]],
+  ['playingcard_1',['PlayingCard',['../classsolitaire_1_1_playing_card.html',1,'solitaire']]]
 ];
