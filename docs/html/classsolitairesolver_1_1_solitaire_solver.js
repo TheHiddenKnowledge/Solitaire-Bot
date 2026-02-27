@@ -7,6 +7,7 @@ var classsolitairesolver_1_1_solitaire_solver =
     [ "__load_training", "classsolitairesolver_1_1_solitaire_solver.html#ab61666ed086dfa3eed8876196f8f92e6", null ],
     [ "__save_net", "classsolitairesolver_1_1_solitaire_solver.html#ad0f97011baf8bbf629030255a4d1b416", null ],
     [ "__save_training", "classsolitairesolver_1_1_solitaire_solver.html#a498726da4bb8e535043c1abe180a29d8", null ],
+    [ "format_move", "classsolitairesolver_1_1_solitaire_solver.html#a3cf9d36c82c8c4f47396c121e2a2fbde", null ],
     [ "gather_training", "classsolitairesolver_1_1_solitaire_solver.html#a0384f68d000580d57b32ea092afd1760", null ],
     [ "play_game", "classsolitairesolver_1_1_solitaire_solver.html#ae0c9f3559a9149f1dc03b8ba5f921dc5", null ],
     [ "train_net", "classsolitairesolver_1_1_solitaire_solver.html#a168e65d8715422f2fb8c543e5e4e2320", null ],

@@ -4,8 +4,12 @@ import solitairesolver
 GAME = solitaire.Solitaire()
 SOLVER = solitairesolver.SolitaireSolver(GAME)
 
+# Comment as needed
+
 # SOLVER.gather_training()
 
-SOLVER.train_net(20000)
+# SOLVER.train_net(10000)
 
-# SOLVER.play_game()
+# SOLVER.test_net()
+
+SOLVER.play_game()

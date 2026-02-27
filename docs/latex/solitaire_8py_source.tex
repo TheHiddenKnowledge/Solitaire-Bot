@@ -659,167 +659,165 @@
 \DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a23256345f07709a75f55b5b77b34aa10}{dest\_entity}}[0]\ ==\ \textcolor{stringliteral}{'foundation'}:}
 \DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00713}00713\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_score\ +=\ 10}
 \DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00714}00714\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5302210cd4f3a4ffe5012617b2d2a8cb}{src\_entity}}[0]\ ==\ \textcolor{stringliteral}{'stock\_reveal'}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00715}00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5302210cd4f3a4ffe5012617b2d2a8cb}{src\_entity}}[0]\ ==\ \textcolor{stringliteral}{'tableau\_card'}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00715}00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a23256345f07709a75f55b5b77b34aa10}{dest\_entity}}[0]\ ==\ \textcolor{stringliteral}{'tableau\_card'}:}
 \DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_score\ +=\ 5}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00717}00717\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a23256345f07709a75f55b5b77b34aa10}{dest\_entity}}[0]\ ==\ \textcolor{stringliteral}{'foundation'}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00718}00718\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_score\ +=\ 15}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00719}00719\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5302210cd4f3a4ffe5012617b2d2a8cb}{src\_entity}}[0]\ ==\ \textcolor{stringliteral}{'stock\_hidden'}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00720}00720\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_aaa74ca9d7c965c640f61aceb7874adc8}{stock\_idx}}\ ==\ -\/1:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00721}00721\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_score\ -\/=\ 100}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00722}00722\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5302210cd4f3a4ffe5012617b2d2a8cb}{src\_entity}}[0]\ ==\ \textcolor{stringliteral}{'foundation'}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00723}00723\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5302210cd4f3a4ffe5012617b2d2a8cb}{src\_entity}}[0]\ ==\ \textcolor{stringliteral}{'tableau\_card'}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00724}00724\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_score\ -\/=\ 15}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00725}00725\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5dc419bef210d3e503f6b29e1c38460a}{\_\_card\_flipped}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_score\ +=\ 5}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00727}00727\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a891a62b620e195205e26e469e4027e9c}{\_\_score}}\ +=\ move\_score\ +\ time\_score}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00728}00728\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a891a62b620e195205e26e469e4027e9c}{\_\_score}}\ <\ 0:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00729}00729\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a891a62b620e195205e26e469e4027e9c}{\_\_score}}\ =\ 0}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00730}00730\ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00731}00731\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00733}\mbox{\hyperlink{classsolitaire_1_1_solitaire_a7fd64dfcd8fe54010a07e7d70501730f}{00733}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitaire_1_1_solitaire_a7fd64dfcd8fe54010a07e7d70501730f}{\_\_get\_game\_win}}(self):}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00734}00734\ \ \ \ \ \ \ \ \ win\_check\ =\ 1}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00735}00735\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Checking\ to\ see\ if\ the\ top\ card\ in\ each\ foundation\ pile\ is\ a\ king}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00736}00736\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ card\_idxs\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_ab9a3347a773973f19f2f7c01239a812e}{found\_idxs}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00737}00737\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ card\_idxs[-\/1]\ >\ 0:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ win\_check\ *=\ 1}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00739}00739\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00740}00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ win\_check\ *=\ 0}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00741}00741\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a210dd14bb399534960bada41a94e8bba}{win}}\ =\ (win\_check\ ==\ 1)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00742}00742\ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00743}00743\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00745}\mbox{\hyperlink{classsolitaire_1_1_solitaire_a63722373be9454391ea04a06b6897d85}{00745}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitaire_1_1_solitaire_a63722373be9454391ea04a06b6897d85}{run\_game}}(self):}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00746}00746\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5dc419bef210d3e503f6b29e1c38460a}{\_\_card\_flipped}}\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00747}00747\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a2943b8a79afa18d8f25026a7be7ffc78}{move\_made}}\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00748}00748\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ event\ \textcolor{keywordflow}{in}\ pygame.event.get():}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00749}00749\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.type\ ==\ pygame.QUIT:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00750}00750\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_adb7f166354d1de9cfd9ac20e8461f622}{quit}}\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00751}00751\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.type\ ==\ pygame.MOUSEBUTTONDOWN:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00752}00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.button\ ==\ 1:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00753}00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_ad771a40a145854a470e438d39f668ad6}{\_\_reset\_rect}}.collidepoint(event.pos):}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a906c5eb20f5ff1d2c3ff3fda545404d3}{\_\_reset\_game}}()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00755}00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a210dd14bb399534960bada41a94e8bba}{win}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00756}00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a8a2bbba07e8327a57472a47868f5723a}{\_\_click\_handler}}(event.pos):}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a1255740422df0839d2e2ba76584e5b7f}{\_\_moves}}\ +=\ 1}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a2943b8a79afa18d8f25026a7be7ffc78}{move\_made}}\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00759}00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a7fd64dfcd8fe54010a07e7d70501730f}{\_\_get\_game\_win}}()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.type\ ==\ pygame.KEYDOWN:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.key\ ==\ pygame.K\_SPACE:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00762}00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a210dd14bb399534960bada41a94e8bba}{win}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00763}00763\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5302210cd4f3a4ffe5012617b2d2a8cb}{src\_entity}}\ =\ [\textcolor{stringliteral}{'stock\_hidden'},\ 0]}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00764}00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a23256345f07709a75f55b5b77b34aa10}{dest\_entity}}\ =\ [\textcolor{stringliteral}{'none'},\ 0]}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00765}00765\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a90da70b00b5a1f5455b5a85ceaf32227}{\_\_increment\_stock}}()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a1255740422df0839d2e2ba76584e5b7f}{\_\_moves}}\ +=\ 1}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00767}00767\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a2943b8a79afa18d8f25026a7be7ffc78}{move\_made}}\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00768}00768\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_ad99f005cebb04fb72d0288bab4b8538f}{\_\_get\_score}}()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00769}00769\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_aace8561e2727eb2526443d75bd8557f6}{\_\_screen}}.fill(self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a99274fd924088f8d0d901c83d36881c8}{\_\_screen\_color}})}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00770}00770\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a45c43ccb8a706b113edc625b476642cf}{\_\_get\_card\_positions}}()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00771}00771\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_ac78614f68d6a7d9020d2ebca9362c6cd}{\_\_draw\_game}}()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00772}00772\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a38f04aa773181a81283a7609afb62833}{\_\_draw\_gui}}()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00773}00773\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a210dd14bb399534960bada41a94e8bba}{win}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00774}00774\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a84753124f7cc3a340a3094abce1f0800}{\_\_time}}\ +=\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a4d2429bf1d3f57002c81da8376e8d263}{\_\_clock}}.get\_time()\ /\ 1000}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00775}00775\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a4d2429bf1d3f57002c81da8376e8d263}{\_\_clock}}.tick(60)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00776}00776\ \ \ \ \ \ \ \ \ pygame.display.flip()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00777}00777\ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00778}00778\ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00780}\mbox{\hyperlink{classsolitaire_1_1_playing_card}{00780}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsolitaire_1_1_playing_card}{PlayingCard}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00781}00781\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00786}\mbox{\hyperlink{classsolitaire_1_1_playing_card_a2f881ad3435596377ba7c522a3b6a8bb}{00786}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitaire_1_1_playing_card_a2f881ad3435596377ba7c522a3b6a8bb}{\_\_init\_\_}}(self,\ suit,\ rank,\ width,\ height):}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00787}00787\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00789}\mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{00789}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{suit}}\ =\ suit}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00790}00790\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00792}\mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{00792}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{rank}}\ =\ rank}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00793}00793\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00795}\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{00795}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}\ =\ pygame.Rect(0,\ 0,\ width,\ height)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00796}00796\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00798}\mbox{\hyperlink{classsolitaire_1_1_playing_card_a84a9155a598adf86f49de4aae29185fa}{00798}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a84a9155a598adf86f49de4aae29185fa}{flipped}}\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00799}00799\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00801}\mbox{\hyperlink{classsolitaire_1_1_playing_card_a60f093b6d2b5dd83febbe15f03a56763}{00801}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a60f093b6d2b5dd83febbe15f03a56763}{selected}}\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00802}00802\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00804}\mbox{\hyperlink{classsolitaire_1_1_playing_card_a13320e3d87c88aaccddfb9b48087c3bd}{00804}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a13320e3d87c88aaccddfb9b48087c3bd}{\_\_select\_color}}\ =\ (255,\ 255,\ 0)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00805}00805\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00807}\mbox{\hyperlink{classsolitaire_1_1_playing_card_aeb4cee60dd4a66fedf014f229af80a30}{00807}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_aeb4cee60dd4a66fedf014f229af80a30}{\_\_border}}\ =\ 2}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00808}00808\ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00809}00809\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00812}\mbox{\hyperlink{classsolitaire_1_1_playing_card_af885699677bc2bd9f36bd86a20e254ab}{00812}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitaire_1_1_playing_card_af885699677bc2bd9f36bd86a20e254ab}{draw\_card}}(self,\ screen):}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00813}00813\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Draws\ back\ of\ the\ card\ if\ flipped}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00814}00814\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a84a9155a598adf86f49de4aae29185fa}{flipped}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00815}00815\ \ \ \ \ \ \ \ \ \ \ \ \ backing\_image\ =\ pygame.image.load(\textcolor{stringliteral}{'images/backing.jpg'})}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00816}00816\ \ \ \ \ \ \ \ \ \ \ \ \ scaled\_image\ =\ pygame.transform.scale(backing\_image,}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00817}00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width,}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00818}00818\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height))}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00819}00819\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(scaled\_image,\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}})}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00820}00820\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00821}00821\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Setting\ the\ suit\ color}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00822}00822\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_color\ =\ (0,\ 0,\ 0)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00823}00823\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{suit}}\ >\ 1:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00824}00824\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_color\ =\ (255,\ 0,\ 0)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00825}00825\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Setting\ the\ suit\ unicode\ character}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00826}00826\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{''}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00827}00827\ \ \ \ \ \ \ \ \ \ \ \ \ match\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{suit}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00828}00828\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 0:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00829}00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Club}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00830}00830\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{'\(\backslash\)u2663'}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00831}00831\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 1:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00832}00832\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Spade}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00833}00833\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{'\(\backslash\)u2660'}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00834}00834\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 2:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00835}00835\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Diamond}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00836}00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{'\(\backslash\)u2666'}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00837}00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 3:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00838}00838\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Heart}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00839}00839\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{'\(\backslash\)u2665'}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00840}00840\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Setting\ the\ rank\ text}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00841}00841\ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{''}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00842}00842\ \ \ \ \ \ \ \ \ \ \ \ \ match\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{rank}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00843}00843\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 0:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00844}00844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{'A'}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00845}00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 10:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00846}00846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{'J'}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00847}00847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 11:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00848}00848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{'Q'}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00849}00849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 12:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00850}00850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{'K'}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00851}00851\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ \_:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00852}00852\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ str(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{rank}}\ +\ 1)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00853}00853\ \ \ \ \ \ \ \ \ \ \ \ \ rank\_font\ =\ pygame.font.SysFont(\textcolor{stringliteral}{'Arial'},\ 18)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00854}00854\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Top\ left\ rank\ text}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00855}00855\ \ \ \ \ \ \ \ \ \ \ \ \ tl\_rank\ =\ rank\_font.render(rank\_text,\ \textcolor{keyword}{True},\ suit\_color)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00856}00856\ \ \ \ \ \ \ \ \ \ \ \ \ tl\_rank\_rect\ =\ tl\_rank.get\_rect()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00857}00857\ \ \ \ \ \ \ \ \ \ \ \ \ tl\_rank\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 5),}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00858}00858\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 5))}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00859}00859\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Bottom\ right\ rank\ text}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00860}00860\ \ \ \ \ \ \ \ \ \ \ \ \ br\_rank\ =\ rank\_font.render(rank\_text,\ \textcolor{keyword}{True},\ suit\_color)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00861}00861\ \ \ \ \ \ \ \ \ \ \ \ \ br\_rank\_rect\ =\ br\_rank.get\_rect()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00862}00862\ \ \ \ \ \ \ \ \ \ \ \ \ br\_rank\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(4\ *\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 5),}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00863}00863\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(4\ *\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 5))}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00864}00864\ \ \ \ \ \ \ \ \ \ \ \ \ br\_rank\_rot\ =\ pygame.transform.rotate(br\_rank,\ 180)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00865}00865\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Center\ suit\ text}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00866}00866\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_font\ =\ pygame.font.SysFont(\textcolor{stringliteral}{'Arial'},\ 28)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00867}00867\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_text\ =\ suit\_font.render(suit\_char,\ \textcolor{keyword}{True},\ suit\_color)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00868}00868\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_text\_rect\ =\ suit\_text.get\_rect()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00869}00869\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_text\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 2),}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00870}00870\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 2))}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00871}00871\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Top\ right\ suit\ text}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00872}00872\ \ \ \ \ \ \ \ \ \ \ \ \ tr\_suit\ =\ suit\_font.render(suit\_char,\ \textcolor{keyword}{True},\ suit\_color)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00873}00873\ \ \ \ \ \ \ \ \ \ \ \ \ tr\_suit\_rect\ =\ tr\_suit.get\_rect()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00874}00874\ \ \ \ \ \ \ \ \ \ \ \ \ tr\_suit\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(4\ *\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 5),}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00875}00875\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 5))}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00876}00876\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Bottom\ left\ suit\ text}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00877}00877\ \ \ \ \ \ \ \ \ \ \ \ \ bl\_suit\ =\ suit\_font.render(suit\_char,\ \textcolor{keyword}{True},\ suit\_color)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00878}00878\ \ \ \ \ \ \ \ \ \ \ \ \ bl\_suit\_rect\ =\ bl\_suit.get\_rect()}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00879}00879\ \ \ \ \ \ \ \ \ \ \ \ \ bl\_suit\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 5),}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00880}00880\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(4\ *\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 5))}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00881}00881\ \ \ \ \ \ \ \ \ \ \ \ \ bl\_suit\_rot\ =\ pygame.transform.rotate(bl\_suit,\ 180)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00882}00882\ \ \ \ \ \ \ \ \ \ \ \ \ pygame.draw.rect(screen,\ (255,\ 255,\ 255),\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}},\ width\ =\ 0)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00883}00883\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(tl\_rank,\ tl\_rank\_rect)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00884}00884\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(br\_rank\_rot,\ br\_rank\_rect)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00885}00885\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(suit\_text,\ suit\_text\_rect)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00886}00886\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(tr\_suit,\ tr\_suit\_rect)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00887}00887\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(bl\_suit\_rot,\ bl\_suit\_rect)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00888}00888\ \ \ \ \ \ \ \ \ border\_color\ =\ (0,\ 0,\ 0)}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00889}00889\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a60f093b6d2b5dd83febbe15f03a56763}{selected}}:}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00890}00890\ \ \ \ \ \ \ \ \ \ \ \ \ border\_color\ =\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a13320e3d87c88aaccddfb9b48087c3bd}{\_\_select\_color}}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00891}00891\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Draws\ black\ self.\_\_border\ for\ card\ outline}}
-\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00892}00892\ \ \ \ \ \ \ \ \ pygame.draw.rect(screen,\ border\_color,\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}},\ width\ =\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_aeb4cee60dd4a66fedf014f229af80a30}{\_\_border}})}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00717}00717\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5302210cd4f3a4ffe5012617b2d2a8cb}{src\_entity}}[0]\ ==\ \textcolor{stringliteral}{'stock\_hidden'}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00718}00718\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_aaa74ca9d7c965c640f61aceb7874adc8}{stock\_idx}}\ ==\ -\/1:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00719}00719\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_score\ -\/=\ 100}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00720}00720\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5302210cd4f3a4ffe5012617b2d2a8cb}{src\_entity}}[0]\ ==\ \textcolor{stringliteral}{'foundation'}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00721}00721\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a23256345f07709a75f55b5b77b34aa10}{dest\_entity}}[0]\ ==\ \textcolor{stringliteral}{'tableau\_card'}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00722}00722\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_score\ -\/=\ 15}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00723}00723\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5dc419bef210d3e503f6b29e1c38460a}{\_\_card\_flipped}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00724}00724\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_score\ +=\ 5}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00725}00725\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a891a62b620e195205e26e469e4027e9c}{\_\_score}}\ +=\ move\_score\ +\ time\_score}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00726}00726\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a891a62b620e195205e26e469e4027e9c}{\_\_score}}\ <\ 0:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00727}00727\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a891a62b620e195205e26e469e4027e9c}{\_\_score}}\ =\ 0}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00728}00728\ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00729}00729\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00731}\mbox{\hyperlink{classsolitaire_1_1_solitaire_a7fd64dfcd8fe54010a07e7d70501730f}{00731}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitaire_1_1_solitaire_a7fd64dfcd8fe54010a07e7d70501730f}{\_\_get\_game\_win}}(self):}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00732}00732\ \ \ \ \ \ \ \ \ win\_check\ =\ 1}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00733}00733\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Checking\ to\ see\ if\ the\ top\ card\ in\ each\ foundation\ pile\ is\ a\ king}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00734}00734\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ card\_idxs\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_ab9a3347a773973f19f2f7c01239a812e}{found\_idxs}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00735}00735\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ card\_idxs[-\/1]\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00736}00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ win\_check\ *=\ 1}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00737}00737\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ win\_check\ *=\ 0}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00739}00739\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a210dd14bb399534960bada41a94e8bba}{win}}\ =\ (win\_check\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00740}00740\ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00741}00741\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00743}\mbox{\hyperlink{classsolitaire_1_1_solitaire_a63722373be9454391ea04a06b6897d85}{00743}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitaire_1_1_solitaire_a63722373be9454391ea04a06b6897d85}{run\_game}}(self):}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00744}00744\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5dc419bef210d3e503f6b29e1c38460a}{\_\_card\_flipped}}\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00745}00745\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a2943b8a79afa18d8f25026a7be7ffc78}{move\_made}}\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00746}00746\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ event\ \textcolor{keywordflow}{in}\ pygame.event.get():}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00747}00747\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.type\ ==\ pygame.QUIT:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00748}00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_adb7f166354d1de9cfd9ac20e8461f622}{quit}}\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00749}00749\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.type\ ==\ pygame.MOUSEBUTTONDOWN:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00750}00750\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.button\ ==\ 1:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00751}00751\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_ad771a40a145854a470e438d39f668ad6}{\_\_reset\_rect}}.collidepoint(event.pos):}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00752}00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a906c5eb20f5ff1d2c3ff3fda545404d3}{\_\_reset\_game}}()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00753}00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a210dd14bb399534960bada41a94e8bba}{win}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a8a2bbba07e8327a57472a47868f5723a}{\_\_click\_handler}}(event.pos):}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00755}00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a1255740422df0839d2e2ba76584e5b7f}{\_\_moves}}\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00756}00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a2943b8a79afa18d8f25026a7be7ffc78}{move\_made}}\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a7fd64dfcd8fe54010a07e7d70501730f}{\_\_get\_game\_win}}()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.type\ ==\ pygame.KEYDOWN:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00759}00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ event.key\ ==\ pygame.K\_SPACE:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a210dd14bb399534960bada41a94e8bba}{win}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a5302210cd4f3a4ffe5012617b2d2a8cb}{src\_entity}}\ =\ [\textcolor{stringliteral}{'stock\_hidden'},\ 0]}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00762}00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a23256345f07709a75f55b5b77b34aa10}{dest\_entity}}\ =\ [\textcolor{stringliteral}{'none'},\ 0]}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00763}00763\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a90da70b00b5a1f5455b5a85ceaf32227}{\_\_increment\_stock}}()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00764}00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a1255740422df0839d2e2ba76584e5b7f}{\_\_moves}}\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00765}00765\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a2943b8a79afa18d8f25026a7be7ffc78}{move\_made}}\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00766}00766\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_ad99f005cebb04fb72d0288bab4b8538f}{\_\_get\_score}}()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00767}00767\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_aace8561e2727eb2526443d75bd8557f6}{\_\_screen}}.fill(self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a99274fd924088f8d0d901c83d36881c8}{\_\_screen\_color}})}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00768}00768\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a45c43ccb8a706b113edc625b476642cf}{\_\_get\_card\_positions}}()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00769}00769\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_ac78614f68d6a7d9020d2ebca9362c6cd}{\_\_draw\_game}}()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00770}00770\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a38f04aa773181a81283a7609afb62833}{\_\_draw\_gui}}()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00771}00771\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a210dd14bb399534960bada41a94e8bba}{win}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00772}00772\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a84753124f7cc3a340a3094abce1f0800}{\_\_time}}\ +=\ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a4d2429bf1d3f57002c81da8376e8d263}{\_\_clock}}.get\_time()\ /\ 1000}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00773}00773\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_solitaire_a4d2429bf1d3f57002c81da8376e8d263}{\_\_clock}}.tick(60)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00774}00774\ \ \ \ \ \ \ \ \ pygame.display.flip()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00775}00775\ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00776}00776\ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00778}\mbox{\hyperlink{classsolitaire_1_1_playing_card}{00778}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsolitaire_1_1_playing_card}{PlayingCard}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00779}00779\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00784}\mbox{\hyperlink{classsolitaire_1_1_playing_card_a2f881ad3435596377ba7c522a3b6a8bb}{00784}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitaire_1_1_playing_card_a2f881ad3435596377ba7c522a3b6a8bb}{\_\_init\_\_}}(self,\ suit,\ rank,\ width,\ height):}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00785}00785\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00787}\mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{00787}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{suit}}\ =\ suit}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00788}00788\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00790}\mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{00790}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{rank}}\ =\ rank}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00791}00791\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00793}\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{00793}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}\ =\ pygame.Rect(0,\ 0,\ width,\ height)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00794}00794\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00796}\mbox{\hyperlink{classsolitaire_1_1_playing_card_a84a9155a598adf86f49de4aae29185fa}{00796}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a84a9155a598adf86f49de4aae29185fa}{flipped}}\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00797}00797\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00799}\mbox{\hyperlink{classsolitaire_1_1_playing_card_a60f093b6d2b5dd83febbe15f03a56763}{00799}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a60f093b6d2b5dd83febbe15f03a56763}{selected}}\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00800}00800\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00802}\mbox{\hyperlink{classsolitaire_1_1_playing_card_a13320e3d87c88aaccddfb9b48087c3bd}{00802}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a13320e3d87c88aaccddfb9b48087c3bd}{\_\_select\_color}}\ =\ (255,\ 255,\ 0)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00803}00803\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00805}\mbox{\hyperlink{classsolitaire_1_1_playing_card_aeb4cee60dd4a66fedf014f229af80a30}{00805}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_aeb4cee60dd4a66fedf014f229af80a30}{\_\_border}}\ =\ 2}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00806}00806\ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00807}00807\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00810}\mbox{\hyperlink{classsolitaire_1_1_playing_card_af885699677bc2bd9f36bd86a20e254ab}{00810}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classsolitaire_1_1_playing_card_af885699677bc2bd9f36bd86a20e254ab}{draw\_card}}(self,\ screen):}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00811}00811\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Draws\ back\ of\ the\ card\ if\ flipped}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00812}00812\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a84a9155a598adf86f49de4aae29185fa}{flipped}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00813}00813\ \ \ \ \ \ \ \ \ \ \ \ \ backing\_image\ =\ pygame.image.load(\textcolor{stringliteral}{'images/backing.jpg'})}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00814}00814\ \ \ \ \ \ \ \ \ \ \ \ \ scaled\_image\ =\ pygame.transform.scale(backing\_image,}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00815}00815\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width,}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00816}00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height))}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00817}00817\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(scaled\_image,\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}})}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00818}00818\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00819}00819\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Setting\ the\ suit\ color}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00820}00820\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_color\ =\ (0,\ 0,\ 0)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00821}00821\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{suit}}\ >\ 1:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00822}00822\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_color\ =\ (255,\ 0,\ 0)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00823}00823\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Setting\ the\ suit\ unicode\ character}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00824}00824\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{''}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00825}00825\ \ \ \ \ \ \ \ \ \ \ \ \ match\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af302fbc5d736bfd04b4e2c63f2915fff}{suit}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00826}00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 0:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00827}00827\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Club}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00828}00828\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{'\(\backslash\)u2663'}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00829}00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 1:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00830}00830\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Spade}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00831}00831\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{'\(\backslash\)u2660'}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00832}00832\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 2:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00833}00833\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Diamond}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00834}00834\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{'\(\backslash\)u2666'}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00835}00835\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 3:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00836}00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Heart}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00837}00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ suit\_char\ =\ \textcolor{stringliteral}{'\(\backslash\)u2665'}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00838}00838\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Setting\ the\ rank\ text}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00839}00839\ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{''}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00840}00840\ \ \ \ \ \ \ \ \ \ \ \ \ match\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{rank}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00841}00841\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 0:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00842}00842\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{'A'}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00843}00843\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 10:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00844}00844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{'J'}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00845}00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 11:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00846}00846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{'Q'}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00847}00847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ 12:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00848}00848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ \textcolor{stringliteral}{'K'}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00849}00849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ \_:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00850}00850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rank\_text\ =\ str(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_ac23fc5c439b607a0c3af60e9d9021ba0}{rank}}\ +\ 1)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00851}00851\ \ \ \ \ \ \ \ \ \ \ \ \ rank\_font\ =\ pygame.font.SysFont(\textcolor{stringliteral}{'Arial'},\ 18)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00852}00852\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Top\ left\ rank\ text}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00853}00853\ \ \ \ \ \ \ \ \ \ \ \ \ tl\_rank\ =\ rank\_font.render(rank\_text,\ \textcolor{keyword}{True},\ suit\_color)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00854}00854\ \ \ \ \ \ \ \ \ \ \ \ \ tl\_rank\_rect\ =\ tl\_rank.get\_rect()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00855}00855\ \ \ \ \ \ \ \ \ \ \ \ \ tl\_rank\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 5),}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00856}00856\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 5))}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00857}00857\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Bottom\ right\ rank\ text}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00858}00858\ \ \ \ \ \ \ \ \ \ \ \ \ br\_rank\ =\ rank\_font.render(rank\_text,\ \textcolor{keyword}{True},\ suit\_color)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00859}00859\ \ \ \ \ \ \ \ \ \ \ \ \ br\_rank\_rect\ =\ br\_rank.get\_rect()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00860}00860\ \ \ \ \ \ \ \ \ \ \ \ \ br\_rank\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(4\ *\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 5),}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00861}00861\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(4\ *\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 5))}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00862}00862\ \ \ \ \ \ \ \ \ \ \ \ \ br\_rank\_rot\ =\ pygame.transform.rotate(br\_rank,\ 180)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00863}00863\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Center\ suit\ text}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00864}00864\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_font\ =\ pygame.font.SysFont(\textcolor{stringliteral}{'Arial'},\ 28)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00865}00865\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_text\ =\ suit\_font.render(suit\_char,\ \textcolor{keyword}{True},\ suit\_color)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00866}00866\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_text\_rect\ =\ suit\_text.get\_rect()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00867}00867\ \ \ \ \ \ \ \ \ \ \ \ \ suit\_text\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 2),}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00868}00868\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 2))}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00869}00869\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Top\ right\ suit\ text}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00870}00870\ \ \ \ \ \ \ \ \ \ \ \ \ tr\_suit\ =\ suit\_font.render(suit\_char,\ \textcolor{keyword}{True},\ suit\_color)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00871}00871\ \ \ \ \ \ \ \ \ \ \ \ \ tr\_suit\_rect\ =\ tr\_suit.get\_rect()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00872}00872\ \ \ \ \ \ \ \ \ \ \ \ \ tr\_suit\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(4\ *\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 5),}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00873}00873\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 5))}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00874}00874\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Bottom\ left\ suit\ text}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00875}00875\ \ \ \ \ \ \ \ \ \ \ \ \ bl\_suit\ =\ suit\_font.render(suit\_char,\ \textcolor{keyword}{True},\ suit\_color)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00876}00876\ \ \ \ \ \ \ \ \ \ \ \ \ bl\_suit\_rect\ =\ bl\_suit.get\_rect()}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00877}00877\ \ \ \ \ \ \ \ \ \ \ \ \ bl\_suit\_rect.center\ =\ (self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.x\ +\ int(self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.width\ /\ 5),}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00878}00878\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.y\ +\ int(4\ *\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}}.height\ /\ 5))}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00879}00879\ \ \ \ \ \ \ \ \ \ \ \ \ bl\_suit\_rot\ =\ pygame.transform.rotate(bl\_suit,\ 180)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00880}00880\ \ \ \ \ \ \ \ \ \ \ \ \ pygame.draw.rect(screen,\ (255,\ 255,\ 255),\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}},\ width\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00881}00881\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(tl\_rank,\ tl\_rank\_rect)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00882}00882\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(br\_rank\_rot,\ br\_rank\_rect)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00883}00883\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(suit\_text,\ suit\_text\_rect)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00884}00884\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(tr\_suit,\ tr\_suit\_rect)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00885}00885\ \ \ \ \ \ \ \ \ \ \ \ \ screen.blit(bl\_suit\_rot,\ bl\_suit\_rect)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00886}00886\ \ \ \ \ \ \ \ \ border\_color\ =\ (0,\ 0,\ 0)}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00887}00887\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a60f093b6d2b5dd83febbe15f03a56763}{selected}}:}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00888}00888\ \ \ \ \ \ \ \ \ \ \ \ \ border\_color\ =\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_a13320e3d87c88aaccddfb9b48087c3bd}{\_\_select\_color}}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00889}00889\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Draws\ black\ self.\_\_border\ for\ card\ outline}}
+\DoxyCodeLine{\Hypertarget{solitaire_8py_source_l00890}00890\ \ \ \ \ \ \ \ \ pygame.draw.rect(screen,\ border\_color,\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_af7da9fbc90ee65ac72bbd91f32ed96ad}{rect}},\ width\ =\ self.\mbox{\hyperlink{classsolitaire_1_1_playing_card_aeb4cee60dd4a66fedf014f229af80a30}{\_\_border}})}
 
 \end{DoxyCode}

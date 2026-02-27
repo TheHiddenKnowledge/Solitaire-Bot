@@ -102,8 +102,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0384f68d000580d57b32ea092afd1760"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a game loop used to gather training data.  <br /></td></tr>
 <tr class="memitem:a168e65d8715422f2fb8c543e5e4e2320" id="r_a168e65d8715422f2fb8c543e5e4e2320"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a168e65d8715422f2fb8c543e5e4e2320">train_net</a> (self, max_epoch)</td></tr>
 <tr class="memdesc:a168e65d8715422f2fb8c543e5e4e2320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trains the neural net for a given amount of epochs.  <br /></td></tr>
+<tr class="memitem:a9c6491818bad7c6052d5539123f8f8e1" id="r_a9c6491818bad7c6052d5539123f8f8e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c6491818bad7c6052d5539123f8f8e1">test_net</a> (self)</td></tr>
 <tr class="memitem:ae0c9f3559a9149f1dc03b8ba5f921dc5" id="r_ae0c9f3559a9149f1dc03b8ba5f921dc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0c9f3559a9149f1dc03b8ba5f921dc5">play_game</a> (self)</td></tr>
 <tr class="memdesc:ae0c9f3559a9149f1dc03b8ba5f921dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays solitaire using the trained nural net.  <br /></td></tr>
+<tr class="memitem:a3cf9d36c82c8c4f47396c121e2a2fbde" id="r_a3cf9d36c82c8c4f47396c121e2a2fbde"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cf9d36c82c8c4f47396c121e2a2fbde">format_move</a> (self, move)</td></tr>
+<tr class="memdesc:a3cf9d36c82c8c4f47396c121e2a2fbde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the move array for display.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -134,7 +137,7 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains functions for training and running the neural net. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00029">29</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00045">45</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae12eda5187d4d16f6950fdc8d0cc6a20" name="ae12eda5187d4d16f6950fdc8d0cc6a20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae12eda5187d4d16f6950fdc8d0cc6a20">&#9670;&#160;</a></span>__init__()</h2>
@@ -162,7 +165,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00032">32</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00048">48</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -193,7 +196,7 @@ Private Attributes</h2></td></tr>
 <p>Gets the neural net input from the current game state. </p>
 <dl class="section return"><dt>Returns</dt><dd>Input array </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00055">55</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00070">70</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -223,7 +226,7 @@ Private Attributes</h2></td></tr>
 <p>Gets the neural net output from the current game state. </p>
 <dl class="section return"><dt>Returns</dt><dd>Output array </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00089">89</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00104">104</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -253,7 +256,7 @@ Private Attributes</h2></td></tr>
 <p>Loads the neural net from file. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the file exists </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00129">129</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00161">161</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -283,7 +286,7 @@ Private Attributes</h2></td></tr>
 <p>Loads the training data from file. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the file exists </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00101">101</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00133">133</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -313,7 +316,7 @@ Private Attributes</h2></td></tr>
 <p>Saves the neural net to file. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00138">138</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00170">170</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -343,7 +346,33 @@ Private Attributes</h2></td></tr>
 <p>Saves the training data to file. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00111">111</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00143">143</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="a3cf9d36c82c8c4f47396c121e2a2fbde" name="a3cf9d36c82c8c4f47396c121e2a2fbde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cf9d36c82c8c4f47396c121e2a2fbde">&#9670;&#160;</a></span>format_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.format_move </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>move</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Formats the move array for display. </p>
+<dl class="section return"><dt>Returns</dt><dd>Formatted array </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00253">253</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -365,7 +394,7 @@ Private Attributes</h2></td></tr>
 <p>Runs a game loop used to gather training data. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00117">117</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00149">149</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -387,7 +416,26 @@ Private Attributes</h2></td></tr>
 <p>Plays solitaire using the trained nural net. </p>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00170">170</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00240">240</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+
+</div>
+</div>
+<a id="a9c6491818bad7c6052d5539123f8f8e1" name="a9c6491818bad7c6052d5539123f8f8e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c6491818bad7c6052d5539123f8f8e1">&#9670;&#160;</a></span>test_net()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">solitairesolver.SolitaireSolver.test_net </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00208">208</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -419,7 +467,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00144">144</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00176">176</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -446,7 +494,7 @@ Private Attributes</h2></td></tr>
 
 <p>Game instance object. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00035">35</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00051">51</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -472,7 +520,7 @@ Private Attributes</h2></td></tr>
 
 <p>Input data array. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00043">43</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00058">58</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -498,7 +546,7 @@ Private Attributes</h2></td></tr>
 
 <p>Neural net module. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00039">39</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00054">54</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -524,7 +572,7 @@ Private Attributes</h2></td></tr>
 
 <p>Output data array. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00046">46</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00061">61</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>

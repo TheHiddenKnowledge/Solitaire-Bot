@@ -103,23 +103,23 @@ Inheritance diagram for solitairesolver.SolitaireNet:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3be40222edbc2543a99d376b036ae1a9" id="r_a3be40222edbc2543a99d376b036ae1a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3be40222edbc2543a99d376b036ae1a9">__init__</a> (self, input_size)</td></tr>
+<tr class="memitem:a75b80db0d7b11ab7a3f9b2319b983c97" id="r_a75b80db0d7b11ab7a3f9b2319b983c97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75b80db0d7b11ab7a3f9b2319b983c97">__init__</a> (self)</td></tr>
 <tr class="memitem:abe37067dc6f688e206c063d62705c24a" id="r_abe37067dc6f688e206c063d62705c24a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe37067dc6f688e206c063d62705c24a">forward</a> (self, layer)</td></tr>
 <tr class="memdesc:abe37067dc6f688e206c063d62705c24a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a forward pass.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a1c60718f322bd9f6132de3eb12389c08" id="r_a1c60718f322bd9f6132de3eb12389c08"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c60718f322bd9f6132de3eb12389c08">fc1</a> = nn.Linear(input_size, 2 * input_size)</td></tr>
-<tr class="memitem:aca62d8b3c2f9d95f42903ee2b0fcd9cf" id="r_aca62d8b3c2f9d95f42903ee2b0fcd9cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca62d8b3c2f9d95f42903ee2b0fcd9cf">fc2</a> = nn.Linear(2 * input_size, 2 * input_size)</td></tr>
-<tr class="memitem:a68a81fc1ef98ddc72d184182496af7cc" id="r_a68a81fc1ef98ddc72d184182496af7cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68a81fc1ef98ddc72d184182496af7cc">fc3</a> = nn.Linear(2 * input_size, 4)</td></tr>
+<tr class="memitem:a1c60718f322bd9f6132de3eb12389c08" id="r_a1c60718f322bd9f6132de3eb12389c08"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c60718f322bd9f6132de3eb12389c08">fc1</a> = nn.Linear(INPUT_SIZE, INPUT_SIZE)</td></tr>
+<tr class="memitem:aca62d8b3c2f9d95f42903ee2b0fcd9cf" id="r_aca62d8b3c2f9d95f42903ee2b0fcd9cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca62d8b3c2f9d95f42903ee2b0fcd9cf">fc2</a> = nn.Linear(2 * INPUT_SIZE, 2 * INPUT_SIZE)</td></tr>
+<tr class="memitem:a68a81fc1ef98ddc72d184182496af7cc" id="r_a68a81fc1ef98ddc72d184182496af7cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68a81fc1ef98ddc72d184182496af7cc">fc3</a> = nn.Linear(INPUT_SIZE, 2 * MOVES_SIZE + 2 * CARDS_SIZE)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Neural net module for playing solitaire. </p>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00009">9</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00019">19</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3be40222edbc2543a99d376b036ae1a9" name="a3be40222edbc2543a99d376b036ae1a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3be40222edbc2543a99d376b036ae1a9">&#9670;&#160;</a></span>__init__()</h2>
+<a id="a75b80db0d7b11ab7a3f9b2319b983c97" name="a75b80db0d7b11ab7a3f9b2319b983c97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75b80db0d7b11ab7a3f9b2319b983c97">&#9670;&#160;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,24 +127,13 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">solitairesolver.SolitaireNet.__init__ </td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>input_size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input_size</td><td>Size of the input layer </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00012">12</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00021">21</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -177,7 +166,7 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00021">21</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00030">30</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -189,12 +178,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">solitairesolver.SolitaireNet.fc1 = nn.Linear(input_size, 2 * input_size)</td>
+          <td class="memname">solitairesolver.SolitaireNet.fc1 = nn.Linear(INPUT_SIZE, INPUT_SIZE)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00014">14</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00023">23</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -205,12 +194,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">solitairesolver.SolitaireNet.fc2 = nn.Linear(2 * input_size, 2 * input_size)</td>
+          <td class="memname">solitairesolver.SolitaireNet.fc2 = nn.Linear(2 * INPUT_SIZE, 2 * INPUT_SIZE)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00015">15</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00024">24</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>
@@ -221,12 +210,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">solitairesolver.SolitaireNet.fc3 = nn.Linear(2 * input_size, 4)</td>
+          <td class="memname">solitairesolver.SolitaireNet.fc3 = nn.Linear(INPUT_SIZE, 2 * MOVES_SIZE + 2 * CARDS_SIZE)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00016">16</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solitairesolver_8py_source.html#l00025">25</a> of file <a class="el" href="solitairesolver_8py_source.html">solitairesolver.py</a>.</p>
 
 </div>
 </div>

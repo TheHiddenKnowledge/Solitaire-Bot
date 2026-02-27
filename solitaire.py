@@ -712,15 +712,13 @@ class Solitaire:
                 if self.dest_entity[0] == 'foundation':
                     move_score += 10
             elif self.src_entity[0] == 'stock_reveal':
-                if self.src_entity[0] == 'tableau_card':
+                if self.dest_entity[0] == 'tableau_card':
                     move_score += 5
-                elif self.dest_entity[0] == 'foundation':
-                    move_score += 15
             elif self.src_entity[0] == 'stock_hidden':
                 if self.stock_idx == -1:
                     move_score -= 100
             elif self.src_entity[0] == 'foundation':
-                if self.src_entity[0] == 'tableau_card':
+                if self.dest_entity[0] == 'tableau_card':
                     move_score -= 15
             if self.__card_flipped:
                 move_score += 5

@@ -14,8 +14,12 @@ Contains functions for training and running the neural net.
 \begin{DoxyCompactList}\small\item\em Runs a game loop used to gather training data. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a168e65d8715422f2fb8c543e5e4e2320}{train\+\_\+net}} (self, max\+\_\+epoch)
 \begin{DoxyCompactList}\small\item\em Trains the neural net for a given amount of epochs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a9c6491818bad7c6052d5539123f8f8e1}{test\+\_\+net}} (self)
+\item 
 \mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_ae0c9f3559a9149f1dc03b8ba5f921dc5}{play\+\_\+game}} (self)
-\begin{DoxyCompactList}\small\item\em Plays solitaire using the trained nural net. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Plays solitaire using the trained nural net. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a3cf9d36c82c8c4f47396c121e2a2fbde}{format\+\_\+move}} (self, move)
+\begin{DoxyCompactList}\small\item\em Formats the move array for display. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,7 +51,7 @@ list \mbox{\hyperlink{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2
 \doxysubsection{Detailed Description}
 Contains functions for training and running the neural net. 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00029}{29}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00045}{45}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 
 
@@ -70,7 +74,7 @@ None
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00032}{32}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00048}{48}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 
 
@@ -92,7 +96,7 @@ Input array
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00055}{55}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00070}{70}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_aa288a06d598719bf1fc99e32ec686f44}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_get\_output@{\_\_get\_output}}
 \index{\_\_get\_output@{\_\_get\_output}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -109,7 +113,7 @@ Output array
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00089}{89}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00104}{104}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_a6197d59ca4cc919d94a91b250bdba1a3}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_load\_net@{\_\_load\_net}}
 \index{\_\_load\_net@{\_\_load\_net}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -126,7 +130,7 @@ True if the file exists
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00129}{129}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00161}{161}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_ab61666ed086dfa3eed8876196f8f92e6}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_load\_training@{\_\_load\_training}}
 \index{\_\_load\_training@{\_\_load\_training}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -143,7 +147,7 @@ True if the file exists
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00101}{101}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00133}{133}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_ad0f97011baf8bbf629030255a4d1b416}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_save\_net@{\_\_save\_net}}
 \index{\_\_save\_net@{\_\_save\_net}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -160,7 +164,7 @@ None
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00138}{138}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00170}{170}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_a498726da4bb8e535043c1abe180a29d8}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_save\_training@{\_\_save\_training}}
 \index{\_\_save\_training@{\_\_save\_training}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -177,7 +181,24 @@ None
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00111}{111}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00143}{143}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a3cf9d36c82c8c4f47396c121e2a2fbde}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!format\_move@{format\_move}}
+\index{format\_move@{format\_move}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{format\_move()}{format\_move()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a3cf9d36c82c8c4f47396c121e2a2fbde} 
+solitairesolver.\+Solitaire\+Solver.\+format\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{move}{}\end{DoxyParamCaption})}
+
+
+
+Formats the move array for display. 
+
+\begin{DoxyReturn}{Returns}
+Formatted array 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00253}{253}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_a0384f68d000580d57b32ea092afd1760}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!gather\_training@{gather\_training}}
 \index{gather\_training@{gather\_training}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -194,7 +215,7 @@ None
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00117}{117}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00149}{149}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_ae0c9f3559a9149f1dc03b8ba5f921dc5}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!play\_game@{play\_game}}
 \index{play\_game@{play\_game}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -211,7 +232,17 @@ None
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00170}{170}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00240}{240}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+
+\Hypertarget{classsolitairesolver_1_1_solitaire_solver_a9c6491818bad7c6052d5539123f8f8e1}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!test\_net@{test\_net}}
+\index{test\_net@{test\_net}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
+\doxysubsubsection{\texorpdfstring{test\_net()}{test\_net()}}
+{\footnotesize\ttfamily \label{classsolitairesolver_1_1_solitaire_solver_a9c6491818bad7c6052d5539123f8f8e1} 
+solitairesolver.\+Solitaire\+Solver.\+test\+\_\+net (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00208}{208}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_a168e65d8715422f2fb8c543e5e4e2320}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!train\_net@{train\_net}}
 \index{train\_net@{train\_net}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -233,7 +264,7 @@ None
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00144}{144}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00176}{176}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 
 
@@ -252,7 +283,7 @@ Game instance object.
 
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00035}{35}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00051}{51}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_a72834e76a0156ee0f5bf36c150c96e6a}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_input\_data@{\_\_input\_data}}
 \index{\_\_input\_data@{\_\_input\_data}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -266,7 +297,7 @@ Input data array.
 
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00043}{43}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00058}{58}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_a861e3bd3360011d9ca5d04b2b18a87ef}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_net@{\_\_net}}
 \index{\_\_net@{\_\_net}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -280,7 +311,7 @@ Neural net module.
 
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00039}{39}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00054}{54}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 \Hypertarget{classsolitairesolver_1_1_solitaire_solver_a108ca28176a6ee2428bede28162c6823}\index{solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}!\_\_output\_data@{\_\_output\_data}}
 \index{\_\_output\_data@{\_\_output\_data}!solitairesolver.SolitaireSolver@{solitairesolver.SolitaireSolver}}
@@ -294,7 +325,7 @@ Output data array.
 
 
 
-Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00046}{46}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
+Definition at line \mbox{\hyperlink{solitairesolver_8py_source_l00061}{61}} of file \mbox{\hyperlink{solitairesolver_8py_source}{solitairesolver.\+py}}.
 
 
 
