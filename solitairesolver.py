@@ -1,6 +1,9 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from dataclasses import dataclass
+from collections import deque
+import random
 import pickle
 import time
 
@@ -21,7 +24,7 @@ class SolitaireNet(nn.Module):
     def __init__(self):
         super(SolitaireNet, self).__init__()
         self.fc1 = nn.Linear(INPUT_SIZE, INPUT_SIZE)
-        self.fc2 = nn.Linear(2 * INPUT_SIZE, 2 * INPUT_SIZE)
+        self.fc2 = nn.Linear(INPUT_SIZE, INPUT_SIZE)
         self.fc3 = nn.Linear(INPUT_SIZE, 2 * MOVES_SIZE + 2 * CARDS_SIZE)
 
     ## @brief Performs a forward pass.
@@ -29,7 +32,8 @@ class SolitaireNet(nn.Module):
     # @return None
     def forward(self, layer):
         layer = torch.sigmoid(self.fc1(layer))
-        # layer = torch.relu(self.fc2(layer))
+        layer = torch.relu(self.fc2(layer))
+        layer = torch.relu(self.fc2(layer))
         layer = self.fc3(layer)
         moves_2_idx = MOVES_SIZE + CARDS_SIZE
         card_2_idx = moves_2_idx + MOVES_SIZE + CARDS_SIZE
@@ -40,55 +44,73 @@ class SolitaireNet(nn.Module):
         layer = [moves_1, cards_1, moves_2, cards_2]
         return layer
 
+@dataclass
+class SolverParams:
+    def __init__(self, batch_size = 50, memory_size = 1000, gamma = .99,
+                 epsilon = 1, epsilon_min = .01, epsilon_decay = .995,
+                 learning_rate = .001):
+        self.batch_size = batch_size
+        self.memory_size = memory_size
+        self.gamma = gamma
+        self.epsilon = epsilon
+        self.epsilon_min = epsilon_min
+        self.epsilon_decay = epsilon_decay
+        self.learning_rate = learning_rate
+
 ## @class SolitaireSolver
 # @brief Contains functions for training and running the neural net.
 class SolitaireSolver:
     ## @param game Game instance object
     # @return None
-    def __init__(self, game):
+    def __init__(self, game, params):
         ## @brief Game instance object
         # @hideinitializer
         self.__game = game
-        ## @brief Neural net module
+        ## @brief Solver paramas object
         # @hideinitializer
-        self.__net = SolitaireNet()
-
-        ## @brief Input data array
+        self.__params = params
+        self.__memory = deque(maxlen = params.memory_size)
+        self.__device = (
+            torch.device("cuda" if torch.cuda.is_available() else "cpu"))
+        ## @brief Policy neural net
         # @hideinitializer
-        self.__input_data = []
-        ## @brief Output data array
+        self.__policy_net = SolitaireNet().to(self.__device)
+        ## @brief Target neural net (used for Q-learning stability)
         # @hideinitializer
-        self.__output_data = []
+        self.__target_net = SolitaireNet().to(self.__device)
+        self.__target_net.load_state_dict(self.__policy_net.state_dict())
+        self.__target_net.eval()
+        self.__optimizer = optim.Adam(self.__policy_net.parameters(),
+                                lr = self.__params.learning_rate)
+        self.__loss = nn.MSELoss()
 
-        if not self.__load_training():
-            print('No training data present.')
-        if not self.__load_net():
-            print('No saved neural net present.')
+        # if not self.__load_net():
+        #     print('No saved neural net present.')
 
-    ## @brief Gets the neural net input from the current game state.
-    # @return Input array
-    def __get_input(self):
-        game_input = []
+    ## @brief Gets the current game state.
+    # @return Game state array
+    def get_state(self):
+        game_state = []
         for a in range(len(self.__game.tableau)):
             for b in range(len(self.__game.tableau[a])):
                 card_idx = self.__game.tableau[a][b]
                 if card_idx >= 0:
                     if self.__game.cards[card_idx].flipped:
-                        game_input.append(0)
+                        game_state.append(0)
                     else:
-                        game_input.append(card_idx + 1)
+                        game_state.append(card_idx + 1)
                 else:
-                    game_input.append(0)
+                    game_state.append(0)
         if self.__game.stock_idx >= 0:
-            game_input.append((self.__game.stock[
+            game_state.append((self.__game.stock[
                 self.__game.stock_idx] + 1))
         else:
-            game_input.append(0)
+            game_state.append(0)
         stock_count = 0
         for a in range(len(self.__game.stock)):
             if self.__game.stock[a] >= 0:
                 stock_count += 1
-        game_input.append(stock_count)
+        game_state.append(stock_count)
         for a in range(len(self.__game.found_idxs)):
             found_idx = 0
             for b in range(len(self.__game.found_idxs[a])):
@@ -96,37 +118,26 @@ class SolitaireSolver:
                     found_idx = self.__game.found_idxs[a][b]
                 else:
                     break
-            game_input.append(found_idx)
-        return game_input
+            game_state.append(found_idx)
+        return game_state
 
-    ## @brief Gets the neural net output from the current game state.
-    # @return Output array
-    def __get_output(self):
-        game_output = []
-        entity_names = ['none', 'stock_reveal', 'stock_hidden',
-                        'foundation', 'tableau_card', 'tableau_pile']
-        card_structs = [self.__game.src_entity, self.__game.dest_entity]
-        for a in range(2):
-            moves_output = []
-            for b in range(MOVES_SIZE):
-                move_idx = entity_names.index(card_structs[a][0])
-                if b == move_idx:
-                    moves_output.append(1)
-                else:
-                    moves_output.append(0)
-            cards_output = []
-            for b in range(CARDS_SIZE):
-                card_idx = card_structs[a][1]
-                if (card_structs[a][0]
-                    in ['foundation', 'tableau_card', 'tableau_pile']):
-                    card_idx += 1
-                if b == card_idx:
-                    cards_output.append(1)
-                else:
-                    cards_output.append(0)
-            game_output.append(moves_output)
-            game_output.append(cards_output)
-        return game_output
+    ## @brief Gets the action to be taken based on the game state.
+    # @return Action array
+    def __get_action(self, state, epsilon):
+        if random.random() < epsilon:
+            return [random.randint(0, MOVES_SIZE - 1),
+                    random.randint(0, CARDS_SIZE - 1),
+                    random.randint(0, MOVES_SIZE - 1),
+                    random.randint(0, CARDS_SIZE - 1)]
+        else:
+            action = []
+            with torch.no_grad():
+                tensor_state = torch.Tensor(state).unsqueeze(0).to(
+                    self.__device)
+                q_values = self.__policy_net(tensor_state)
+            for q_value in q_values:
+                action.append(torch.argmax(q_value).item())
+            return action
 
     ## @brief Loads the training data from file.
     # @return True if the file exists
@@ -143,18 +154,6 @@ class SolitaireSolver:
     def __save_training(self):
         with open('data/data.pkl', 'wb') as file:
             pickle.dump((self.__input_data, self.__output_data), file)
-
-    ## @brief Runs a game loop used to gather training data.
-    # @return None
-    def gather_training(self):
-        while not self.__game.quit:
-            game_state = self.__get_input()
-            self.__game.run_game()
-            if self.__game.move_made:
-                self.__input_data.append(game_state)
-                self.__output_data.append(self.__get_output())
-        if self.__game.quit:
-            self.__save_training()
 
     ## @brief Loads the neural net from file.
     # @return True if the file exists
@@ -173,80 +172,73 @@ class SolitaireSolver:
     ## @brief Trains the neural net for a given amount of epochs.
     # @param max_epoch Maximum epoch count for training
     # @return None
-    def train_net(self, max_epoch):
-        # Normalizing training data
-        trans_input = torch.Tensor(self.__input_data) / 52
-        trans_output = []
-        for a in range(len(self.__output_data[0])):
-            temp_list = []
-            for b in range(len(self.__output_data)):
-                temp_list.append(self.__output_data[b][a])
-            trans_output.append(torch.Tensor(temp_list))
-        criterion = nn.CrossEntropyLoss()
-        optimizer = optim.Adam(self.__net.parameters(), lr = 0.01)
-        # Used for displaying epoch results
-        epoch_div = 0
-        if max_epoch % 100 != max_epoch:
-            epoch_div = round(max_epoch / 100)
-        for epoch in range(max_epoch):
-            self.__net.train()
-            outputs = self.__net(trans_input)
-            optimizer.zero_grad()
-            total_loss = 0
-            for a in range(len(trans_output)):
-                loss = criterion(outputs[a], trans_output[a])
-                loss.backward(retain_graph = True)
-                total_loss += loss.item() / 4
-            optimizer.step()
-            if (epoch + 1) % epoch_div == 0 and epoch_div != 0:
-                print(f'Epoch {epoch + 1}, Loss: {total_loss:.6f}')
-            if epoch == max_epoch - 1:
-                if epoch_div == 0 or (epoch + 1) % epoch_div != 0:
-                    print(f'Epoch {epoch + 1}, Loss: {total_loss:.6f}')
-        self.__save_net()
-
-    def test_net(self):
-        fail_count = 0
-        trans_input = torch.Tensor(self.__input_data) / 52
-        trans_output = self.__net(trans_input)
-        for a in range(len(self.__output_data)):
-            pass_test = 1
-            actual_list = []
-            expected_list = []
-            for b in range(len(self.__output_data[0])):
-                soft_max = trans_output[b][a].softmax(dim = 0).tolist()
-                actual_value = soft_max.index(max(soft_max))
-                actual_list.append(actual_value)
-                expected_value = self.__output_data[a][b].index(
-                    max(self.__output_data[a][b]))
-                expected_list.append(expected_value)
-                if actual_value != expected_value:
-                    pass_test *= 0
-            if not pass_test:
-                print('TEST FAILED   Item: ' + str(a + 1) + ' Actual: ' + str(
-                    actual_list),
-                      ' Expected: ' + str(expected_list))
-                fail_count += 1
-        if fail_count > 0:
-            print('TEST FAILED!')
-            print('Set count: ' + str(len(self.__output_data)))
-        else:
-            print('TEST PASSED!')
-            print('Set count: ' + str(len(self.__output_data)))
-
+    def __q_learn(self):
+        if len(self.__memory) < self.__params.batch_size:
+            return
+        minibatch = random.sample(self.__memory, self.__params.batch_size)
+        states, actions, rewards, next_states, dones = zip(*minibatch)
+        states = torch.FloatTensor(states).to(self.__device)
+        actions = torch.LongTensor(actions).to(self.__device)
+        rewards = torch.FloatTensor(rewards).to(self.__device).unsqueeze(1)
+        next_states = torch.FloatTensor(next_states).to(self.__device)
+        dones = torch.FloatTensor(dones).to(self.__device).unsqueeze(1)
+        for a in range(4):
+            indices = actions[:, a].unsqueeze(1)
+            current_q = self.__policy_net(states)[a].gather(1, indices)
+            next_q = self.__target_net(next_states)[a].max(1)[0].detach().unsqueeze(1)
+            target_q = rewards + (self.__params.gamma * next_q * (1 - dones))
+            loss = self.__loss(current_q, target_q)
+            self.__optimizer.zero_grad()
+            loss.backward()
+        self.__optimizer.step()
 
     ## @brief Plays solitaire using the trained nural net.
     # @return None
-    def play_game(self):
-        while not self.__game.quit:
-            game_state = torch.Tensor([self.__get_input()]) / 52
-            net_output = self.__net(game_state)
-            move = []
-            for a in range(len(net_output)):
-                soft_max = net_output[a][0].softmax(dim = 0).tolist()
-                move.append(soft_max.index(max(soft_max)))
-            print(self.format_move(move))
-            self.__game.run_game()
+    def __step_game(self, action):
+        state = self.get_state()
+        entity_names = ['none', 'stock_reveal', 'stock_hidden',
+                        'foundation', 'tableau_card', 'tableau_pile']
+        self.__game.src_entity[0] = entity_names[int(action[0])]
+        self.__game.src_entity[1] = int(action[1]) - 1
+        self.__game.dest_entity[0] = entity_names[int(action[2])]
+        self.__game.dest_entity[1] = int(action[3]) - 1
+        reward = 0
+        if (self.__game.src_entity == ['stock_hidden', 0]
+                and self.__game.dest_entity == ['none', 0]):
+            self.__game.increment_stock()
+            reward = -1
+        elif self.__game.move_cards():
+            reward = self.__game.get_move_score()
+        else:
+            reward = -100
+        self.__game.run_game(True)
+        next_state = self.get_state()
+        dones = self.__game.win
+        return state, action, reward, next_state, dones
+
+    def train_net(self, episodes, update_freq, max_moves):
+        for episode in range(episodes):
+            self.__game.reset_game()
+            state = self.get_state()
+            total_reward = 0
+            for move in range(max_moves):
+                action = self.__get_action(state, self.__params.epsilon)
+                step_result = self.__step_game(action)
+                self.__memory.append(step_result)
+                state = step_result[3]
+                total_reward += step_result[2] if (step_result[2] > 0) else 0
+                self.__q_learn()
+                if step_result[4]:
+                    break
+            if self.__params.epsilon > self.__params.epsilon_min:
+                self.__params.epsilon *= self.__params.epsilon_decay
+
+            if episode % update_freq == 0:
+                self.__target_net.load_state_dict(
+                    self.__policy_net.state_dict())
+            print(
+                f"Episode {episode}, Total Reward: {total_reward}, Epsilon: "
+                f"{self.__params.epsilon:.3f}")
 
     ## @brief Formats the move array for display.
     # @return Formatted array

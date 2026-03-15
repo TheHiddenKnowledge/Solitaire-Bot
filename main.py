@@ -2,14 +2,8 @@ import solitaire
 import solitairesolver
 
 GAME = solitaire.Solitaire()
-SOLVER = solitairesolver.SolitaireSolver(GAME)
+PARAMS = solitairesolver.SolverParams(batch_size=20, learning_rate=.001,
+                                      gamma = .9)
+SOLVER = solitairesolver.SolitaireSolver(GAME, PARAMS)
 
-# Comment as needed
-
-# SOLVER.gather_training()
-
-# SOLVER.train_net(10000)
-
-# SOLVER.test_net()
-
-SOLVER.play_game()
+SOLVER.train_net(500, 1, 100)
