@@ -404,7 +404,6 @@ class Solitaire:
         self.__moves += 1
 
     ## @brief Checks if the selected card can be moved to designated location.
-    # @param clicked_entity Destination entity where the card will be moved
     # @return True if the card can be moved
     def can_card_move(self):
         src_col = 0
@@ -424,20 +423,34 @@ class Solitaire:
         if self.src_entity[0] == 'tableau_card':
             if self.src_entity[1] >= 0:
                 src_card = self.cards[self.src_entity[1]]
+                if src_card.flipped:
+                    return False
+                has_card = False
+                for a in range(len(self.tableau)):
+                    for b in range(len(self.tableau[a])):
+                        if self.tableau[a][b] == self.src_entity[1]:
+                            has_card = True
+                            break
+                if not has_card:
+                    return False
             else:
                 return False
         elif self.src_entity[0] == 'stock_reveal':
             if self.src_entity[1] == 0:
+                if self.stock_idx < 0:
+                    return False
                 src_card = self.cards[self.stock[self.stock_idx]]
             else:
                 return False
         elif self.src_entity[0] == 'foundation':
-            if self.src_entity[1] <= 3:
+            if 0 <= self.src_entity[1] <= 3:
                 rank = 12
                 for a in range(len(self.found_idxs[self.src_entity[1]])):
                     if self.found_idxs[self.src_entity[1]][a] < 0:
                         rank = a - 1
                         break
+                if rank < 0:
+                    return False
                 card_idx = self.found_idxs[self.src_entity[1]][rank]
                 src_card = self.cards[card_idx]
             else:
@@ -449,20 +462,33 @@ class Solitaire:
             if self.dest_entity[1] >= 0:
                 dest_card = self.cards[self.dest_entity[1]]
                 if dest_row < len(self.tableau[dest_col]) - 1:
-                    if self.tableau[dest_col][dest_row + 1] > 0:
+                    if self.tableau[dest_col][dest_row + 1] >= 0:
                         return False
+                if dest_card.flipped:
+                    return False
+                has_card = False
+                for a in range(len(self.tableau)):
+                    for b in range(len(self.tableau[a])):
+                        if self.tableau[a][b] == self.dest_entity[1]:
+                            has_card = True
+                            break
+                if not has_card:
+                    return False
             else:
                 return False
         elif self.dest_entity[0] == 'tableau_pile':
-            if self.dest_entity[1] <= 6:
+            if 0 <= self.dest_entity[1] <= 6:
                 if src_card.rank == 12:
-                    return True
+                    if self.tableau[self.dest_entity[1]][0] < 0:
+                        return True
+                    else:
+                        return False
                 else:
                     return False
             else:
                 return False
         elif self.dest_entity[0] == 'foundation':
-            if self.dest_entity[1] <= 3:
+            if 0 <= self.dest_entity[1] <= 3:
                 if self.src_entity[0] == 'tableau_card':
                     if src_row < len(self.tableau[src_col]) - 1:
                         if self.tableau[src_col][src_row + 1] > 0:
@@ -602,10 +628,10 @@ class Solitaire:
     def __get_clicked(self, cursor):
         # Click on revealed stock pile
         if self.__stock_rects[0].collidepoint(cursor):
-            return ['stock_reveal', 0]
+            return ['stock_reveal', -1]
         # Click on hidden stock pile
         if self.__stock_rects[1].collidepoint(cursor):
-            return ['stock_hidden', 0]
+            return ['stock_hidden', -1]
         # Click on foundation pile
         for a in range(len(self.__found_rects)):
             if self.__found_rects[a].collidepoint(cursor):
@@ -688,7 +714,7 @@ class Solitaire:
                 self.__select_cards()
         elif clicked_entity[0] == 'stock_hidden':
             self.src_entity = clicked_entity
-            self.dest_entity = ['none', 0]
+            self.dest_entity = ['none', -1]
             self.increment_stock()
         elif clicked_entity[0] == 'foundation':
             if (not self.__is_selected
@@ -756,8 +782,8 @@ class Solitaire:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         if not self.win:
-                            self.src_entity = ['stock_hidden', 0]
-                            self.dest_entity = ['none', 0]
+                            self.src_entity = ['stock_hidden', -1]
+                            self.dest_entity = ['none', -1]
                             self.increment_stock()
             time_score = 0
             if not int(self.__time) % 10 and not self.__time_deduct:
@@ -771,15 +797,16 @@ class Solitaire:
         if self.__score < 0:
             self.__score = 0
         self.__get_game_win()
-        if not has_solver:
-            self.__screen.fill(self.__screen_color)
-            self.__get_card_positions()
-            self.__draw_game()
-            self.__draw_gui()
-            if not self.win:
-                self.__time += self.__clock.get_time() / 1000
-            self.__clock.tick(60)
-            pygame.display.flip()
+
+    def draw_game(self):
+        self.__screen.fill(self.__screen_color)
+        self.__get_card_positions()
+        self.__draw_game()
+        self.__draw_gui()
+        if not self.win:
+            self.__time += self.__clock.get_time() / 1000
+        self.__clock.tick(60)
+        pygame.display.flip()
 
 ## @class PlayingCard
 # @brief Contains methods and attributes for playing cards.
